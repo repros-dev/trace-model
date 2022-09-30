@@ -8,5 +8,20 @@ I MESG Resetting REPRO
 I MESG Resetting all modules
 I MESG Resetting the 'repro' module
 I MESG Re-initializing trim files for module 'repro'
+I MESG Resetting the 'geist' module
+I MESG Re-initializing trim files for module 'geist'
+I MESG Resetting the 'blazegraph-service' module
+I MESG Re-initializing trim files for module 'blazegraph-service'
+I MESG Copying /home/repro/repro-modules/blazegraph-service-master/base-makefile to the 'blazegraph-service' trim directory (/mnt/trace-model/.blazegraph-service)
+I MESG Ensuring other files listed in the 'blazegraph-service' module trim manifest are in the module trim directory (/mnt/trace-model/.blazegraph-service)
+I MESG Copying trim file blazegraph.properties from /home/repro/repro-modules/blazegraph-service-master to /mnt/trace-model/.blazegraph-service
+I MESG Resetting the 'java-runtime' module
+I MESG Re-initializing trim files for module 'java-runtime'
+I MESG Resetting the 'blaze' module
+I MESG Re-initializing trim files for module 'blaze'
 I MESG Resetting the REPRO target mapping file (/mnt/trace-model/.repro/repro-targets)
 I MESG Installing a default (empty) target mapping file to /mnt/trace-model/.repro/repro-targets
+I MESG Mapping the 'blazegraph-service:base:clean' target to the REPRO 'clean-databases' target
+I MESG Mapping the 'blazegraph-service:base:drop' target to the REPRO 'drop-databases' target
+I MESG Mapping the 'blazegraph-service:base:purge' target to the REPRO 'purge-databases' target
+I MESG Mapping the 'blazegraph-service:base:start' target to the REPRO 'start-services' target
