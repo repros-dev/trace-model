@@ -1,4 +1,0 @@
-repro.require shell-notebook master ${REPROS_DEV}
-repro.require graphviz-runtime master ${REPROS_DEV} --util
-
-repro.env REPRO_DEMO_TMP_DIRNAME tmp

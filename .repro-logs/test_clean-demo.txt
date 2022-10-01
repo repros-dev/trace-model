@@ -1,3 +1,5 @@
+
+------- Cleaning example 01/ ----------------
 removed './run.txt'
 removed './tmp/C1.sh'
 removed './tmp/C1.txt'
