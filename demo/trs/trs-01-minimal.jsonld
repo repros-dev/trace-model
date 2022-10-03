@@ -7,7 +7,7 @@
 
     "@graph": [{
 
-        "@id": "trov:system/01",
+        "@id": "trov:trs/01",
         "@type": "trov:TraceSystem",
 
         "trov:implementsTraceVersion": "0.1"

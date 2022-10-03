@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# path to data files
-DATA=../data
+# paths to data files
+TRS=../trs
+TRO=../tro
 
 # *****************************************************************************
 
@@ -10,8 +11,8 @@ bash_cell import_tro_jsonld << END_CELL
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist destroy --dataset kb --quiet
 geist create --dataset kb --quiet
-geist import --format jsonld --file ${DATA}/trs-type-a.jsonld
-#geist import --format jsonld --file ${DATA}/tro-type-a.jsonld
+geist import --format jsonld --file ${TRS}/trs-02-type-a.jsonld
+geist import --format jsonld --file ${TRO}/tro-02-from-type-a-trs.jsonld
 
 END_CELL
 
