@@ -8,7 +8,8 @@
     "@graph": [
         {
         "@id": "trov:system/01",
-        "@type": "trov:TraceSystem"
+        "@type": "trov:TraceSystem",
+        "trov:implementsTraceVersion": "0.1"
         }
     ]
 }

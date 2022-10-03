@@ -1,14 +1,22 @@
-=========================================== BASH CELL DUMP-1 ==============================================
+=========================================== BASH CELL import_tro_jsonld ==============================================
 
-# Import minimal TRO and TROS as JSON-LD and export as N-TRIPLES
-
+# Import minimal TRO and TRS as JSON-LD and export as N-TRIPLES
 geist destroy --dataset kb --quiet
 geist create --dataset kb --quiet
-geist import --format jsonld --file minimal-tros.jsonld
+geist import --format jsonld --file minimal-trs.jsonld
 geist import --format jsonld --file minimal-tro.jsonld
+
+--------------------------------------------- OUTPUTS -------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+
+=========================================== BASH CELL export tro ntriples ==============================================
+
+# Import minimal TRO and TRS as JSON-LD and export as N-TRIPLES
 geist export --format nt | sort
 
 --------------------------------------------- OUTPUTS -------------------------------------------------
+<http://trace.org/trov#system/01> <http://trace.org/trov#implementsTraceVersion> "0.1"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://trace.org/trov#system/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TraceSystem> .
 <http://trace.org/trov#tro/01> <http://trace.org/trov#generatedByTraceSystem> <http://trace.org/trov#system/01> .
 <http://trace.org/trov#tro/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TResearchObject> .
