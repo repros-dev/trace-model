@@ -16,6 +16,7 @@ geist import --format jsonld --file ${TRO}/tro-01-from-minimal-trs.jsonld
 
 END_CELL
 
+# *****************************************************************************
 
 bash_cell export_tro_ntriples << END_CELL
 
@@ -23,5 +24,11 @@ bash_cell export_tro_ntriples << END_CELL
 geist export --format nt | sort
 
 END_CELL
+
+# *****************************************************************************
+
+source ../trs-query-cells.sh
+
+
 
 
