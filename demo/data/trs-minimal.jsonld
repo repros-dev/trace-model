@@ -1,15 +1,15 @@
 {
-    "@context": [
-        {
+    "@context": [{
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "trov": "http://trace.org/trov#"
-        }
-    ],
-    "@graph": [
-        {
+
+    }],
+
+    "@graph": [{
+
         "@id": "trov:system/01",
         "@type": "trov:TraceSystem",
+
         "trov:implementsTraceVersion": "0.1"
-        }
-    ]
+    }]
 }

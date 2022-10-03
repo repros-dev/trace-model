@@ -1,18 +1,18 @@
 =========================================== BASH CELL import_tro_jsonld ==============================================
 
-# Import minimal TRO and TRS as JSON-LD and export as N-TRIPLES
+# Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist destroy --dataset kb --quiet
 geist create --dataset kb --quiet
-geist import --format jsonld --file minimal-trs.jsonld
-geist import --format jsonld --file minimal-tro.jsonld
+geist import --format jsonld --file ../data/trs-minimal.jsonld
+geist import --format jsonld --file ../data/tro-minimal.jsonld
 
 --------------------------------------------- OUTPUTS -------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 
 
-=========================================== BASH CELL export tro ntriples ==============================================
+=========================================== BASH CELL export_tro_ntriples ==============================================
 
-# Import minimal TRO and TRS as JSON-LD and export as N-TRIPLES
+# Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist export --format nt | sort
 
 --------------------------------------------- OUTPUTS -------------------------------------------------

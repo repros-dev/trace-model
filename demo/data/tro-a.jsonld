@@ -1,0 +1,23 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "trov": "http://trace.org/trov#"
+    }],
+
+    "@graph": [{
+
+        "@id": "trov:tro/02",
+        "@type": "trov:TResearchObject",
+
+        "trov:generatedByTraceSystem": { "@id": "trov:system/02" },
+
+        "trov:implementsTraceVersion": "0.1",
+
+        "trov:satisfiesTROPolicy": [
+            { "@id": "trov:IncludesAllOutput" },
+            { "@id": "trov:IncludesAllCode" },
+            { "@id": "trov:DescribesSoftwareEnvironment" }
+        ]
+
+    }]
+}
