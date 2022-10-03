@@ -1,2 +1,4 @@
 
----------- Running example 01/ -------------
+---------- Running example 01-minimal/ -------------
+
+---------- Running example 02-type-a/ -------------
