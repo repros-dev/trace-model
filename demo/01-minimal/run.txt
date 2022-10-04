@@ -2,7 +2,7 @@
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist destroy --dataset kb --quiet
-geist create --dataset kb --quiet
+geist create --dataset kb --infer owl --quiet
 geist import --format jsonld --file ../common/trs/trs-01-minimal.jsonld
 geist import --format jsonld --file ../common/tro/tro-01-from-minimal-trs.jsonld
 
@@ -13,9 +13,19 @@ geist import --format jsonld --file ../common/tro/tro-01-from-minimal-trs.jsonld
 =========================================== BASH CELL export_ntriples ==============================================
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
-geist export --format nt | sort
+geist export --format nt | sort | grep trov
 
 --------------------------------------------- OUTPUTS -------------------------------------------------
+<http://trace.org/trov#TResearchObject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://trace.org/trov#TResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://trace.org/trov#TResearchObject> .
+<http://trace.org/trov#TResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
+<http://trace.org/trov#TraceSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://trace.org/trov#TraceSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://trace.org/trov#TraceSystem> .
+<http://trace.org/trov#TraceSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
+<http://trace.org/trov#generatedByTraceSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://trace.org/trov#generatedByTraceSystem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#generatedByTraceSystem> .
+<http://trace.org/trov#implementsTraceVersion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://trace.org/trov#implementsTraceVersion> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#implementsTraceVersion> .
 <http://trace.org/trov#tro/01> <http://trace.org/trov#generatedByTraceSystem> <http://trace.org/trov#system/01> .
 <http://trace.org/trov#tro/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TResearchObject> .
 <http://trace.org/trov#trs/01> <http://trace.org/trov#implementsTraceVersion> "0.1"^^<http://www.w3.org/2001/XMLSchema#string> .
