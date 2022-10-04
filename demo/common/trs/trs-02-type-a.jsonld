@@ -12,9 +12,9 @@
         "trov:implementsTraceVersion": "0.1",
 
         "trov:enforcesTROPolicy": [
-            { "@id": "trov:IncludesAllOutput" },
-            { "@id": "trov:IncludesAllCode" },
-            { "@id": "trov:DescribesSoftwareEnvironment" }
+            { "@id": "trov:IncludeAllOutput" },
+            { "@id": "trov:IncludeAllCode" },
+            { "@id": "trov:DescribeSoftwareEnvironment" }
         ],
 
         "trov:enforcesTRSPolicy": [

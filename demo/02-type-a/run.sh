@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # paths to data files
-TRS=../trs
-TRO=../tro
+TRS=../common/trs
+TRO=../common/tro
 
 # *****************************************************************************
 
@@ -27,5 +27,5 @@ END_CELL
 
 # *****************************************************************************
 
-source ../trs-query-cells.sh
+source ../common/trs-queries.sh
 
