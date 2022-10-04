@@ -1,0 +1,52 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "http://trace.org/trov#"
+    }],
+
+    "@graph": [
+        {
+            "@id": "trov:TROPolicy",
+            "rdfs:subClassOf": { "@id": "trov:Policy" }
+        },
+        {
+            "@id": "trov:TRSPolicy",
+            "rdfs:subClassOf": { "@id": "trov:Policy" }
+        },
+        {
+            "@id": "trov:enforcesTROPolicy",
+            "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
+        },
+        {
+            "@id": "trov:enforcesTRSPolicy",
+            "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
+        },
+
+
+        {
+            "@id": "trov:IncludeAllOutput",
+            "@type": "trov:TROPolicy",
+            "trov:hasPolicyName": "IncludeAllOutput",
+            "trov:hasPolicyDescription": "TRO includes all outputs."
+        },
+        {
+            "@id": "trov:IncludeAllCode",
+            "@type": "trov:TROPolicy",
+            "trov:hasPolicyName": "IncludeAllCode",
+            "trov:hasPolicyDescription": "TRO includes all code."
+        },
+        {
+            "@id": "trov:DescribeSoftwareEnvironment",
+            "@type": "trov:TROPolicy",
+            "trov:hasPolicyName": "DescribeSoftwareEnvironment",
+            "trov:hasPolicyDescription": "TRO describes the full software environment."
+        },
+        {
+            "@id": "trov:PreventRuntimeIntervention",
+            "@type": "trov:TRSPolicy",
+            "trov:hasPolicyName": "PreventRuntimeIntervention",
+            "trov:hasPolicyDescription": "TRS prevents runtime intervention."
+        }
+    ]
+}
