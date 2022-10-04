@@ -7,19 +7,31 @@
 
     "@graph": [
         {
+            "@id": "trov:Policy",
+            "@type": "rdfs:Class"
+        },
+        {
             "@id": "trov:TROPolicy",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:Policy" }
         },
         {
             "@id": "trov:TRSPolicy",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:Policy" }
         },
         {
+            "@id": "trov:enforcesPolicy",
+            "@type": "rdf:Property"
+        },
+        {
             "@id": "trov:enforcesTROPolicy",
+            "@type": "rdf:Property",
             "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
         },
         {
             "@id": "trov:enforcesTRSPolicy",
+            "@type": "rdf:Property",
             "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
         },
 
