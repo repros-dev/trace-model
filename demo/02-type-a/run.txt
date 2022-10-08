@@ -4,8 +4,8 @@
 geist destroy --dataset kb --quiet
 geist create --dataset kb --infer owl --quiet
 geist import --format jsonld --file ../common/trace-vocab.jsonld
-geist import --format jsonld --file ../common/trs/trs-02-type-a.jsonld
-geist import --format jsonld --file ../common/tro/tro-02-from-type-a-trs.jsonld
+geist import --format jsonld --file ../common/trs-02-type-a.jsonld
+geist import --format jsonld --file ../common/tro-02-from-type-a-trs.jsonld
 
 --------------------------------------------- OUTPUTS -------------------------------------------------
 -------------------------------------------------------------------------------------------------------

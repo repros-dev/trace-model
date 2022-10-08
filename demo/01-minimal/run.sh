@@ -2,8 +2,7 @@
 
 # paths to data files
 COMMON=../common
-TRS=${COMMON}/trs
-TRO=${COMMON}/tro
+
 
 # *****************************************************************************
 
@@ -13,8 +12,8 @@ bash_cell import_tro_jsonld << END_CELL
 geist destroy --dataset kb --quiet
 geist create --dataset kb --infer owl --quiet
 geist import --format jsonld --file ${COMMON}/trace-vocab.jsonld
-geist import --format jsonld --file ${TRS}/trs-01-minimal.jsonld
-geist import --format jsonld --file ${TRO}/tro-01-from-minimal-trs.jsonld
+geist import --format jsonld --file ${COMMON}/trs-01-minimal.jsonld
+geist import --format jsonld --file ${COMMON}/tro-01-from-minimal-trs.jsonld
 
 END_CELL
 

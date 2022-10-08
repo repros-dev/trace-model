@@ -1,4 +1,4 @@
-# TRACE Model Demonstrations
+# TRACE Model Demonstration
 
 This repository demonstrates the _Transparent Research Object Vocabulary_ (__TROV__) for describing _Transparent Research Objects_ (__TROs__) and the _Transparent Research Systems_ (__TRS__'s) that produce them.
 
@@ -6,7 +6,7 @@ This repository is itself structured as a _Reproducible Every-Place Research Obj
 
 Make commands issued in the top-level directory are used to obtain the Docker image and run the demos.
 
-## Obtaining the Docker image for this REPRO
+## Obtain the Docker image for this REPRO
 
 Use the `make pull-image` command to pull the Docker image from Docker hub:
 ```
@@ -62,7 +62,7 @@ Successfully built d183e074b43e
 Successfully tagged cirss/trace-model:latest
 ```
 
-## Running and confirming the reproducibility of the demonstration
+## Run and confirm the reproducibility of the demonstration
 
 The demonstration and its products are stored under in the `demo` directory tree:
 ```
