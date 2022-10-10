@@ -17,23 +17,23 @@ geist import --format jsonld --file ../common/tro-01-from-minimal-trs.jsonld
 geist export --format nt | sort | grep trov
 
 --------------------------------------------- OUTPUTS -------------------------------------------------
-<http://trace.org/trov#DescribeSoftwareEnvironment> <http://trace.org/trov#hasPolicyDescription> "TRO describes the full software environment."^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://trace.org/trov#DescribeSoftwareEnvironment> <http://trace.org/trov#hasPolicyName> "DescribeSoftwareEnvironment"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#DescribeSoftwareEnvironment> <http://trace.org/trov#policyDescription> "TRO describes the full software environment."^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#DescribeSoftwareEnvironment> <http://trace.org/trov#policyName> "DescribeSoftwareEnvironment"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://trace.org/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#Policy> .
 <http://trace.org/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TROPolicy> .
-<http://trace.org/trov#IncludeAllCode> <http://trace.org/trov#hasPolicyDescription> "TRO includes all code."^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://trace.org/trov#IncludeAllCode> <http://trace.org/trov#hasPolicyName> "IncludeAllCode"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#IncludeAllCode> <http://trace.org/trov#policyDescription> "TRO includes all code."^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#IncludeAllCode> <http://trace.org/trov#policyName> "IncludeAllCode"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://trace.org/trov#IncludeAllCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#Policy> .
 <http://trace.org/trov#IncludeAllCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TROPolicy> .
-<http://trace.org/trov#IncludeAllOutput> <http://trace.org/trov#hasPolicyDescription> "TRO includes all outputs."^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://trace.org/trov#IncludeAllOutput> <http://trace.org/trov#hasPolicyName> "IncludeAllOutput"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#IncludeAllOutput> <http://trace.org/trov#policyDescription> "TRO includes all outputs."^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#IncludeAllOutput> <http://trace.org/trov#policyName> "IncludeAllOutput"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://trace.org/trov#IncludeAllOutput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#Policy> .
 <http://trace.org/trov#IncludeAllOutput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TROPolicy> .
 <http://trace.org/trov#Policy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <http://trace.org/trov#Policy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://trace.org/trov#Policy> .
 <http://trace.org/trov#Policy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
-<http://trace.org/trov#PreventRuntimeIntervention> <http://trace.org/trov#hasPolicyDescription> "TRS prevents runtime intervention."^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://trace.org/trov#PreventRuntimeIntervention> <http://trace.org/trov#hasPolicyName> "PreventRuntimeIntervention"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#PreventRuntimeIntervention> <http://trace.org/trov#policyDescription> "TRS prevents runtime intervention."^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://trace.org/trov#PreventRuntimeIntervention> <http://trace.org/trov#policyName> "PreventRuntimeIntervention"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://trace.org/trov#PreventRuntimeIntervention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#Policy> .
 <http://trace.org/trov#PreventRuntimeIntervention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TRSPolicy> .
 <http://trace.org/trov#TROPolicy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
@@ -60,12 +60,12 @@ geist export --format nt | sort | grep trov
 <http://trace.org/trov#enforcesTRSPolicy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#enforcesTRSPolicy> .
 <http://trace.org/trov#generatedByTraceSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://trace.org/trov#generatedByTraceSystem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#generatedByTraceSystem> .
-<http://trace.org/trov#hasPolicyDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
-<http://trace.org/trov#hasPolicyDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#hasPolicyDescription> .
-<http://trace.org/trov#hasPolicyName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
-<http://trace.org/trov#hasPolicyName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#hasPolicyName> .
 <http://trace.org/trov#implementsTraceVersion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://trace.org/trov#implementsTraceVersion> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#implementsTraceVersion> .
+<http://trace.org/trov#policyDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://trace.org/trov#policyDescription> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#policyDescription> .
+<http://trace.org/trov#policyName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://trace.org/trov#policyName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://trace.org/trov#policyName> .
 <http://trace.org/trov#tro/01> <http://trace.org/trov#generatedByTraceSystem> <http://trace.org/trov#system/01> .
 <http://trace.org/trov#tro/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://trace.org/trov#TResearchObject> .
 <http://trace.org/trov#trs/01> <http://trace.org/trov#implementsTraceVersion> "0.1"^^<http://www.w3.org/2001/XMLSchema#string> .
@@ -86,8 +86,8 @@ geist query --format table << __END_QUERY__
     WHERE {
         ?trsId      rdf:type                    trov:TraceSystem .
         ?trsId      trov:enforcesTRSPolicy      ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?policyId   trov:policyName          ?policyName .
+        ?policyId   trov:policyDescription   ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__
@@ -109,10 +109,10 @@ geist query --format table << __END_QUERY__
 
     SELECT DISTINCT ?trsId ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                    trov:TraceSystem .
-        ?trsId      trov:enforcesTROPolicy      ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?trsId      rdf:type                trov:TraceSystem .
+        ?trsId      trov:enforcesTROPolicy  ?policyId .
+        ?policyId   trov:policyName         ?policyName .
+        ?policyId   trov:policyDescription  ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__
@@ -134,10 +134,10 @@ geist query --format table << __END_QUERY__
 
     SELECT DISTINCT ?trsId ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                    trov:TraceSystem .
-        ?trsId      trov:enforcesPolicy         ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?trsId      rdf:type                trov:TraceSystem .
+        ?trsId      trov:enforcesPolicy     ?policyId .
+        ?policyId   trov:policyName         ?policyName .
+        ?policyId   trov:policyDescription  ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__

@@ -221,7 +221,7 @@ repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ tree
 `-- run.sh
 ```
 
-Confirm that only the `run.txt` file is the only version-controlled file associated with this example that has been deleted:
+Confirm that `run.txt` is the only version-controlled file associated with this example that has been deleted:
 ```
 repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ git status .
 On branch master

@@ -14,8 +14,8 @@ geist query --format table << __END_QUERY__
     WHERE {
         ?trsId      rdf:type                    trov:TraceSystem .
         ?trsId      trov:enforcesTRSPolicy      ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?policyId   trov:policyName          ?policyName .
+        ?policyId   trov:policyDescription   ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__
@@ -35,10 +35,10 @@ geist query --format table << __END_QUERY__
 
     SELECT DISTINCT ?trsId ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                    trov:TraceSystem .
-        ?trsId      trov:enforcesTROPolicy      ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?trsId      rdf:type                trov:TraceSystem .
+        ?trsId      trov:enforcesTROPolicy  ?policyId .
+        ?policyId   trov:policyName         ?policyName .
+        ?policyId   trov:policyDescription  ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__
@@ -58,10 +58,10 @@ geist query --format table << __END_QUERY__
 
     SELECT DISTINCT ?trsId ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                    trov:TraceSystem .
-        ?trsId      trov:enforcesPolicy         ?policyId .
-        ?policyId   trov:hasPolicyName          ?policyName .
-        ?policyId   trov:hasPolicyDescription   ?policyDescription .
+        ?trsId      rdf:type                trov:TraceSystem .
+        ?trsId      trov:enforcesPolicy     ?policyId .
+        ?policyId   trov:policyName         ?policyName .
+        ?policyId   trov:policyDescription  ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__

@@ -39,26 +39,26 @@
         {
             "@id": "trov:IncludeAllOutput",
             "@type": "trov:TROPolicy",
-            "trov:hasPolicyName": "IncludeAllOutput",
-            "trov:hasPolicyDescription": "TRO includes all outputs."
+            "trov:policyName": "IncludeAllOutput",
+            "trov:policyDescription": "TRO includes all outputs."
         },
         {
             "@id": "trov:IncludeAllCode",
             "@type": "trov:TROPolicy",
-            "trov:hasPolicyName": "IncludeAllCode",
-            "trov:hasPolicyDescription": "TRO includes all code."
+            "trov:policyName": "IncludeAllCode",
+            "trov:policyDescription": "TRO includes all code."
         },
         {
             "@id": "trov:DescribeSoftwareEnvironment",
             "@type": "trov:TROPolicy",
-            "trov:hasPolicyName": "DescribeSoftwareEnvironment",
-            "trov:hasPolicyDescription": "TRO describes the full software environment."
+            "trov:policyName": "DescribeSoftwareEnvironment",
+            "trov:policyDescription": "TRO describes the full software environment."
         },
         {
             "@id": "trov:PreventRuntimeIntervention",
             "@type": "trov:TRSPolicy",
-            "trov:hasPolicyName": "PreventRuntimeIntervention",
-            "trov:hasPolicyDescription": "TRS prevents runtime intervention."
+            "trov:policyName": "PreventRuntimeIntervention",
+            "trov:policyDescription": "TRS prevents runtime intervention."
         }
     ]
 }
