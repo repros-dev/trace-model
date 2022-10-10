@@ -56,7 +56,7 @@ REPRO_LOGGING_FILENAME ?= auto
 #-  NO_LOCATIONS  : Source file locations will not be included in trace messages.
 #-  NO_APPEND     : Overwrite log file rather than appending to it.
 #
-REPRO_LOGGING_OPTIONS ?= 
+REPRO_LOGGING_OPTIONS ?= NO_LOCATIONS
 
 #- 
 #- --- REPRO_INTERACTIVE_SESSION -----------------------------------------------

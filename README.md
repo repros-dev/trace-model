@@ -64,7 +64,7 @@ Successfully tagged cirss/trace-model:latest
 
 ## Run and confirm the reproducibility of the demonstration
 
-The demonstration and its products are stored under in the `demo` directory tree:
+The demonstration and its products are stored in the `demo` directory tree:
 ```
 trace-model$ tree demo
 demo
@@ -88,10 +88,10 @@ demo
 └── Makefile
 ```
 
-To establish that the demonstrations can be reproduced, first use the `make clean-demo` command to delete the files produced by demo:
+To establish that the demonstrations can be reproduced, first use the `make clean-demo` command to delete the files produced by the demo:
 ```
 trace-model$ make clean-demo
-20221008.054458.104 A MESG Connect to Blazegraph at http://localhost:9999. [/home/repro/repro-modules/repro/base-functions:repro.announce_services:331]
+20221008.054458.104 A MESG Connect to Blazegraph at http://localhost:9999.
 
 ------- Cleaning example 01-minimal/ ----------------
 removed './run.txt'
@@ -116,10 +116,10 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Now the run the demonstration with the `make run-demo` command:
+Now run the demonstration with the `make run-demo` command:
 ```
 trace-model$ make run-demo
-20221008.051511.921 A MESG Connect to Blazegraph at http://localhost:9999. [/home/repro/repro-modules/repro/base-functions:repro.announce_services:331]
+20221008.051511.921 A MESG Connect to Blazegraph at http://localhost:9999.
 
 ---------- Running example 01-minimal/ -------------
 
@@ -135,3 +135,119 @@ Your branch is up to date with 'origin/master'.
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
+
+## Running a single example
+
+An individual example within the demonstration can be run by starting an interactive REPRO session.
+
+First start the REPRO in interactive mode using the `make start-repro` command (or the shorthand `make start`).
+```
+trace-model$ make start-repro
+20221010.074008.007 A MESG Connect to Blazegraph at http://localhost:9999.
+repro@a6c7a4e443a8:/mnt/trace-model$
+```
+
+Set the working directory to a particular example directory:
+```
+repro@a6c7a4e443a8:/mnt/trace-model$ cd demo/02-type-a/
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$
+
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ pwd
+/mnt/trace-model/demo/02-type-a
+```
+
+Type `make` to run the example:
+```
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ make
+bash run.sh > run.txt
+```
+
+Use the `tree` command to list the files associated with the example, including the temporary files in the `tmp` subdirectory:
+
+```
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ tree
+.
+|-- Makefile
+|-- products
+|-- run.sh
+|-- run.txt
+`-- tmp
+    |-- export_tro_ntriples.sh
+    |-- export_tro_ntriples.txt
+    |-- import_tro_jsonld.sh
+    |-- import_tro_jsonld.txt
+    |-- query_policies.sh
+    |-- query_policies.txt
+    |-- query_tro_policies.sh
+    |-- query_tro_policies.txt
+    |-- query_trs_policies.sh
+    `-- query_trs_policies.txt
+
+2 directories, 13 files
+repro@a6c7a4e443a8:/mnt
+```
+
+The `make clean` command deletes the temporary files and the example output file, `run.txt`:
+```
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ make clean
+if [[ -f ./"run.txt" ]] ; then                       \
+    rm -v ./"run.txt" ;                              \
+fi
+removed './run.txt'
+if [[ -d ./"tmp" ]] ; then		                     \
+    rm -vf ./"tmp"/* ;                               \
+    rmdir -v ./"tmp" ;                               \
+fi
+removed './tmp/export_tro_ntriples.sh'
+removed './tmp/export_tro_ntriples.txt'
+removed './tmp/import_tro_jsonld.sh'
+removed './tmp/import_tro_jsonld.txt'
+removed './tmp/query_policies.sh'
+removed './tmp/query_policies.txt'
+removed './tmp/query_tro_policies.sh'
+removed './tmp/query_tro_policies.txt'
+removed './tmp/query_trs_policies.sh'
+removed './tmp/query_trs_policies.txt'
+rmdir: removing directory, './tmp'
+if [[ -d ./"products" ]] ; then                       \
+    rm -vf ./"products"/* ;                           \
+    rmdir -v ./"products" ;                           \
+fi
+rmdir: removing directory, './products'
+
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ tree
+.
+|-- Makefile
+`-- run.sh
+```
+
+Confirm that only the `run.txt` file is the only version-controlled file associated with this example that has been deleted:
+```
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ git status .
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    run.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Re-run the and confirm the `run.txt` file was restored:
+```
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ make
+bash run.sh > run.txt
+
+repro@a6c7a4e443a8:/mnt/trace-model/demo/02-type-a$ git status .
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+```
+
+
+
+
