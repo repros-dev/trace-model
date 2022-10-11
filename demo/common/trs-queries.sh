@@ -1,7 +1,7 @@
 
-# *****************************************************************************
+# ------------------------------------------------------------------------------
 
-bash_cell query_trs_policies << END_CELL
+bash_cell 'query trs policies' << END_CELL
 
 # What TRS policies are enforced by the TRS?
 
@@ -12,19 +12,19 @@ geist query --format table << __END_QUERY__
 
     SELECT DISTINCT ?trsId ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                    trov:TraceSystem .
-        ?trsId      trov:enforcesTRSPolicy      ?policyId .
-        ?policyId   trov:policyName          ?policyName .
-        ?policyId   trov:policyDescription   ?policyDescription .
+        ?trsId      rdf:type                trov:TraceSystem .
+        ?trsId      trov:enforcesTRSPolicy  ?policyId .
+        ?policyId   trov:policyName         ?policyName .
+        ?policyId   trov:policyDescription  ?policyDescription .
     } ORDER BY ?trsId ?policyName
 
 __END_QUERY__
 
 END_CELL
 
-# *****************************************************************************
+# ------------------------------------------------------------------------------
 
-bash_cell query_tro_policies << END_CELL
+bash_cell 'query tro policies' << END_CELL
 
 # What TRO policies are enforced by the TRS?
 
@@ -45,9 +45,9 @@ __END_QUERY__
 
 END_CELL
 
-# *****************************************************************************
+# ------------------------------------------------------------------------------
 
-bash_cell query_policies << END_CELL
+bash_cell 'query all policies' << END_CELL
 
 # What policies are enforced by the TRS?
 
@@ -68,4 +68,4 @@ __END_QUERY__
 
 END_CELL
 
-# *****************************************************************************
+# ------------------------------------------------------------------------------
