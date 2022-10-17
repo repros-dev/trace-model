@@ -8,15 +8,16 @@ bash_cell 'query trs policies' << END_CELL
 geist query --format table << __END_QUERY__
 
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX trov: <http://trace.org/trov#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
 
-    SELECT DISTINCT ?trsId ?policyName ?policyDescription
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                trov:TraceSystem .
-        ?trsId      trov:enforcesTRSPolicy  ?policyId .
-        ?policyId   trov:policyName         ?policyName .
-        ?policyId   trov:policyDescription  ?policyDescription .
-    } ORDER BY ?trsId ?policyName
+        ?trs      rdf:type        trov:System .
+        ?trs      trov:enforces   ?policy .
+        ?policy   rdf:type        trov:SystemPolicy .
+        ?policy   rdfs:label      ?policyName .
+        ?policy   rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
 
 __END_QUERY__
 
@@ -31,15 +32,16 @@ bash_cell 'query tro policies' << END_CELL
 geist query --format table << __END_QUERY__
 
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX trov: <http://trace.org/trov#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
 
-    SELECT DISTINCT ?trsId ?policyName ?policyDescription
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                trov:TraceSystem .
-        ?trsId      trov:enforcesTROPolicy  ?policyId .
-        ?policyId   trov:policyName         ?policyName .
-        ?policyId   trov:policyDescription  ?policyDescription .
-    } ORDER BY ?trsId ?policyName
+        ?trs        rdf:type        trov:System .
+        ?trs        trov:enforces   ?policy .
+        ?policy     rdf:type        trov:ObjectPolicy .
+        ?policy     rdfs:label      ?policyName .
+        ?policy     rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
 
 __END_QUERY__
 
@@ -54,15 +56,15 @@ bash_cell 'query all policies' << END_CELL
 geist query --format table << __END_QUERY__
 
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX trov: <http://trace.org/trov#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
 
-    SELECT DISTINCT ?trsId ?policyName ?policyDescription
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
     WHERE {
-        ?trsId      rdf:type                trov:TraceSystem .
-        ?trsId      trov:enforcesPolicy     ?policyId .
-        ?policyId   trov:policyName         ?policyName .
-        ?policyId   trov:policyDescription  ?policyDescription .
-    } ORDER BY ?trsId ?policyName
+        ?trs      rdf:type        trov:System .
+        ?trs      trov:enforces   ?policy .
+        ?policy   rdfs:label      ?policyName .
+        ?policy   rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
 
 __END_QUERY__
 

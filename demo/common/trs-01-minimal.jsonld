@@ -1,15 +1,15 @@
 {
     "@context": [{
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "trov": "http://trace.org/trov#"
+        "trov": "https://w3id.org/trace/2022/10/trov#"
 
     }],
 
     "@graph": [{
 
         "@id": "trov:trs/01",
-        "@type": "trov:TraceSystem",
-
-        "trov:implementsTraceVersion": "0.1"
+        "@type": "trov:System",
+        "rdfs:label": "Minimal TRS",
+        "rdfs:comment": "TRS that enforces no policies."
     }]
 }

@@ -2,63 +2,59 @@
     "@context": [{
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-        "trov": "http://trace.org/trov#"
+        "trov": "https://w3id.org/trace/2022/10/trov#"
     }],
 
     "@graph": [
+
         {
             "@id": "trov:Policy",
-            "@type": "rdfs:Class"
+            "@type": "rdfs:Class",
+            "rdfs:label": "Policy"
         },
         {
-            "@id": "trov:TROPolicy",
+            "@id": "trov:ObjectPolicy",
             "@type": "rdfs:Class",
+            "rdfs:label": "ObjectPolicy",
             "rdfs:subClassOf": { "@id": "trov:Policy" }
         },
         {
-            "@id": "trov:TRSPolicy",
+            "@id": "trov:SystemPolicy",
             "@type": "rdfs:Class",
+            "rdfs:label": "SystemPolicy",
             "rdfs:subClassOf": { "@id": "trov:Policy" }
         },
+
         {
-            "@id": "trov:enforcesPolicy",
-            "@type": "rdf:Property"
-        },
-        {
-            "@id": "trov:enforcesTROPolicy",
+            "@id": "trov:enforces",
             "@type": "rdf:Property",
-            "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
-        },
-        {
-            "@id": "trov:enforcesTRSPolicy",
-            "@type": "rdf:Property",
-            "rdfs:subPropertyOf": { "@id": "trov:enforcesPolicy" }
+            "rdfs:label": "enforces"
         },
 
 
         {
             "@id": "trov:IncludeAllOutput",
-            "@type": "trov:TROPolicy",
-            "trov:policyName": "IncludeAllOutput",
-            "trov:policyDescription": "TRO includes all outputs."
+            "@type": "trov:ObjectPolicy",
+            "rdfs:label": "IncludeAllOutput",
+            "rdfs:comment": "Research object includes all outputs."
         },
         {
             "@id": "trov:IncludeAllCode",
-            "@type": "trov:TROPolicy",
-            "trov:policyName": "IncludeAllCode",
-            "trov:policyDescription": "TRO includes all code."
+            "@type": "trov:ObjectPolicy",
+            "rdfs:label": "IncludeAllCode",
+            "rdfs:comment": "Research object includes all code."
         },
         {
             "@id": "trov:DescribeSoftwareEnvironment",
-            "@type": "trov:TROPolicy",
-            "trov:policyName": "DescribeSoftwareEnvironment",
-            "trov:policyDescription": "TRO describes the full software environment."
+            "@type": "trov:ObjectPolicy",
+            "rdfs:label": "DescribeSoftwareEnvironment",
+            "rdfs:comment": "Research object describes the full software environment."
         },
         {
             "@id": "trov:PreventRuntimeIntervention",
-            "@type": "trov:TRSPolicy",
-            "trov:policyName": "PreventRuntimeIntervention",
-            "trov:policyDescription": "TRS prevents runtime intervention."
+            "@type": "trov:SystemPolicy",
+            "rdfs:label": "PreventRuntimeIntervention",
+            "rdfs:comment": "Research system prevents runtime intervention."
         }
     ]
 }

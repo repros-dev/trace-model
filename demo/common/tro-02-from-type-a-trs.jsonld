@@ -1,22 +1,20 @@
 {
     "@context": [{
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "trov": "http://trace.org/trov#"
+        "trov": "https://w3id.org/trace/2022/10/trov#"
     }],
 
     "@graph": [{
 
         "@id": "trov:tro/02",
-        "@type": "trov:TResearchObject",
+        "@type": "trov:ResearchObject",
 
-        "trov:generatedByTraceSystem": { "@id": "trov:system/02" },
+        "trov:generatedBySystem": { "@id": "trov:system/02" },
 
-        "trov:implementsTraceVersion": "0.1",
-
-        "trov:satisfiesTROPolicy": [
-            { "@id": "trov:IncludesAllOutput" },
-            { "@id": "trov:IncludesAllCode" },
-            { "@id": "trov:DescribesSoftwareEnvironment" }
+        "trov:satisfies": [
+            { "@id": "trov:IncludeAllOutput" },
+            { "@id": "trov:IncludeAllCode" },
+            { "@id": "trov:DescribeSoftwareEnvironment" }
         ]
 
     }]
