@@ -1,4 +1,4 @@
-==================================================== BASH CELL | import jsonld =====================================================
+==================================================== bash cell | import jsonld =====================================================
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist destroy --dataset kb --quiet
@@ -7,16 +7,16 @@ geist import --format jsonld --file ../common/trace-vocab.jsonld
 geist import --format jsonld --file ../common/trs-02-type-a.jsonld
 geist import --format jsonld --file ../common/tro-02-from-type-a-trs.jsonld
 
------------------------------------------------------------ CELL OUTPUTS -----------------------------------------------------------
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-=================================================== BASH CELL | export ntriples ====================================================
+=================================================== bash cell | export ntriples ====================================================
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist export --format nt | sort | grep trov
 
------------------------------------------------------------ CELL OUTPUTS -----------------------------------------------------------
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ObjectPolicy> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/2000/01/rdf-schema#comment> "Research object describes the full software environment."^^<http://www.w3.org/2001/XMLSchema#string> .
@@ -75,7 +75,7 @@ geist export --format nt | sort | grep trov
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== BASH CELL | query trs policies ==================================================
+================================================== bash cell | query trs policies ==================================================
 
 # What TRS policies are enforced by the TRS?
 
@@ -95,14 +95,14 @@ geist query --format table << __END_QUERY__
 
 __END_QUERY__
 
------------------------------------------------------------ CELL OUTPUTS -----------------------------------------------------------
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
 trs                                        | policyName                 | policyDescription
 =========================================================================================================================
 https://w3id.org/trace/2022/10/trov#trs/02 | PreventRuntimeIntervention | Research system prevents runtime intervention.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== BASH CELL | query tro policies ==================================================
+================================================== bash cell | query tro policies ==================================================
 
 # What TRO policies are enforced by the TRS?
 
@@ -122,7 +122,7 @@ geist query --format table << __END_QUERY__
 
 __END_QUERY__
 
------------------------------------------------------------ CELL OUTPUTS -----------------------------------------------------------
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
 trs                                        | policyName                  | policyDescription
 ====================================================================================================================================
 https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment | Research object describes the full software environment.
@@ -131,7 +131,7 @@ https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput            | Resea
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== BASH CELL | query all policies ==================================================
+================================================== bash cell | query all policies ==================================================
 
 # What policies are enforced by the TRS?
 
@@ -150,7 +150,7 @@ geist query --format table << __END_QUERY__
 
 __END_QUERY__
 
------------------------------------------------------------ CELL OUTPUTS -----------------------------------------------------------
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
 trs                                        | policyName                  | policyDescription
 ====================================================================================================================================
 https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment | Research object describes the full software environment.
