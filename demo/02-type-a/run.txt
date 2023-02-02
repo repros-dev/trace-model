@@ -17,14 +17,30 @@ geist import --format jsonld --file ../common/tro-02-from-type-a-trs.jsonld
 geist export --format nt | sort | grep trov
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system makes all inputs available after runtime."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> <http://www.w3.org/2000/01/rdf-schema#label> "AllInputAvailableAfterRuntime"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system makes all inputs available prior to runtime."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> <http://www.w3.org/2000/01/rdf-schema#label> "AllInputAvailableBeforeRuntime"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ObjectPolicy> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/2000/01/rdf-schema#comment> "Research object describes the full software environment."^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> <http://www.w3.org/2000/01/rdf-schema#label> "DescribeSoftwareEnvironment"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#EvidenceRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#EvidenceRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#EvidenceRuntime> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system shows evidence of runtime."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#EvidenceRuntime> <http://www.w3.org/2000/01/rdf-schema#label> "EvidenceRuntime"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ObjectPolicy> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllCode> <http://www.w3.org/2000/01/rdf-schema#comment> "Research object includes all code."^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllCode> <http://www.w3.org/2000/01/rdf-schema#label> "IncludeAllCode"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#IncludeAllInput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ObjectPolicy> .
+<https://w3id.org/trace/2022/10/trov#IncludeAllInput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#IncludeAllInput> <http://www.w3.org/2000/01/rdf-schema#comment> "Research object includes all inputs."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#IncludeAllInput> <http://www.w3.org/2000/01/rdf-schema#label> "IncludeAllInput"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ObjectPolicy> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
 <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> <http://www.w3.org/2000/01/rdf-schema#comment> "Research object includes all outputs."^^<http://www.w3.org/2001/XMLSchema#string> .
@@ -38,10 +54,18 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2022/10/trov#Policy> <http://www.w3.org/2000/01/rdf-schema#label> "Policy"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#Policy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2022/10/trov#Policy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2022/10/trov#Policy> .
-<https://w3id.org/trace/2022/10/trov#PreventRuntimeIntervention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
-<https://w3id.org/trace/2022/10/trov#PreventRuntimeIntervention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
-<https://w3id.org/trace/2022/10/trov#PreventRuntimeIntervention> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system prevents runtime intervention."^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2022/10/trov#PreventRuntimeIntervention> <http://www.w3.org/2000/01/rdf-schema#label> "PreventRuntimeIntervention"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInternetAccess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#PreventInternetAccess> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#PreventInternetAccess> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system prevents internet access during execution."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInternetAccess> <http://www.w3.org/2000/01/rdf-schema#label> "PreventInternetAccess"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system prevents interaction with author prior to runtime."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> <http://www.w3.org/2000/01/rdf-schema#label> "PreventInterventionBeforeRuntime"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system prevents interaction with author of package during runtime."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> <http://www.w3.org/2000/01/rdf-schema#label> "PreventInterventionDuringRuntime"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#ResearchObject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2022/10/trov#ResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2022/10/trov#ResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2022/10/trov#ResearchObject> .
@@ -53,11 +77,19 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2022/10/trov#SystemPolicy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2022/10/trov#SystemPolicy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2022/10/trov#Policy> .
 <https://w3id.org/trace/2022/10/trov#SystemPolicy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#Policy> .
+<https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#SystemPolicy> .
+<https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps> <http://www.w3.org/2000/01/rdf-schema#comment> "Research system tracks intermediate steps."^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps> <http://www.w3.org/2000/01/rdf-schema#label> "TrackIntermediateSteps"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2022/10/trov#allows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2022/10/trov#allows> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2022/10/trov#allows> .
 <https://w3id.org/trace/2022/10/trov#enforces> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <https://w3id.org/trace/2022/10/trov#enforces> <http://www.w3.org/2000/01/rdf-schema#label> "enforces"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#enforces> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2022/10/trov#enforces> .
 <https://w3id.org/trace/2022/10/trov#generatedBySystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <https://w3id.org/trace/2022/10/trov#generatedBySystem> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2022/10/trov#generatedBySystem> .
+<https://w3id.org/trace/2022/10/trov#prevents> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2022/10/trov#prevents> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2022/10/trov#prevents> .
 <https://w3id.org/trace/2022/10/trov#satisfies> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <https://w3id.org/trace/2022/10/trov#satisfies> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2022/10/trov#satisfies> .
 <https://w3id.org/trace/2022/10/trov#tro/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#ResearchObject> .
@@ -66,16 +98,23 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2022/10/trov#tro/02> <https://w3id.org/trace/2022/10/trov#satisfies> <https://w3id.org/trace/2022/10/trov#IncludeAllCode> .
 <https://w3id.org/trace/2022/10/trov#tro/02> <https://w3id.org/trace/2022/10/trov#satisfies> <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#System> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <http://127.0.0.1:9999/blazegraph/namespace/kb/TrackIntermediateSteps> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#IncludeAllInput> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#EvidenceRuntime> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#IncludeAllCode> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> .
-<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#PreventRuntimeIntervention> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#enforces> <https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#prevents> <https://w3id.org/trace/2022/10/trov#PreventInternetAccess> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <rdfs:comment> "TRS that implements a loose queue."^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <rdfs:label> "Example Type B.1 TRS"^^<http://www.w3.org/2001/XMLSchema#string> .
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== bash cell | query trs policies ==================================================
+============================================= bash cell | query trs enforced policies ==============================================
 
 # What TRS policies are enforced by the TRS?
 
@@ -96,13 +135,14 @@ geist query --format table << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-trs                                        | policyName                 | policyDescription
-=========================================================================================================================
-https://w3id.org/trace/2022/10/trov#trs/02 | PreventRuntimeIntervention | Research system prevents runtime intervention.
+trs                                        | policyName                       | policyDescription
+============================================================================================================================================================
+https://w3id.org/trace/2022/10/trov#trs/02 | EvidenceRuntime                  | Research system shows evidence of runtime.
+https://w3id.org/trace/2022/10/trov#trs/02 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== bash cell | query tro policies ==================================================
+============================================= bash cell | query tro enforced policies ==============================================
 
 # What TRO policies are enforced by the TRS?
 
@@ -131,7 +171,7 @@ https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput            | Resea
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================================== bash cell | query all policies ==================================================
+============================================= bash cell | query all enforced policies ==============================================
 
 # What policies are enforced by the TRS?
 
@@ -151,12 +191,92 @@ geist query --format table << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-trs                                        | policyName                  | policyDescription
-====================================================================================================================================
-https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment | Research object describes the full software environment.
-https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllCode              | Research object includes all code.
-https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput            | Research object includes all outputs.
-https://w3id.org/trace/2022/10/trov#trs/02 | PreventRuntimeIntervention  | Research system prevents runtime intervention.
+trs                                        | policyName                       | policyDescription
+============================================================================================================================================================
+https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment      | Research object describes the full software environment.
+https://w3id.org/trace/2022/10/trov#trs/02 | EvidenceRuntime                  | Research system shows evidence of runtime.
+https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllCode                   | Research object includes all code.
+https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput                 | Research object includes all outputs.
+https://w3id.org/trace/2022/10/trov#trs/02 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+============================================= bash cell | query trs prevented policies =============================================
+
+# What TRS policies are prevented by the TRS?
+
+geist query --format table << __END_QUERY__
+
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
+
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
+    WHERE {
+        ?trs      rdf:type        trov:System .
+        ?trs      trov:prevents   ?policy .
+        ?policy   rdf:type        trov:SystemPolicy .
+        ?policy   rdfs:label      ?policyName .
+        ?policy   rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
+
+__END_QUERY__
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+trs                                        | policyName            | policyDescription
+================================================================================================================================
+https://w3id.org/trace/2022/10/trov#trs/02 | PreventInternetAccess | Research system prevents internet access during execution.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+============================================= bash cell | query tro prevented policies =============================================
+
+# What TRO policies are prevented by the TRS?
+
+geist query --format table << __END_QUERY__
+
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
+
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
+    WHERE {
+        ?trs        rdf:type        trov:System .
+        ?trs        trov:prevents   ?policy .
+        ?policy     rdf:type        trov:ObjectPolicy .
+        ?policy     rdfs:label      ?policyName .
+        ?policy     rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
+
+__END_QUERY__
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+trs | policyName | policyDescription
+=====================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+============================================= bash cell | query all prevented policies =============================================
+
+# What policies are prevented by the TRS?
+
+geist query --format table << __END_QUERY__
+
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX trov: <https://w3id.org/trace/2022/10/trov#>
+
+    SELECT DISTINCT ?trs ?policyName ?policyDescription
+    WHERE {
+        ?trs      rdf:type        trov:System .
+        ?trs      trov:prevents   ?policy .
+        ?policy   rdfs:label      ?policyName .
+        ?policy   rdfs:comment    ?policyDescription .
+    } ORDER BY ?trs ?policyName
+
+__END_QUERY__
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+trs                                        | policyName            | policyDescription
+================================================================================================================================
+https://w3id.org/trace/2022/10/trov#trs/02 | PreventInternetAccess | Research system prevents internet access during execution.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

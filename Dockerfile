@@ -14,6 +14,7 @@ RUN repro.require blazegraph-service master ${CIRSS}
 RUN repro.require blaze 0.2.7 ${CIRSS_RELEASE}
 RUN repro.require geist 0.2.7 ${CIRSS_RELEASE}
 RUN repro.require shell-notebook master ${REPROS_DEV}
+RUN repro.require graphviz-runtime master ${REPROS_DEV} --util
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo
