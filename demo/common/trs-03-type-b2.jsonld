@@ -6,12 +6,13 @@
 
     "@graph": [{
 
-        "@id": "trov:trs/02",
+        "@id": "trov:trs/03",
         "@type": "trov:System",
-        "rdfs:label": "Example Type B.1 TRS",
-        "rdfs:comment": "TRS that implements a loose queue.",
+        "rdfs:label": "Example Type B.2 TRS",
+        "rdfs:comment": "TRS that implements a transient data.",
 
         "trov:enforces": [
+            { "@id": "trov:AllInputAvailableBeforeRuntime" },
             { "@id": "trov:IncludeAllOutput" },
             { "@id": "trov:IncludeAllCode" },
             { "@id": "trov:DescribeSoftwareEnvironment" },
@@ -20,15 +21,15 @@
         ],
 
         "trov:prevents": [
-            { "@id": "trov:PreventInternetAccess" }
+            { "@id": "trov:IncludeAllInput" },
+            { "@id": "trov:AllInputAvailableAfterRuntime" }
         ],
 
         "trov:allows": [
             { "@id": "trov:IncludeAllInput" },
-            { "@id": "trov:AllInputAvailableBeforeRuntime" },
-            { "@id": "trov:AllInputAvailableAfterRuntime" },
+            { "@id": "trov:PreventInternetAccess" },
             { "@id": "trov:PreventInterventionBeforeRuntime" },
-            { "@id": "TrackIntermediateSteps" }
+            { "@id": "trov:TrackIntermediateSteps" }
         ]
     }]
 }
