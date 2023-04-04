@@ -41,7 +41,7 @@ cat > ${TRO_JSONLD_FILE} << EOF
         "@type": "trov:ResearchObject",
 
         "trov:generatedBySystem": { "@id": "trov:system/01" },
-        "trov:digest": "$(shasum products/message.tar.gz | cut -d" " -f 1)",
+        "trov:digest": "$(shasum -a 256 products/message.tar.gz | cut -d" " -f 1)",
         "trov:troFilePath": "products/message.tar.gz"
     }]
 }
@@ -87,7 +87,7 @@ END_CELL
 
 bash_cell 'verify the digest using shasum' << END_CELL
 
-shasum -c ${DIGEST_FILE}
+shasum -a 256 -c ${DIGEST_FILE}
 
 END_CELL
 
