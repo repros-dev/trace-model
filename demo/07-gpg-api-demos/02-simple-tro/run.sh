@@ -100,7 +100,7 @@ verified = gpg.verify_data("${SIGNATURE_FILE}", tro_jsonld_text)
 if not verified: 
     raise ValueError("Signature could not be verified!")
 else:
-    print("Signature is verified successfully!")
+    print("Signature has been verified successfully!")
 END_PYTHON
 END_CELL
 

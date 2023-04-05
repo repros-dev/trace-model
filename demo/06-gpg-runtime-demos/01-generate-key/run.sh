@@ -44,10 +44,10 @@ END_CELL
 bash_cell 'export the public key' << 'END_CELL'
 
 # export the public key
-gpg --export -a -o products/public.gpg repro@repros.dev
+gpg --export -a -o tmp/public.gpg repro@repros.dev
 
 # print a redacted view of the public key
-gnupg-runtime.redact-key products/public.gpg
+gnupg-runtime.redact-key tmp/public.gpg
 
 END_CELL
 
@@ -57,10 +57,10 @@ END_CELL
 bash_cell 'export the private key' << 'END_CELL'
 
 # export the private key
-gpg --export-secret-key -a --pinentry-mode loopback --passphrase=repro > products/private.asc
+gpg --export-secret-key -a --pinentry-mode loopback --passphrase=repro > tmp/private.asc
 
 # print a redacted view of the private key
-gnupg-runtime.redact-key products/private.asc
+gnupg-runtime.redact-key tmp/private.asc
 
 END_CELL
 

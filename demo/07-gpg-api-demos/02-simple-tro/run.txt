@@ -59,7 +59,7 @@ cat products/tro.jsonld
             "trov:generatedBySystem": {
                 "@id": "trov:system/01"
             },
-            "trov:digest": "08d65868e3c03f1272a6fc4105eea074c84305dfb2991345a403abb0ccbdd651",
+            "trov:digest": "8d6cd7fd0aba36671b899a72f15eed84c74cd5ab3ebdd49eb084957984cde1fe",
             "trov:troFilePath": "products/message.tar.gz"
         }
     ]
@@ -128,10 +128,10 @@ verified = gpg.verify_data("tmp/signature.asc", tro_jsonld_text)
 if not verified: 
     raise ValueError("Signature could not be verified!")
 else:
-    print("Signature is verified successfully!")
+    print("Signature has been verified successfully!")
 END_PYTHON
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-Signature is verified successfully!
+Signature has been verified successfully!
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

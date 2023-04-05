@@ -10,7 +10,7 @@
         "@type": "trov:ResearchObject",
 
         "trov:generatedBySystem": { "@id": "trov:system/01" },
-        "trov:digest": "72f2b9d0472ac3719ba3a7549f3d6967c179896e36a1cf607a098d18a59f2c53",
+        "trov:digest": "8d6cd7fd0aba36671b899a72f15eed84c74cd5ab3ebdd49eb084957984cde1fe",
         "trov:troFilePath": "products/message.tar.gz"
     }]
 }
