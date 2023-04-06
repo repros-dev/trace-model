@@ -19,7 +19,7 @@ END_CELL
 
 bash_cell 'tar the data dir content' << END_CELL
 
-tar -czvf ${ZIPPED_MESSAGE_FILE} ${MESSAGE_FOLDER}
+tar -czvf ${ZIPPED_MESSAGE_FILE} ${MESSAGE_FOLDER} --mtime='1970-01-01'
 
 END_CELL
 

@@ -7,7 +7,7 @@ gnupg-runtime.purge-keys
 
 =============================================== bash cell | tar the data dir content ===============================================
 
-tar -czvf products/message.tar.gz data/message
+tar -czvf products/message.tar.gz data/message --mtime='1970-01-01'
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 data/message/
@@ -59,7 +59,7 @@ cat products/tro.jsonld
             "trov:generatedBySystem": {
                 "@id": "trov:system/01"
             },
-            "trov:digest": "8d6cd7fd0aba36671b899a72f15eed84c74cd5ab3ebdd49eb084957984cde1fe",
+            "trov:digest": "ad94b0a6229daabe8e5747ad67479170483d263ca32fa5c149857d58e87eb9f0",
             "trov:troFilePath": "products/message.tar.gz"
         }
     ]
