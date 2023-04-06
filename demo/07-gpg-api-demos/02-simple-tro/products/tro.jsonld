@@ -1,0 +1,19 @@
+{
+    "@context": [
+        {
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "trov": "https://w3id.org/trace/2022/10/trov#"
+        }
+    ],
+    "@graph": [
+        {
+            "@id": "trov:tro/01",
+            "@type": "trov:ResearchObject",
+            "trov:generatedBySystem": {
+                "@id": "trov:system/01"
+            },
+            "trov:digest": "8d6cd7fd0aba36671b899a72f15eed84c74cd5ab3ebdd49eb084957984cde1fe",
+            "trov:troFilePath": "products/message.tar.gz"
+        }
+    ]
+}
