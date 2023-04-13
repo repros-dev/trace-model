@@ -32,6 +32,8 @@ parser.add_argument("--file", "-f", help="Files of the data (list[str] | str ): 
 arg_dir, arg_file = parser.parse_args().dir, parser.parse_args().file
 
 if __name__ == "__main__":
+    if not (arg_dir or arg_file):
+        parser.error("No action requested. Please add input: --dir OR --file.")
     fingerprint = compute_fingerprint(arg_dir, arg_file)
     print(fingerprint)
 
