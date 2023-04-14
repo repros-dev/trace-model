@@ -29,12 +29,19 @@ def compute_fingerprint(arg_dir, arg_file):
 parser = argparse.ArgumentParser()
 parser.add_argument("--dir", "-d", help="Directories of the data (list[str] | str ): please use comma (no space) to split multiple directories (e.g. dir1,dir2,dir3).")
 parser.add_argument("--file", "-f", help="Files of the data (list[str] | str ): please use comma (no space) to split multiple file paths (e.g. file1,file2,file3).")
-arg_dir, arg_file = parser.parse_args().dir, parser.parse_args().file
+parser.add_argument("--expectedfingerprint", "-ef", help="Expected fingerprint (str).")
+arg_dir, arg_file, arg_ef = parser.parse_args().dir, parser.parse_args().file, parser.parse_args().expectedfingerprint
 
 if __name__ == "__main__":
     if not (arg_dir or arg_file):
         parser.error("No action requested. Please add input: --dir OR --file.")
     fingerprint = compute_fingerprint(arg_dir, arg_file)
-    print(fingerprint)
-
+    # If --expectedfingerprint is not specified,
+    # print the fingerprint of the given directories and/or files directly.
+    if not arg_ef:
+        print(fingerprint)
+    # If --expectedfingerprint is specified,
+    # we need to validate the fingerprint based on the given field and print True or False.
+    else:
+        print(fingerprint == arg_ef)
 
