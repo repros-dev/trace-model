@@ -18,6 +18,9 @@ RUN repro.require graphviz-runtime master ${REPROS_DEV} --util
 RUN repro.require gnupg-runtime master ${REPROS_DEV}
 RUN repro.require gnupg-api master ${REPROS_DEV}
 
+# install python package
+RUN pip install pandas
+
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo
 

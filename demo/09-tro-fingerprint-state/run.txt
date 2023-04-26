@@ -1,0 +1,51 @@
+====================================== bash cell | fingerprint state before running the code =======================================
+
+python3 tro_fingerprint_state.py -d data -c before -o products/before.csv
+
+cat products/before.csv
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+file_path,before
+data/file1.csv,64f902058c93bdb7aea9035b188e77beaf60e4571af60b4aa7fafaf8eae7b1f3
+data/file2.csv,94944f7e05fca8688a0ccf2af59e96ad54afceb9ca2e2800d06968f6f80a7812
+data/test.py,c4aaf3d3c5d375b29dd4dc4053696539de6b3a0d087bf63cc43483d0c3dc9c32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================================ bash cell | execute python script =================================================
+
+python3 data/test.py
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+======================================= bash cell | fingerprint state after running the code =======================================
+
+python3 tro_fingerprint_state.py -d data -c after -o products/after.csv
+
+cat products/after.csv
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+file_path,after
+data/file1.csv,554ed3f62cda8d0645b59267a3de8d3408d903a78d15427c7fa9faf385c7cd1c
+data/file3.csv,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
+data/test.py,c4aaf3d3c5d375b29dd4dc4053696539de6b3a0d087bf63cc43483d0c3dc9c32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================================== bash cell | fingerprint state ===================================================
+
+python3 merge_state.py -f products/before.csv,products/after.csv -o products/fingerprint_state.csv
+
+cat products/fingerprint_state.csv
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+file_path,before,after
+data/file1.csv,64f902058c93bdb7aea9035b188e77beaf60e4571af60b4aa7fafaf8eae7b1f3,554ed3f62cda8d0645b59267a3de8d3408d903a78d15427c7fa9faf385c7cd1c
+data/file2.csv,94944f7e05fca8688a0ccf2af59e96ad54afceb9ca2e2800d06968f6f80a7812,
+data/test.py,c4aaf3d3c5d375b29dd4dc4053696539de6b3a0d087bf63cc43483d0c3dc9c32,c4aaf3d3c5d375b29dd4dc4053696539de6b3a0d087bf63cc43483d0c3dc9c32
+data/file3.csv,,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
