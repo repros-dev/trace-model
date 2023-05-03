@@ -9,63 +9,69 @@
 
     "@graph": [
     {
-        "@id": "tro:declaration",
+        "@id": "tro:",
         "@type": "trov:TransparentResearchObject",
-        "rdfs:comment": "TRO with a payload of two files endorsed by a TRS that enforces no policies",
+        "rdfs:comment": "TRO declaring a composition of two files in a single arrangement endorsed by a TRS that enforces no policies",
 
-        "tro:declaresPayload":
+        "trov:wasEndorsedBy":     {
+            "@id": "trs:",
+            "@type": "trov:TrustedResearchSystem",
+            "rdfs:comment": "TRS that enforces no policies",
+            "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
+        },
+
+        "trov:wasTimestampedBy":     {
+            "@id": "tro:timestampServer",
+            "@type": "trov:TimeStampingAuthority",
+            "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
+        },
+
+        "tro:hasComposition":
         {
-            "@id": "tro:payload",
-            "@type": "trov:Payload",
+            "@id": "tro:composition",
+            "@type": "trov:Composition",
 
             "trov:hasFingerprint":
             {
                 "@id": "tro:fingerprint",
-                "@type": "trov:PayloadFingerprint",
-                "trov:aggregateDigestFunction": "SHA-256"
+                "@type": "trov:CompositionFingerprint",
+                "trov:sha256": "218d9c33959c89013ca3f0f9dfa9479e0df8d5e4a53bb319b5bfab87f506dadc"
             },
 
-            "trov:includesArtifact": [
+            "trov:comprises": [
             {
-                "@id": "tro:artifact1",
-                "@type": "trov:artifact",
+                "@id": "tro:artifact/1",
+                "@type": "trov:Artifact",
                 "trov:mimeType": "text/plain",
-                "trov:artifactPath": "file1"
+                "trov:sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
             },
 
             {
-                "@id": "tro:artifact2",
-                "@type": "trov:artifact",
+                "@id": "tro:artifact/2",
+                "@type": "trov:Artifact",
                 "trov:mimeType": "text/plain",
-                "trov:artifactPath": "file2"
+                "trov:sha256": "7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730"
             }]
         },
 
-        "trov:hasEndorsement":
-        {
-            "@id": "tro:endorsement",
-            "@type": "trov:Endorsement",
-            "trov:wasGeneratedBy": {"@id": "trs:01-no-internet-trs"},
-            "trov:hasGenerationTimestamp":
+        "trov:hasArrangement": [
             {
-                "@id": "tro:timestamp",
-                "@type": "trov:AuthorizedTimestamp",
-                "trov:timestamp": "2023-04-11T16:00:10.382132",
-                "trov:signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEh3EVn/TjZHuZfMVEVlHSxuDyQqcFAmQ1hAoACgkQVlHSxuDy\nQqejFhAApx2Nldr349Ivwx582M2wXDSBhVpJzHqbQ7vvHaZ4APb4YMZQ0WnUQl6R\nVoCqongd7wkzarvRnKxtvH4edVeu+xBpN9O9jbbBrANnnJQyA4h7G6fjBCah8+t7\nZlB0aUVWj8kSYcNCro317Tjzw7aIxtdi49mmOs1UPKwzT0oQ1kyTgkUy3n4xiJ81\nG3WCgQYXQcsAsFuWdUl6gOrM15cnGfnl1HLvKzMRyp4KxrCAqvl0UUTbxdfr4Auu\nwHqzJjyiM4lcONPECnb4exQQMr3I7eC2FcHO8mCEgQ839lBEQeLludecYuh9mM5c\nFzoWOfOUGjhPqU5hms6dgZN/G8QsAxfKumvhrdfaGsxwkhmtzq94gTFLPHzbXW7i\nHJy23H+0FRgSYqhi5G/CDpTZn9sG801jR/U4uQ5RsgFhDwFW8BAF/170iByUlzAg\nHSr1t9Nm7DIS6T0BPhfaXmWTGYY9LbwfbvLeJxboJUVR/+w/wrimVLsXpLEcAsSh\ndnRZecLHz1jK8q1xsNqG1wWN/EdUIdgrkCW5XQsJ3uP7y5PJySMuSz2KjtU8vhbJ\n9C/1vyhESSfJnjpuM0XnXWhL3f7r9LJ1tt1ZN8seUsMCQDcoRaAx1eypt23MnvZA\n8IEHmoSHg8pN8WpW+kGDgBHrI3MlfNwaeE+X4utcjXNuapj7YY8=\n=WnSl\n-----END PGP SIGNATURE-----\n"
-            }
-        }
-    },
-
-    {
-        "@id": "trs:declaration",
-        "@type": "trov:TrustedResearchSystem",
-        "rdfs:comment": "TRS that enforces no policies",
-        "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
-    },
-
-    {
-        "@id": "tro:adts",
-        "@type": "trov:AuthorizedDigitalTimestampServer",
-        "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
+            "@id": "tro:arrangement/1",
+            "@type": "trov:Arrangement",
+            "trov:arranges": [
+                {
+                    "@id": "tro:arrangement/1/artifact/1",
+                    "@type": "trov:Part",
+                    "trov:artifact": { "@id": "tro:artifact/1" },
+                    "trov:location": "file1"
+                },
+                {
+                    "@id": "tro:arrangement/1/artifact/2",
+                    "@type": "trov:Part",
+                    "trov:artifact": { "@id": "tro:artifact/2" },
+                    "trov:location": "file2"
+                }
+            ]
+        }]
     }
 ]}
