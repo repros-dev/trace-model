@@ -3,7 +3,7 @@
 CERTIFICATE_DIR=../common/certificate
 TRO_DECLARATION_FILE=../common/tro-01-from-minimal-trs.jsonld
 TRS_SIGNATURE_FILE=data/signature.asc
-DIGEST_FILE=data/digest
+DIGEST_FILE=data/digest.yaml
 TSQ_FILE=data/file.tsq
 TSR_FILE=data/file.tsr
 
@@ -14,9 +14,10 @@ TSR_FILE=data/file.tsr
 
 bash_cell 'Compute a digest for tro declaration and trs signature' << END_CELL
 
-tro-fingerprint -f ${TRO_DECLARATION_FILE},${TRS_SIGNATURE_FILE} > ${DIGEST_FILE}
-
-cat ${DIGEST_FILE}
+cat > ${DIGEST_FILE} << EOF
+tro-declaration: $(shasum -a 256 ${TRO_DECLARATION_FILE} | cut -d" " -f 1)
+trs-signature": $(shasum -a 256 ${TRS_SIGNATURE_FILE} | cut -d" " -f 1)
+EOF
 
 END_CELL
 
