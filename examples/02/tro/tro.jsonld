@@ -3,13 +3,13 @@
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "prov": "http://www.w3.org/ns/prov#",
         "trov": "https://w3id.org/trace/2023/04/trov#",
-        "@base": "https://github.com/transparency-certified/trace-model/tree/master/example/01/"
+        "@base": "https://github.com/transparency-certified/trace-model/tree/master/example/02/"
     }],
 
     "@graph": [
     {
         "@id": "tro",
-        "@type": "trov:TRO",
+        "@type": "trov:TransparentResarchObject",
         "rdfs:comment": "A composition of two files in a single arrangement endorsed by a TRS that enforces no policies",
 
         "trov:wasEndorsedBy": {
@@ -63,7 +63,7 @@
                 "@id": "arrangement/1",
                 "@type": "trov:Arrangement",
                 "rdfs:comment": "Initial arrangement",
-                "trov:includes": [
+                "trov:arranges": [
                     {
                         "@id": "arrangement/1/1",
                         "@type": "trov:Part",
@@ -82,7 +82,7 @@
                 "@id": "arrangement/2",
                 "@type": "trov:Arrangement",
                 "rdfs:comment": "Final arrangement",
-                "trov:includes": [
+                "trov:arranges": [
                     {
                         "@id": "arrangement/2/1",
                         "@type": "trov:Part",
