@@ -1,17 +1,17 @@
 ================================ bash cell | Compute a digest for tro declaration and trs signature ================================
 
-tro-fingerprint -f ../common/tro-01-from-minimal-trs.jsonld,data/signature.asc > data/digest
-
-cat data/digest
+cat > data/digest.yaml << EOF
+tro-declaration: c7ef4301a9f9978c282affaa69a32971d991d4b5e21501bd3fd6241c02823c2c
+trs-signature": 9fb5dd0a2b9afdf4071b43558848a70101c91d3b1eab61f6a369740c36c2ea8d
+EOF
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-5ac50415758880037d8af8755db69dc8533c44fda650a863638dbb457fafad25
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ================================================== bash cell | Create a tsq file ===================================================
 
-openssl ts -query -data data/digest -no_nonce -sha512 -cert -out data/file.tsq
+openssl ts -query -data data/digest.yaml -no_nonce -sha512 -cert -out data/file.tsq
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
