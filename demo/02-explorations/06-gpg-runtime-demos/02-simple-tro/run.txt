@@ -11,8 +11,8 @@ tar -czvf products/message.tar.gz data/message --mtime='1970-01-01'
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 data/message/
-data/message/bar.txt
 data/message/foo.txt
+data/message/bar.txt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -32,7 +32,7 @@ cat > products/tro.jsonld << EOF
         "@type": "trov:ResearchObject",
 
         "trov:generatedBySystem": { "@id": "trov:system/01" },
-        "trov:digest": "ad94b0a6229daabe8e5747ad67479170483d263ca32fa5c149857d58e87eb9f0",
+        "trov:digest": "8f83062fd48dae98bc819fb034afa1a4b49dae9e127c0227d8c0e7643f05fc00",
         "trov:troFilePath": "products/message.tar.gz"
     }]
 }
@@ -73,7 +73,7 @@ geist report > ${DIGEST_FILE} << 'END_TEMPLATE'
 END_TEMPLATE
 cat ${DIGEST_FILE}
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-ad94b0a6229daabe8e5747ad67479170483d263ca32fa5c149857d58e87eb9f0  products/message.tar.gz
+8f83062fd48dae98bc819fb034afa1a4b49dae9e127c0227d8c0e7643f05fc00  products/message.tar.gz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
