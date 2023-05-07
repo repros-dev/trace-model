@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
 TRACE_VOCAB=$REPRO_MNT/exports/trace-vocab.jsonld
-
-EXAMPLE=$REPRO_MNT/examples/02
-TRO_DECLARATION=${EXAMPLE}/tro/tro.jsonld
-TRS_CERTIFICATE=${EXAMPLE}/trs/trs.jsonld
+TRO_DECLARATION=tro/tro.jsonld
+TRS_CERTIFICATE=trs/trs.jsonld
 
 # ------------------------------------------------------------------------------
 
