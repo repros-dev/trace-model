@@ -59,7 +59,7 @@
             "@type": "trov:Arrangement",
             "trov:hasLocus": [
                 {
-                    "@id": "arrangement/1/locus//1",
+                    "@id": "arrangement/1/locus/1",
                     "@type": "trov:Locus",
                     "trov:hasArtifact": { "@id": "composition/1/artifact/1" },
                     "trov:hasLocation": "file1"
