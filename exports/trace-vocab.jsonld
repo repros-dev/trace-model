@@ -1,0 +1,101 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#"
+    }],
+
+    "@graph": [
+
+        {
+            "@id": "trov:TrustedResearchElement",
+            "@type": "rdf:Class",
+            "rdfs:label": "TrustedResearchElement",
+            "rdfs:comment": "Common base class for TRSs, TRPs, and TROs."
+        },
+        {
+            "@id": "trov:TrustedResearchSystem",
+            "@type": "rdf:Class",
+            "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
+            "rdfs:label": "TrustedResearchSystem",
+            "rdfs:comment": "A system certified to perform TRPs and assemble TROs."
+        },
+        {
+            "@id": "trov:TrustedResearchPerformance",
+            "@type": "rdf:Class",
+            "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
+            "rdfs:label": "TrustedResearchExecution",
+            "rdfs:comment": "A set of research operations performed by a TRS."
+        },
+        {
+            "@id": "trov:TransparentResearchObject",
+            "@type": "rdf:Class",
+            "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
+            "rdfs:label": "TrustedResearchObject",
+            "rdfs:comment": "A set of research artifacts produced by a TRP and signed by the performing TRS."
+        },
+        {
+            "@id": "trov:TREAttribute",
+            "@type": "rdf:Class",
+            "rdfs:subClassOf": { "@id": "rdf:Property" },
+            "rdfs:label": "TREAttribute",
+            "rdfs:comment": "An attribute of a TRS, TRP, or TRO."
+        },
+        {
+            "@id": "trov:TRSAttribute",
+            "@type": "rdf:Class",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:label": "TRSAttribute",
+            "rdfs:comment": "An attribute of a TRS."
+        },
+        {
+            "@id": "trov:TRSCapability",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSCapability",
+            "rdfs:subClassOf": { "@id": "trov:TRSAttribute" },
+            "rdfs:comment": "A policy always enforced by a particular TRS."
+        },
+        {
+            "@id": "trov:CanProvideInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "CanProvideInternetIsolation",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:comment": "The capability to prevent Internet access during a TRP."
+        },
+        {
+            "@id": "trov:TRSPolicy",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSPolicy",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:comment": "A policy always enforced by a particular TRS."
+        },
+        {
+            "@id": "trov:EnforcesInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "EnforcesInternetIsolation",
+            "rdfs:subClassOf": { "@id": "trov:TRSPolicy" },
+            "rdfs:comment": "The policy of always preeventing Internet access during a TRP."
+        },
+        {
+            "@id": "trov:TROAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TROAttribute",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:comment": "An attribute of a particular TRO."
+        },
+        {
+            "@id": "trov:TRSAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSAttribute",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:comment": "A property of a particular TRS."
+        },
+        {
+            "@id": "trov:IncludesAllInputData",
+            "@type": "rdfs:Class",
+            "rdfs:label": "IncludesAllInputData",
+            "rdfs:subClassOf": { "@id": "trov:TROAttribute" },
+            "rdfs:comment": "TRO composition includes all input data employed in creating the TRO."
+        }
+    ]
+}

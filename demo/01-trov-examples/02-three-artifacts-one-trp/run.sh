@@ -11,10 +11,10 @@ bash_cell 'import jsonld' << END_CELL
 # Import TRACE vocabulary and TRO Manifest and export as N-TRIPLES
 geist destroy --dataset kb --quiet
 geist create --dataset kb #--infer owl --quiet
-#geist import --format jsonld --file ${TRACE_VOCAB}
+geist import --format jsonld --file ${TRACE_VOCAB}
 geist import --format jsonld --file ${TRO_DECLARATION}
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
-geist export --format nt
+geist export --format nt | sort | grep trov
 
 END_CELL
