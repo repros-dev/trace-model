@@ -42,7 +42,7 @@
         "trov:hasComposition":
         {
             "@id": "composition/1",
-            "@type": "trov:Composition",
+            "@type": "trov:ArtifactComposition",
 
             "trov:hasFingerprint":     {
                 "@id": "fingerprint",
@@ -53,19 +53,19 @@
             "trov:hasArtifact": [
                 {
                     "@id": "composition/1/artifact/1",
-                    "@type": "trov:Artifact",
+                    "@type": "trov:ResearchArtifact",
                     "trov:mimeType": "text/plain",
                     "trov:sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
                 },
                 {
                     "@id": "composition/1/artifact/2",
-                    "@type": "trov:Artifact",
+                    "@type": "trov:ResearchArtifact",
                     "trov:mimeType": "text/plain",
                     "trov:sha256": "7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730"
                 },
                 {
                     "@id": "composition/1/artifact/3",
-                    "@type": "trov:Artifact",
+                    "@type": "trov:ResearchArtifact",
                     "trov:mimeType": "text/plain",
                     "trov:sha256": "7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730"
                 }
@@ -75,18 +75,18 @@
         "trov:hasArrangement": [
             {
                 "@id": "arrangement/1",
-                "@type": "trov:Arrangement",
+                "@type": "trov:ArtifactArrangement",
                 "rdfs:comment": "Initial arrangement",
                 "trov:hasLocus": [
                     {
                         "@id": "arrangement/1/locus/1",
-                        "@type": "trov:Locus",
+                        "@type": "trov:ArtifactLocus",
                         "trov:hasArtifact": { "@id": "composition/1/artifact/1" },
                         "trov:hasLocation": "file1"
                     },
                     {
                         "@id": "arrangement/1/locus/2",
-                        "@type": "trov:Locus",
+                        "@type": "trov:ArtifactLocus",
                         "trov:hasArtifact": { "@id": "composition/1/artifact/2" },
                         "trov:hasLocation": "file2"
                     }
@@ -94,18 +94,18 @@
             },
             {
                 "@id": "arrangement/2",
-                "@type": "trov:Arrangement",
+                "@type": "trov:ArtifactArrangement",
                 "rdfs:comment": "Final arrangement",
                 "trov:hasLocus": [
                     {
                         "@id": "arrangement/2/locus/1",
-                        "@type": "trov:Locus",
+                        "@type": "trov:ArtifactLocus",
                         "trov:hasArtifact": { "@id": "composition/1/artifact/2" },
                         "trov:hasLocation": "file2"
                     },
                     {
                         "@id": "arrangement/2/locus/2",
-                        "@type": "trov:Locus",
+                        "@type": "trov:ArtifactLocus",
                         "trov:hasArtifact": { "@id": "composition/1/artifact/3" },
                         "trov:hasLocation": "file3"
                     }
@@ -115,7 +115,7 @@
 
         "trov:hasPerformance": {
             "@id": "trp/1",
-            "@type": "trov:Performance",
+            "@type": "trov:TrustedResearchPerformance",
             "rdfs:comment": "Workflow execution",
             "trov:wasConductedBy": { "@id": "trs" },
             "trov:startedAtTime": "2023-05-05T01:30:00Z",
