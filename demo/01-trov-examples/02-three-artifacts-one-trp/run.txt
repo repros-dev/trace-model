@@ -11,7 +11,7 @@ geist export --format nt | sort | grep trov
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of loci describing the location of one or more artifacts"^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/2000/01/rdf-schema#label> "Arrangement"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/2000/01/rdf-schema#label> "ArtifactArrangement"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> .
 <https://w3id.org/trace/2023/05/trov#ArtifactCollection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
@@ -21,13 +21,13 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2023/05/trov#ArtifactCollection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactCollection> .
 <https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of artifacts described by a TRO."^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#label> "Composition"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#label> "ArtifactComposition"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactCollection> .
 <https://w3id.org/trace/2023/05/trov#ArtifactComposition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactComposition> .
 <https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#comment> "The location of a specific artifact."^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#label> "Locus"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#label> "ArtifactLocus"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactCollection> .
 <https://w3id.org/trace/2023/05/trov#ArtifactLocus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ArtifactLocus> .
@@ -62,7 +62,7 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2023/05/trov#IncludesAllInputData> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TROAttribute> .
 <https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/2000/01/rdf-schema#comment> "A research artifact described by a TRO."^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/2000/01/rdf-schema#label> "Artifact"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/2000/01/rdf-schema#label> "ResearchArtifact"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#ResearchArtifact> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#ResearchArtifact> .
 <https://w3id.org/trace/2023/05/trov#TREAttribute> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> .
@@ -110,7 +110,7 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> .
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of research artifacts produced by a TRP and signed by the performing TRS."^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#label> "TrustedResearchObject"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#label> "TransparentResearchObject"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> .
 <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TrustedResearchElement> .
@@ -124,8 +124,7 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#comment> "A set of research operations performed by a TRS."^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#comment> "An execution of a research process"^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#label> "ResearchPerformance"^^<http://www.w3.org/2001/XMLSchema#string> .
-<https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#label> "TrustedResearchExecution"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#label> "TrustedResearchPerformance"^^<http://www.w3.org/2001/XMLSchema#string> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TrustedResearchElement> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TrustedResearchPerformance> .
@@ -136,6 +135,46 @@ geist export --format nt | sort | grep trov
 <https://w3id.org/trace/2023/05/trov#TrustedResearchSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TrustedResearchElement> .
 <https://w3id.org/trace/2023/05/trov#TrustedResearchSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/trace/2023/05/trov#TrustedResearchSystem> .
+<https://w3id.org/trace/2023/05/trov#hasArrangement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasArrangement> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> .
+<https://w3id.org/trace/2023/05/trov#hasArrangement> <http://www.w3.org/2000/01/rdf-schema#label> "hasArrangement"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasArrangement> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> .
+<https://w3id.org/trace/2023/05/trov#hasArrangement> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasArrangement> .
+<https://w3id.org/trace/2023/05/trov#hasArtifact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasArtifact> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#ArtifactCollection> .
+<https://w3id.org/trace/2023/05/trov#hasArtifact> <http://www.w3.org/2000/01/rdf-schema#label> "hasArtifact"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasArtifact> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#ResearchArtifact> .
+<https://w3id.org/trace/2023/05/trov#hasArtifact> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasArtifact> .
+<https://w3id.org/trace/2023/05/trov#hasComposition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasComposition> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> .
+<https://w3id.org/trace/2023/05/trov#hasComposition> <http://www.w3.org/2000/01/rdf-schema#label> "hasComposition"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasComposition> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#ArtifactComposition> .
+<https://w3id.org/trace/2023/05/trov#hasComposition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasComposition> .
+<https://w3id.org/trace/2023/05/trov#hasFingerprint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasFingerprint> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#ArtifactComposition> .
+<https://w3id.org/trace/2023/05/trov#hasFingerprint> <http://www.w3.org/2000/01/rdf-schema#label> "hasFingerprint"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasFingerprint> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#CompositionFingerprint> .
+<https://w3id.org/trace/2023/05/trov#hasFingerprint> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasFingerprint> .
+<https://w3id.org/trace/2023/05/trov#hasLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasLocation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#ArtifactLocus> .
+<https://w3id.org/trace/2023/05/trov#hasLocation> <http://www.w3.org/2000/01/rdf-schema#label> "hasLocus"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasLocation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2000/01/rdf-schema#Literal> .
+<https://w3id.org/trace/2023/05/trov#hasLocation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasLocation> .
+<https://w3id.org/trace/2023/05/trov#hasLocus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#hasLocus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#ArtifactArrangement> .
+<https://w3id.org/trace/2023/05/trov#hasLocus> <http://www.w3.org/2000/01/rdf-schema#label> "hasLocus"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#hasLocus> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#ArtifactLocus> .
+<https://w3id.org/trace/2023/05/trov#hasLocus> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#hasLocus> .
+<https://w3id.org/trace/2023/05/trov#wasAssembledBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#wasAssembledBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> .
+<https://w3id.org/trace/2023/05/trov#wasAssembledBy> <http://www.w3.org/2000/01/rdf-schema#label> "wasAssembledBy"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#wasAssembledBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#TrustedResearchSystem> .
+<https://w3id.org/trace/2023/05/trov#wasAssembledBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#wasAssembledBy> .
+<https://w3id.org/trace/2023/05/trov#wasTimestampedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://w3id.org/trace/2023/05/trov#wasTimestampedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/trace/2023/05/trov#TransparentResearchObject> .
+<https://w3id.org/trace/2023/05/trov#wasTimestampedBy> <http://www.w3.org/2000/01/rdf-schema#label> "wasTimestampedBy"^^<http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/trace/2023/05/trov#wasTimestampedBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/trace/2023/05/trov#TimeStampingAuthority> .
+<https://w3id.org/trace/2023/05/trov#wasTimestampedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/trace/2023/05/trov#wasTimestampedBy> .
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

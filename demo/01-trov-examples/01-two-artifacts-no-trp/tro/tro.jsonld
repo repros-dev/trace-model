@@ -9,7 +9,7 @@
     "@graph": [
     {
         "@id": "tro",
-        "@type": "trov:TransparentResarchObject",
+        "@type": "trov:TransparentResearchObject",
         "rdfs:comment": "A composition of two files in a single arrangement endorsed by a TRS that enforces no policies",
 
         "trov:wasAssembledBy": {
