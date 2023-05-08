@@ -118,11 +118,11 @@
             "@type": "trov:Performance",
             "rdfs:comment": "Workflow execution",
             "trov:wasConductedBy": { "@id": "trs" },
-            "trov:startedAtTime": "2012-04-25T01:30:00Z",
-            "trov:endedAtTime": "2012-04-25T01:30:00Z",
-            "trov:used": { "@id": "arrangement/1" },
-            "trov:contributedTo": { "@id": "arrangement/2" },
-            "trov:hadAttribute": {
+            "trov:startedAtTime": "2023-05-05T01:30:00Z",
+            "trov:endedAtTime": "2023-05-05T01:40:00Z",
+            "trov:hadAccessToArrangement": { "@id": "arrangement/1" },
+            "trov:contributedToArrangement": { "@id": "arrangement/2" },
+            "trov:hadPerformanceAttribute": {
                 "@id": "trp/1/attribute/1",
                 "@type": "trov:InternetIsolation",
                 "trov:warrantedBy": { "@id": "trs/capability/1" }
