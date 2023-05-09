@@ -10,7 +10,7 @@
     {
         "@id": "tro",
         "@type": "trov:TransparentResearchObject",
-        "rdfs:comment": "TRO representing preprocessing of LBDA dataset on NOAA for use by researchers employing the SKOPE application",
+        "rdfs:comment": "Download LBDA dataset from NOAA website and prepare for use by researchers employing the SKOPE application",
 
         "trov:wasAssembledBy": {
             "@id": "trs",
