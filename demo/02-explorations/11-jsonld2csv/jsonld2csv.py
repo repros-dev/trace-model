@@ -49,7 +49,7 @@ def jsonld2csv(data, arg_o):
                             trp["trov:contributedToArrangement"]["@id"]))
         perf = pd.DataFrame(data=trp_rows, columns=["TrpId", "TrpComment", "TrsId", "StartedAtTime", "EndedAtTime", "accessedArrangementId", "contributedToArrangementId"])
         
-        justif.to_csv(arg_o + "#tro_attribute_justification.csv", index=True)
+        justif.reset_index(drop=False)[["TroAtt", "TrpAttId", "TrpAtt", "TrsAttId", "TrsAtt"]].to_csv(arg_o + "#tro_attribute_justification.csv", index=False)
         perf.to_csv(arg_o + "#trp_and_arrangement.csv", index=False)
     return
 
