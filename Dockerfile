@@ -20,6 +20,7 @@ RUN repro.require gnupg-api master ${REPROS_DEV}
 
 # install python package
 RUN pip install pandas
+RUN pip install jsonschema
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo
