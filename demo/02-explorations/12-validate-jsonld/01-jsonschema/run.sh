@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TRO_SCHEMA_FILE_PATH=tro.schema.jsonld
+TRO_SCHEMA_FILE_PATH=tro.schema.json
 
 # ------------------------------------------------------------------------------
 
