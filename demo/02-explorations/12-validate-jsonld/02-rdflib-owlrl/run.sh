@@ -133,3 +133,121 @@ END_PYTHON
 END_CELL
 
 # ------------------------------------------------------------------------------
+
+bash_cell 'rdflib validate tro2.jsonld' << END_CELL
+
+python3 << END_PYTHON
+
+from rdflib import Graph
+
+with open("data/tro2.jsonld") as fin:
+    tro_jsonld = fin.read()
+
+# Load JSON-LD file with RDFLib
+g = Graph()
+g.parse(data=tro_jsonld, format="json-ld")
+
+# Query the imported triples
+
+# TEST: one object can only have ONE public key
+q = """
+    SELECT ?trs ?trs_pk {
+        ?tro trov:wasAssembledBy ?trs .
+        ?trs trov:publicKey ?trs_pk .
+    }
+"""
+for x in g.query(q):
+    print(x)
+
+# 1) TRS with a public key
+q = """
+    ASK {
+            ?tro trov:wasAssembledBy ?trs .
+            ?trs trov:publicKey ?trs_pk .
+    }
+"""
+res1 = bool(g.query(q))
+print("Validate that a TRO Declaration has at least a TRS with public key: " + ("PASS" if res1 else "FAIL"))
+
+# 2) TSA with public key
+q = """
+    ASK {
+        ?tro trov:wasTimestampedBy ?tsa .
+        ?tsa trov:publicKey ?tsa_pk .
+    }
+    """
+res2 = bool(g.query(q))
+print("Validate that a TRO Declaration has at least a TSA with public key: " + ("PASS" if res2 else "FAIL"))
+
+# 3) Composition with a fingerprint
+q = """
+    ASK {
+        {
+            SELECT ?comp {
+                ?tro trov:hasComposition ?comp .
+                ?comp trov:hasFingerprint/trov:sha256 ?comp_fp .
+            } GROUP BY ?comp HAVING (count(*) = 1)
+        }
+    }
+    """
+res3 = bool(g.query(q))
+print("Validate that a TRO Declaration has at least a composition and each composition has exactly ONE fingerprint: " + ("PASS" if res3 else "FAIL"))
+
+# 4) Composition with at least an artifact
+q = """
+    ASK {
+        {   
+            SELECT (COUNT(?comp) AS ?c1) 
+            WHERE{
+                SELECT ?comp {
+                ?tro trov:hasComposition ?comp .
+                ?comp trov:hasArtifact/trov:sha256 ?art_digest .
+            } GROUP BY ?comp HAVING (count(*) >= 1)}
+        }
+
+        {
+            SELECT (COUNT(?comp) AS ?c2) {
+                ?tro trov:hasComposition ?comp .
+            }
+        }
+        FILTER (?c1 = ?c2)
+    }
+    """
+res4 = bool(g.query(q))
+print("Validate that a TRO Declaration has at least a composition and each composition has at least an artifact: " + ("PASS" if res4 else "FAIL"))
+
+# 5) Arrangement with validate artifacts
+q = """
+    ASK {
+        {
+            SELECT (COUNT(*) AS ?c1)
+            WHERE {
+                ?tro trov:hasArrangement ?arr .
+                ?arr trov:hasLocus/trov:hasArtifact ?art .
+            }
+        }
+
+        {
+            SELECT (COUNT(*) AS ?c2)
+            WHERE {
+                ?tro trov:hasArrangement ?arr .
+                ?arr trov:hasLocus/trov:hasArtifact/trov:sha256 ?art_digest .
+            }
+        }
+    FILTER (?c1 = ?c2)
+    }
+"""
+
+res5 = bool(g.query(q))
+print("Validate that a TRO Declaration has arrangement(s) with validate artifacts: " + ("PASS" if res5 else "FAIL"))
+
+if res1 and res2 and res3 and res4 and res5:
+    print("This is a valid TRO Declaration!!!")
+else:
+    print("This is NOT a valid TRO Declaration!!!")
+
+END_PYTHON
+
+END_CELL
+
+# ------------------------------------------------------------------------------
