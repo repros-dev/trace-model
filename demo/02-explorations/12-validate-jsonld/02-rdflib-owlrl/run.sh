@@ -149,35 +149,60 @@ g.parse(data=tro_jsonld, format="json-ld")
 
 # Query the imported triples
 
-# TEST: one object can only have ONE public key
-q = """
-    SELECT ?trs ?trs_pk {
-        ?tro trov:wasAssembledBy ?trs .
-        ?trs trov:publicKey ?trs_pk .
-    }
-"""
-for x in g.query(q):
-    print(x)
-
 # 1) TRS with a public key
 q = """
-    ASK {
+    ASK {   
+        SELECT ?trs {
             ?tro trov:wasAssembledBy ?trs .
             ?trs trov:publicKey ?trs_pk .
+        } GROUP BY ?trs HAVING (count(*) = 1)
     }
 """
 res1 = bool(g.query(q))
-print("Validate that a TRO Declaration has at least a TRS with public key: " + ("PASS" if res1 else "FAIL"))
+print("Validate that a TRO Declaration has a TRS with a public key: " + ("PASS" if res1 else "FAIL"))
 
 # 2) TSA with public key
+## Method 1
 q = """
     ASK {
-        ?tro trov:wasTimestampedBy ?tsa .
-        ?tsa trov:publicKey ?tsa_pk .
+        {
+            SELECT (COUNT(*) AS ?c1) 
+            WHERE {
+                SELECT ?tsa {
+                    ?tro trov:wasTimestampedBy ?tsa .
+                    ?tsa trov:publicKey ?tsa_pk .
+                } GROUP BY ?tsa HAVING (count(*) = 1)
+            }
+        }
+
+        {
+            SELECT (COUNT(*) AS ?c2) {
+                ?tro trov:wasTimestampedBy ?tsa .
+            }
+        }
+        FILTER (?c2 = 0 || ?c1 = ?c2)
     }
     """
 res2 = bool(g.query(q))
-print("Validate that a TRO Declaration has at least a TSA with public key: " + ("PASS" if res2 else "FAIL"))
+print("Validate that a TRO Declaration has (1) NO TSA or (2) ONE TSA with a public key: [method 1]" + ("PASS" if res2 else "FAIL"))
+
+## Method 2 (negation: do NOT have TSA with multiple public keys)
+q = """
+    ASK {
+        {
+            SELECT (COUNT(*) AS ?c1) 
+            WHERE {
+                SELECT ?tsa {
+                    ?tro trov:wasTimestampedBy ?tsa .
+                    ?tsa trov:publicKey ?tsa_pk .
+                } GROUP BY ?tsa HAVING (count(*) > 1)
+            }
+        }
+        FILTER (?c1 = 0)
+    }
+"""
+res2 = bool(g.query(q))
+print("Validate that a TRO Declaration has (1) NO TSA or (2) ONE TSA with a public key: [method 2]" + ("PASS" if res2 else "FAIL"))
 
 # 3) Composition with a fingerprint
 q = """
@@ -202,7 +227,7 @@ q = """
                 SELECT ?comp {
                 ?tro trov:hasComposition ?comp .
                 ?comp trov:hasArtifact/trov:sha256 ?art_digest .
-            } GROUP BY ?comp HAVING (count(*) >= 1)}
+            } GROUP BY ?comp}
         }
 
         {
@@ -239,7 +264,7 @@ q = """
 """
 
 res5 = bool(g.query(q))
-print("Validate that a TRO Declaration has arrangement(s) with validate artifacts: " + ("PASS" if res5 else "FAIL"))
+print("Validate that a TRO Declaration has arrangement(s) with valid artifacts: " + ("PASS" if res5 else "FAIL"))
 
 if res1 and res2 and res3 and res4 and res5:
     print("This is a valid TRO Declaration!!!")
