@@ -36,7 +36,26 @@ END_PYTHON
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 results_text:  Validation Report
-Conforms: True
+Conforms: False
+Results (3):
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:TrsShape ; sh:path trov:wasAssembledBy ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
+	Result Path: trov:wasAssembledBy
+	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>->trov:wasAssembledBy
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
+	Result Path: trov:hasComposition
+	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>->trov:hasComposition
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArrShape ; sh:path trov:hasArrangement ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
+	Result Path: trov:hasArrangement
+	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>->trov:hasArrangement
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -366,6 +385,98 @@ Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
 	Result Path: trov:hasArtifact
 	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+==================== bash cell | validate tro declaration with pyshacl (arrangement links to a valid artifact) =====================
+
+python3 << END_PYTHON
+
+from pyshacl import validate
+
+tro_jsonld = """
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#",
+        "@base": "https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/"
+    }],
+    
+    "@graph": [{
+        "trov:hasComposition": [
+        {
+            "@id": "composition/1",
+            "@type": "trov:ArtifactComposition",
+
+            "trov:hasFingerprint":
+            {
+                "@id": "fp1",
+                "@type": "trov:CompositionFingerprint",
+                "trov:sha256": "sha256.fp1"
+            },
+
+            "trov:hasArtifact": [
+            {
+                "@id": "composition/1/artifact/1",
+                "@type": "trov:ResearchArtifact",
+                "trov:sha256": "art.sha256.1"
+            }]
+        }],
+        "trov:hasArrangement": {
+        "@id": "arrangement/1",
+        "@type": "trov:ArtifactArrangement",
+        "trov:hasLocus": [
+            {
+                "@id": "arrangement/1/locus/1",
+                "@type": "trov:ArtifactLocus",
+                "trov:hasArtifact": { "@id": "composition/1/artifact/1" },
+                "trov:hasLocation": "filepath1"
+            },
+            {
+                "@id": "arrangement/1/locus/2",
+                "@type": "trov:ArtifactLocus",
+                "trov:hasArtifact": { "@id": "composition/1/artifact/100" },
+                "trov:hasLocation": "filepath2"
+            }]
+        }
+    }]
+}
+"""
+
+with open("data/tro.schema.ttl") as fin:
+    tro_schema = fin.read()
+
+r = validate(data_graph=tro_jsonld,
+      shacl_graph=tro_schema,
+      data_graph_format="json-ld",
+      inference='rdfs',
+      debug=True)
+conforms, results_graph, results_text = r
+
+print(results_text)
+
+END_PYTHON
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Validation Report
+Conforms: False
+Results (2):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+	Result Path: trov:hasArtifact
+	Message: Value does not have class trov:ResearchArtifact
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+	Result Path: trov:hasLocus
+	Message: Value does not conform to Shape schema1:LocusShape
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
