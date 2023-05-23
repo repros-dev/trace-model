@@ -23,6 +23,7 @@ RUN pip install pandas
 RUN pip install jsonschema
 RUN pip install rdflib
 RUN pip install owlrl
+RUN pip install pyshacl
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo
