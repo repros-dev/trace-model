@@ -35,7 +35,7 @@ rows = []
 for r in g.query(q):
     rows.append(r)
 
-graphs = pd.DataFrame(rows, columns=["source", "label", "target"]).replace(mappings, regex=True)
+graphs = pd.DataFrame(rows, columns=["source", "label", "target"]).replace(mappings, regex=True).sort_values(by=["source", "target"])
 graphs.to_csv("products/triples.csv", index=False)
 
 END_PYTHON
