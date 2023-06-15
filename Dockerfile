@@ -24,9 +24,8 @@ RUN pip install jsonschema
 RUN pip install rdflib
 RUN pip install owlrl
 RUN pip install pyshacl
-RUN pip install networkx
-RUN pip install yfiles_jupyter_graphs
-RUN sudo apt-get -y install python3-notebook jupyter-nbconvert
+RUN sudo apt install graphviz-dev -y
+RUN pip install pygraphviz
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo

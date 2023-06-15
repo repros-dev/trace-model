@@ -1,0 +1,3 @@
+Node: composition/1/artifact/100 
+Error Message: Value does not have class trov:ResearchArtifact
+
