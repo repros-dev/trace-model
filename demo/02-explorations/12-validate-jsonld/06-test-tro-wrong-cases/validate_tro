@@ -69,6 +69,7 @@ def validate_tro(tro, tro_schema, data_graph_format="json-ld", shacl_graph_forma
             inference="rdfs",
             debug=True)
     conforms, results_graph, results_text = r
+    print(results_text)
 
     return results_graph
 
