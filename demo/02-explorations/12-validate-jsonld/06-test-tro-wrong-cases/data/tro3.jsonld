@@ -96,7 +96,7 @@
             ]
         }]
     },
-    { "@id": "trs", "trov:publicKey": "The second one" },
-    { "@id": "tsa", "trov:publicKey": "The second one" },
-    { "@id": "fingerprint", "trov:sha256": "The second one" }
+    { "@id": "trs", "trov:publicKey": "trs.pk2" },
+    { "@id": "tsa", "trov:publicKey": "tsa.pk2" },
+    { "@id": "fingerprint", "trov:sha256": "fp2" }
 ]}
