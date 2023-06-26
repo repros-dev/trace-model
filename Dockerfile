@@ -26,6 +26,7 @@ RUN pip install owlrl
 RUN pip install pyshacl
 RUN sudo apt install graphviz-dev -y
 RUN pip install pygraphviz
+RUN pip install rdfvr
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo

@@ -30,28 +30,6 @@ def load_tro_file(file_path, graph_format="json-ld"):
     tro_graph.parse(data=tro_str, format=graph_format)
     return tro_graph
 
-def process_graph(tro_graph, mappings):
-    """
-    This function is to process a RDF Graph object:
-        (1) make the node name shorter
-        (2) export as a Pandas data frame
-    :param tro_graph: a RDF Graph object
-    :param mappings: a dictionary used to make the node name shorter
-    :return tro_graph_processed: a Pandas data frame
-    """
-    # Query the imported triples in tro_graph
-    q = """
-            SELECT ?s ?p ?o
-            WHERE {
-                ?s ?p ?o
-            }
-        """
-    rows = []
-    for r in tro_graph.query(q):
-        rows.append(r)
-    tro_graph_processed = pd.DataFrame(rows, columns=["source", "label", "target"]).replace(mappings, regex=True)
-    return tro_graph_processed
-
 def validate_tro(tro, tro_schema, data_graph_format="json-ld", shacl_graph_format="ttl"):
     """
     This function is validate the tro_jsonld_graph with tro_schema
@@ -77,16 +55,17 @@ def extract_errors(results_graph):
     This function is to extract the most important errors
     Ideally, all errors will be fixed once solve these errors
     :param results_graph: a RDF Graph object showing all errors
-    :return extracted_errors: a Pandas data frame with node and msg columns
+    :return errors: a Pandas data frame with node, msg, and path columns
     """
 
     q = """
         PREFIX : <http://www.w3.org/ns/shacl#>
 
-        SELECT ?value ?msg
+        SELECT ?focus ?msg ?path
         WHERE {
-            ?curr_node :value ?value .
+            ?curr_node :focusNode ?focus .
             ?curr_node :resultMessage ?msg .
+            ?curr_node :resultPath ?path.
             OPTIONAL { ?curr_node :detail ?child_node. }
             FILTER (!bound(?child_node))
         }
@@ -94,27 +73,56 @@ def extract_errors(results_graph):
     rows = []
     for r in results_graph.query(q):
         rows.append(r)
-    errors = pd.DataFrame(rows, columns=["node", "msg"]).replace(mappings, regex=True).drop_duplicates()
+    errors = pd.DataFrame(rows, columns=["node", "msg", "path"]).replace(mappings, regex=True).drop_duplicates()
     return errors
 
-def visualize_graph_as_dot(tro_graph, error_graph):
+def process_graph(tro_graph, mappings, errors):
+    """
+    This function is to process a RDF Graph object:
+        (1) make the node name shorter
+        (2) export as a Pandas data frame
+        (3) add suggested nodes to be updated to the errors data frame
+    :param tro_graph: a RDF Graph object
+    :param mappings: a dictionary used to make the node name shorter
+    :param errors: a Pandas data frame with node, msg, and path columns
+    :return tro_graph_processed: a Pandas data frame
+    :return errors_with_suggested_nodes: a Pandas data frame with node, msg, and target columns, where target column denotes suggested nodes to be updated
+    """
+    # Query the imported triples in tro_graph
+    q = """
+            SELECT ?s ?p ?o
+            WHERE {
+                ?s ?p ?o
+            }
+        """
+    rows = []
+    for r in tro_graph.query(q):
+        rows.append(r)
+    tro_graph_processed = pd.DataFrame(rows, columns=["source", "label", "target"]).replace(mappings, regex=True)
+    errors_with_suggested_nodes = errors.merge(tro_graph_processed, how="left", left_on=["node", "path"], right_on=["source", "label"])[["node", "msg", "target"]]
+    return tro_graph_processed, errors_with_suggested_nodes
+
+def visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes):
     # Create a directed graph
     g_dot = pgv.AGraph(directed=True)
     # Add nodes and edges
-    for _, row in tro_graph.iterrows():
+    for _, row in tro_graph_processed.iterrows():
         g_dot.add_node(row["source"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
         g_dot.add_node(row["target"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
         g_dot.add_edge(row["source"], row["target"], label=row["label"])
-    for _, row in error_graph.iterrows():
+    for _, row in errors_with_suggested_nodes[["node", "msg"]].drop_duplicates().iterrows():
         g_dot.add_node(row["node"], shape="box", style="filled, rounded", fillcolor="#fdccac")
         g_dot.add_node(row["msg"], shape="box", style="filled, rounded, dashed", fillcolor="#fdccac")
         g_dot.add_edge(row["node"], row["msg"], label="ErrorMsg", style="dashed")
+    # Suggested nodes to be updated
+    for suggested_node in errors_with_suggested_nodes["target"].dropna().unique():
+        g_dot.add_node(suggested_node, shape="box", style="filled, rounded", fillcolor="#cbd5e8")
     return g_dot
 
-def report_graph_as_txt(errors):
+def report_graph_as_txt(errors_with_suggested_nodes):
     report_text = ""
-    for _, row in errors.iterrows():
-        report_text = report_text + "Node: {node} \nError Message: {msg}\n\n".format(node=row["node"], msg=row["msg"])
+    for _, row in errors_with_suggested_nodes.groupby(["node", "msg"])["target"].agg(list).reset_index().iterrows():
+        report_text = report_text + "Node: {node} \nError Message: {msg}\nSuggested Node(s) to be Updated: {suggested_node}\n\n".format(node=row["node"], msg=row["msg"], suggested_node=", ".join(row["target"]))
     return report_text
 
 # Parse input
@@ -148,29 +156,29 @@ if __name__ == "__main__":
     for file_path, file_format, output_path, output_format in zip(file_paths, file_formats, output_paths, output_formats):
         # Load TRO Declaration
         tro_graph = load_tro_file(file_path, graph_format=file_format)
-        tro_graph_processed = process_graph(tro_graph, mappings)
         # Validate the TRO Declaration
         results_graph = validate_tro(tro_graph, arg_schema, data_graph_format=file_format, shacl_graph_format=arg_schemaformat)
         # Find the most important errors
         errors = extract_errors(results_graph)
+        # Find the suggested error nodes
+        (tro_graph_processed, errors_with_suggested_nodes) = process_graph(tro_graph, mappings, errors)
         # Output
         if output_format not in ["txt", "png"]:
             raise ValueError("The output file format can only be one of {txt, png}, but " + str(output_format) + " was given. Please check --outputformat.")
         
         if output_format == "png":
-            g_dot = visualize_graph_as_dot(tro_graph_processed, errors)
+            g_dot = visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes)
             dot_path = output_path + ".dot"
             g_dot.write(dot_path)
             subprocess.run(["dot", "-Tpng", dot_path, "-o", output_path])
         else:
-            report_text = report_graph_as_txt(errors)
+            report_text = report_graph_as_txt(errors_with_suggested_nodes)
             if not output_path:
                 # If NO --output, print a string
                 print(report_text)
             else:
-                fout = open(output_path, mode="w", encoding="utf-8")
-                fout.write(report_text)
-                fout.close()
+                with open(output_path, mode="w", encoding="utf-8") as fout:
+                    fout.write(report_text)
 
 
 

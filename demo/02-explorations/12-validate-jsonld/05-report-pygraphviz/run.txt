@@ -84,8 +84,9 @@ END_PYTHON
 python3 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-Node: composition/1/artifact/100 
+Node: arrangement/1/locus/2 
 Error Message: Value does not have class trov:ResearchArtifact
+Suggested Node(s) to be Updated: composition/1/artifact/100
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
