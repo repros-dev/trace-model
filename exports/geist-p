@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
-import click, pickle, json, os
+import click, jinja2, pickle, json, os, sys
+from io import StringIO
 import pandas as pd
-from tabulate import tabulate
 import pygraphviz as pgv
 from rdflib import Graph
 from owlrl import DeductiveClosure, RDFS_Semantics, OWLRL_Semantics, RDFS_OWLRL_Semantics
+from rdflib.plugins.sparql.results.jsonresults import JSONResultSerializer
 
 DATA_DIR = ".geistdata/"
 PASTEL_COLORS = ["#b3e2cd", "#fdccac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"]
@@ -73,11 +74,16 @@ def query2df(rdf_graph, query):
     :param query: string. A query to be applied to the given RDF graph
     :return res: a Pandas data frame. Results of the query
     """
-    rows = []
-    for r in rdf_graph.query(query):
-        rows.append(r)
-    res = pd.DataFrame(rows, columns=list(rows[0].labels.keys()))
-    return res
+    file = StringIO()
+    JSONResultSerializer(rdf_graph.query(query)).serialize(file)
+    res_json = json.loads(file.getvalue())
+    bindings = res_json["results"]["bindings"]
+    colnames = res_json["head"]["vars"]
+    if bindings:
+        res_df = pd.DataFrame(bindings).apply(lambda row: row.apply(lambda x: x["value"]), axis=1)
+    else:
+        res_df = pd.DataFrame(columns=colnames)
+    return res_df[colnames]
 
 def visualize_query_results(query_res, edges, same_color=False):
     """
@@ -122,7 +128,7 @@ def create(dataset, inputfile, inputformat, infer):
 @click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to create (default "kb")')
 @click.option('--inputfile', '-ifile', required=True, type=str, help='Path of the file to be loaded as triples')
 @click.option('--inputformat', '-iformat', default='json-ld', type=click.Choice(['xml', 'n3', 'turtle', 'nt', 'pretty-xml', 'trix', 'trig', 'nquads', 'json-ld', 'hext']), help='Format of the file to be loaded as triples (default json-ld)')
-def add(dataset, inputfile, inputformat):
+def load(dataset, inputfile, inputformat):
     """Import data into a RDF dataset"""
     (rdf_graph, infer) = load_rdf_dataset(dataset)
     rdf_graph = rdf_graph + create_rdf_graph(inputfile, inputformat, infer)
@@ -138,7 +144,7 @@ def destroy(dataset):
 
 @cli.command()
 @click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to be exported (default "kb")')
-@click.option('--outputfile', '-ofile', default=None, type=str, help='Path of the file to store these exported triples (defult: None)')
+@click.option('--outputfile', '-ofile', default=None, type=str, help='Path of the file to store these exported triples (default: None)')
 @click.option('--outputformat', '-oformat', default='nt', type=click.Choice(['json-ld', 'n3', 'nquads', 'nt', 'hext', 'pretty-xml', 'trig', 'trix', 'turtle', 'longturtle', 'xml']), help='Format of the exported triples (default nt)')
 def export(dataset, outputfile, outputformat):
     """Export an RDF graph"""
@@ -151,14 +157,12 @@ def export(dataset, outputfile, outputformat):
 
 @cli.command()
 @click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to be queried (default "kb")')
-@click.option('--file', required=True, type=str, help='File containing the SPARQL query to execute')
-@click.option('--outputfile', '-ofile', default=None, type=str, help='Path of the file to store the query results (defult: None)')
+@click.option('--file', required=True, type=click.File('r'), default=sys.stdin, help='Path of the file containing the SPARQL query to execute')
+@click.option('--outputfile', '-ofile', default=None, type=str, help='Path of the file to store the query results (default: None)')
 def query(dataset, file, outputfile):
     """Perform a SPARQL query on a dataset"""
     (rdf_graph, infer) = load_rdf_dataset(dataset)
-    with open(file, mode='r', encoding='utf-8') as f:
-        query = f.read()
-    res = query2df(rdf_graph, query)
+    res = query2df(rdf_graph, file)
     if outputfile is None:
         print(res.to_markdown())
     else:
@@ -168,8 +172,8 @@ def query(dataset, file, outputfile):
 @cli.command()
 @click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to be visualized (default "kb")')
 @click.option('--mappings', '-m', default=None, help='File of the mappings to shorten text (str): path of a JSON file, where the key is the original text and the value is the shorter text.')
-@click.option('--outputfile', '-ofile', default='res', type=str, help='Path of the file without extension to store the graph (defult: res)')
-@click.option('--outputformat', '-oformat', default='png', type=click.Choice(['png', 'gv']), help='Format of the graph (defult: png): png or gv')
+@click.option('--outputfile', '-ofile', default='res', type=str, help='Path of the file without extension to store the graph (default: res)')
+@click.option('--outputformat', '-oformat', default='png', type=click.Choice(['png', 'gv']), help='Format of the graph (default: png): png or gv')
 def graph(dataset, mappings, outputfile, outputformat):
     """Visualize results of a SPARQL query on a dataset"""
     if mappings:
@@ -193,6 +197,39 @@ def graph(dataset, mappings, outputfile, outputformat):
         G.draw(output_path)
     else: # gv
         G.write(output_path)
+
+@cli.command()
+@click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to be visualized (default "kb")')
+@click.option('--file', required=True, type=click.File('r'), default=sys.stdin, help='Path of the file containing the report template to expand')
+@click.option('--outputfile', '-ofile', default='report', type=str, help='Path of the file without extension to store the report (default: report)')
+@click.option('outputformats', '--outputformat', '-oformat', default=['none'], type=click.Choice(['none', 'png', 'gv', 'txt']), multiple=True, help='Format of the report (default: none): none or png or gv or txt, where none will print the report directly.')
+def report(dataset, file, outputfile, outputformats):
+    
+    # Query the given dataset
+    (rdf_graph, _) = load_rdf_dataset(dataset)
+    def query_dataset(x):
+        res = query2df(rdf_graph, x)
+        return res
+
+    # Render the report
+    environment = jinja2.Environment(loader=jinja2.FileSystemLoader("./"), trim_blocks=True)
+    environment.globals['query'] = query_dataset
+    template = environment.from_string(file.read())
+    report = template.render()
+
+    # Save the report
+    ensure_dir_exists(outputfile)
+    for outputformat in set(outputformats):
+        if outputformat == 'none':
+            print(report)
+        else:
+            output_path = outputfile + '.' + outputformat
+            if outputformat == 'png':
+                graph = pgv.AGraph(string=report)
+                graph.draw(output_path, format='png', prog='dot')
+            else: # gv or txt
+                with open(output_path, 'w') as fout:
+                    fout.write(report)
 
 if __name__ == '__main__':
     cli()
