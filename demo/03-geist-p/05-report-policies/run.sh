@@ -66,24 +66,26 @@ bash_cell report_trs_and_tro_policies << 'END_CELL'
 # 1) What are all of the policies a TRS could enforce? 
 # 2) What are all of the policies a TRO could enforce?
 
-geist-p report --dataset kb << 'END_TEMPLATE'
+geist-p report << 'END_TEMPLATE'
 
-    {% set trs_policies = query("""
+    {% query isfilepath=False as trs_policies_str %}
         SELECT DISTINCT ?trsPolicyName ?trsPolicyDescription
         WHERE {
             ?trsPolicy   rdf:type      trov:SystemPolicy .
             ?trsPolicy   rdfs:label    ?trsPolicyName .
             ?trsPolicy   rdfs:comment  ?trsPolicyDescription .
         } ORDER BY ?trsPolicyName
-    """) %}
-    {% set tro_policies = query("""
+    {% endquery %}
+    {% set trs_policies = trs_policies_str | json2df %}
+    {% query isfilepath=False as tro_policies_str %}
         SELECT DISTINCT ?troPolicyName ?troPolicyDescription
         WHERE {
             ?troPolicy   rdf:type      trov:ObjectPolicy .
             ?troPolicy   rdfs:label    ?troPolicyName .
             ?troPolicy   rdfs:comment  ?troPolicyDescription .
         } ORDER BY ?troPolicyName
-    """) %}
+    {% endquery %}
+    {% set tro_policies = tro_policies_str | json2df %}
 
     List of policies that a TRS could enforce:
     ==========================================
@@ -97,15 +99,9 @@ geist-p report --dataset kb << 'END_TEMPLATE'
         {{ row["troPolicyName"] }} : {{ row["troPolicyDescription"] }}
     {% endfor %}
 
+    {% destroy %}
+
 END_TEMPLATE
-
-END_CELL
-
-# ------------------------------------------------------------------------------
-
-bash_cell destroy_dataset_kb << END_CELL
-
-geist-p destroy --dataset kb
 
 END_CELL
 

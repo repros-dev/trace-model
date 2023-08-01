@@ -101,7 +101,7 @@ geist-p export --dataset kb --outputformat nt | sort | grep trov
 <https://w3id.org/trace/2022/10/trov#tro/02> <https://w3id.org/trace/2022/10/trov#satisfies> <https://w3id.org/trace/2022/10/trov#IncludeAllOutput> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2022/10/trov#System> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <http://www.w3.org/2002/07/owl#sameAs> <https://w3id.org/trace/2022/10/trov#trs/02> .
-<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <file:///mnt/trace-model/demo/03-geist-p/common/TrackIntermediateSteps> .
+<https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <file:///mnt/trace-model/demo/03-geist-p/02-type-a/TrackIntermediateSteps> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime> .
 <https://w3id.org/trace/2022/10/trov#trs/02> <https://w3id.org/trace/2022/10/trov#allows> <https://w3id.org/trace/2022/10/trov#IncludeAllInput> .
@@ -138,10 +138,10 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                       | policyDescription                                                           |
-|---:|:-------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/02 | EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/02 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
+|    | trs                                          | policyName                         | policyDescription                                                             |
+|---:|:---------------------------------------------|:-----------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/02> | "EvidenceRuntime"                  | "Research system shows evidence of runtime."                                  |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/02> | "PreventInterventionDuringRuntime" | "Research system prevents interaction with author of package during runtime." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -166,11 +166,11 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                  | policyDescription                                        |
-|---:|:-------------------------------------------|:----------------------------|:---------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment | Research object describes the full software environment. |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllCode              | Research object includes all code.                       |
-|  2 | https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput            | Research object includes all outputs.                    |
+|    | trs                                          | policyName                    | policyDescription                                          |
+|---:|:---------------------------------------------|:------------------------------|:-----------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/02> | "DescribeSoftwareEnvironment" | "Research object describes the full software environment." |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/02> | "IncludeAllCode"              | "Research object includes all code."                       |
+|  2 | <https://w3id.org/trace/2022/10/trov#trs/02> | "IncludeAllOutput"            | "Research object includes all outputs."                    |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -194,13 +194,13 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                       | policyDescription                                                           |
-|---:|:-------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/02 | DescribeSoftwareEnvironment      | Research object describes the full software environment.                    |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/02 | EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  2 | https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllCode                   | Research object includes all code.                                          |
-|  3 | https://w3id.org/trace/2022/10/trov#trs/02 | IncludeAllOutput                 | Research object includes all outputs.                                       |
-|  4 | https://w3id.org/trace/2022/10/trov#trs/02 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
+|    | trs                                          | policyName                         | policyDescription                                                             |
+|---:|:---------------------------------------------|:-----------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/02> | "DescribeSoftwareEnvironment"      | "Research object describes the full software environment."                    |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/02> | "EvidenceRuntime"                  | "Research system shows evidence of runtime."                                  |
+|  2 | <https://w3id.org/trace/2022/10/trov#trs/02> | "IncludeAllCode"                   | "Research object includes all code."                                          |
+|  3 | <https://w3id.org/trace/2022/10/trov#trs/02> | "IncludeAllOutput"                 | "Research object includes all outputs."                                       |
+|  4 | <https://w3id.org/trace/2022/10/trov#trs/02> | "PreventInterventionDuringRuntime" | "Research system prevents interaction with author of package during runtime." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -225,9 +225,9 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName            | policyDescription                                          |
-|---:|:-------------------------------------------|:----------------------|:-----------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/02 | PreventInternetAccess | Research system prevents internet access during execution. |
+|    | trs                                          | policyName              | policyDescription                                            |
+|---:|:---------------------------------------------|:------------------------|:-------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/02> | "PreventInternetAccess" | "Research system prevents internet access during execution." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -277,9 +277,9 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName            | policyDescription                                          |
-|---:|:-------------------------------------------|:----------------------|:-----------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/02 | PreventInternetAccess | Research system prevents internet access during execution. |
+|    | trs                                          | policyName              | policyDescription                                            |
+|---:|:---------------------------------------------|:------------------------|:-------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/02> | "PreventInternetAccess" | "Research system prevents internet access during execution." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

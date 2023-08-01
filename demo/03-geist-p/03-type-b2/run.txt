@@ -30,11 +30,11 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                       | policyDescription                                                           |
-|---:|:-------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | AllInputAvailableBeforeRuntime   | Research system makes all inputs available prior to runtime.                |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/03 | EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  2 | https://w3id.org/trace/2022/10/trov#trs/03 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
+|    | trs                                          | policyName                         | policyDescription                                                             |
+|---:|:---------------------------------------------|:-----------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "AllInputAvailableBeforeRuntime"   | "Research system makes all inputs available prior to runtime."                |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/03> | "EvidenceRuntime"                  | "Research system shows evidence of runtime."                                  |
+|  2 | <https://w3id.org/trace/2022/10/trov#trs/03> | "PreventInterventionDuringRuntime" | "Research system prevents interaction with author of package during runtime." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -59,11 +59,11 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                  | policyDescription                                        |
-|---:|:-------------------------------------------|:----------------------------|:---------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | DescribeSoftwareEnvironment | Research object describes the full software environment. |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllCode              | Research object includes all code.                       |
-|  2 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllOutput            | Research object includes all outputs.                    |
+|    | trs                                          | policyName                    | policyDescription                                          |
+|---:|:---------------------------------------------|:------------------------------|:-----------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "DescribeSoftwareEnvironment" | "Research object describes the full software environment." |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllCode"              | "Research object includes all code."                       |
+|  2 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllOutput"            | "Research object includes all outputs."                    |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -87,14 +87,14 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                       | policyDescription                                                           |
-|---:|:-------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | AllInputAvailableBeforeRuntime   | Research system makes all inputs available prior to runtime.                |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/03 | DescribeSoftwareEnvironment      | Research object describes the full software environment.                    |
-|  2 | https://w3id.org/trace/2022/10/trov#trs/03 | EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  3 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllCode                   | Research object includes all code.                                          |
-|  4 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllOutput                 | Research object includes all outputs.                                       |
-|  5 | https://w3id.org/trace/2022/10/trov#trs/03 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
+|    | trs                                          | policyName                         | policyDescription                                                             |
+|---:|:---------------------------------------------|:-----------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "AllInputAvailableBeforeRuntime"   | "Research system makes all inputs available prior to runtime."                |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/03> | "DescribeSoftwareEnvironment"      | "Research object describes the full software environment."                    |
+|  2 | <https://w3id.org/trace/2022/10/trov#trs/03> | "EvidenceRuntime"                  | "Research system shows evidence of runtime."                                  |
+|  3 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllCode"                   | "Research object includes all code."                                          |
+|  4 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllOutput"                 | "Research object includes all outputs."                                       |
+|  5 | <https://w3id.org/trace/2022/10/trov#trs/03> | "PreventInterventionDuringRuntime" | "Research system prevents interaction with author of package during runtime." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -119,9 +119,9 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                    | policyDescription                                         |
-|---:|:-------------------------------------------|:------------------------------|:----------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | AllInputAvailableAfterRuntime | Research system makes all inputs available after runtime. |
+|    | trs                                          | policyName                      | policyDescription                                           |
+|---:|:---------------------------------------------|:--------------------------------|:------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "AllInputAvailableAfterRuntime" | "Research system makes all inputs available after runtime." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -146,9 +146,9 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName      | policyDescription                    |
-|---:|:-------------------------------------------|:----------------|:-------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllInput | Research object includes all inputs. |
+|    | trs                                          | policyName        | policyDescription                      |
+|---:|:---------------------------------------------|:------------------|:---------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllInput" | "Research object includes all inputs." |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -172,10 +172,10 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trs                                        | policyName                    | policyDescription                                         |
-|---:|:-------------------------------------------|:------------------------------|:----------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#trs/03 | AllInputAvailableAfterRuntime | Research system makes all inputs available after runtime. |
-|  1 | https://w3id.org/trace/2022/10/trov#trs/03 | IncludeAllInput               | Research object includes all inputs.                      |
+|    | trs                                          | policyName                      | policyDescription                                           |
+|---:|:---------------------------------------------|:--------------------------------|:------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#trs/03> | "AllInputAvailableAfterRuntime" | "Research system makes all inputs available after runtime." |
+|  1 | <https://w3id.org/trace/2022/10/trov#trs/03> | "IncludeAllInput"               | "Research object includes all inputs."                      |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

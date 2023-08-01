@@ -27,15 +27,15 @@ geist-p query --dataset kb << END_QUERY
 END_QUERY
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | trsPolicyName                    | trsPolicyDescription                                                        |
-|---:|:---------------------------------|:----------------------------------------------------------------------------|
-|  0 | AllInputAvailableAfterRuntime    | Research system makes all inputs available after runtime.                   |
-|  1 | AllInputAvailableBeforeRuntime   | Research system makes all inputs available prior to runtime.                |
-|  2 | EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  3 | PreventInternetAccess            | Research system prevents internet access during execution.                  |
-|  4 | PreventInterventionBeforeRuntime | Research system prevents interaction with author prior to runtime.          |
-|  5 | PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
-|  6 | TrackIntermediateSteps           | Research system tracks intermediate steps.                                  |
+|    | trsPolicyName                      | trsPolicyDescription                                                          |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------|
+|  0 | "AllInputAvailableAfterRuntime"    | "Research system makes all inputs available after runtime."                   |
+|  1 | "AllInputAvailableBeforeRuntime"   | "Research system makes all inputs available prior to runtime."                |
+|  2 | "EvidenceRuntime"                  | "Research system shows evidence of runtime."                                  |
+|  3 | "PreventInternetAccess"            | "Research system prevents internet access during execution."                  |
+|  4 | "PreventInterventionBeforeRuntime" | "Research system prevents interaction with author prior to runtime."          |
+|  5 | "PreventInterventionDuringRuntime" | "Research system prevents interaction with author of package during runtime." |
+|  6 | "TrackIntermediateSteps"           | "Research system tracks intermediate steps."                                  |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -59,12 +59,12 @@ geist-p query --dataset kb << END_QUERY
 END_QUERY
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | troPolicyName               | troPolicyDescription                                     |
-|---:|:----------------------------|:---------------------------------------------------------|
-|  0 | DescribeSoftwareEnvironment | Research object describes the full software environment. |
-|  1 | IncludeAllCode              | Research object includes all code.                       |
-|  2 | IncludeAllInput             | Research object includes all inputs.                     |
-|  3 | IncludeAllOutput            | Research object includes all outputs.                    |
+|    | troPolicyName                 | troPolicyDescription                                       |
+|---:|:------------------------------|:-----------------------------------------------------------|
+|  0 | "DescribeSoftwareEnvironment" | "Research object describes the full software environment." |
+|  1 | "IncludeAllCode"              | "Research object includes all code."                       |
+|  2 | "IncludeAllInput"             | "Research object includes all inputs."                     |
+|  3 | "IncludeAllOutput"            | "Research object includes all outputs."                    |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -74,24 +74,26 @@ END_QUERY
 # 1) What are all of the policies a TRS could enforce? 
 # 2) What are all of the policies a TRO could enforce?
 
-geist-p report --dataset kb << 'END_TEMPLATE'
+geist-p report << 'END_TEMPLATE'
 
-    {% set trs_policies = query("""
+    {% query isfilepath=False as trs_policies_str %}
         SELECT DISTINCT ?trsPolicyName ?trsPolicyDescription
         WHERE {
             ?trsPolicy   rdf:type      trov:SystemPolicy .
             ?trsPolicy   rdfs:label    ?trsPolicyName .
             ?trsPolicy   rdfs:comment  ?trsPolicyDescription .
         } ORDER BY ?trsPolicyName
-    """) %}
-    {% set tro_policies = query("""
+    {% endquery %}
+    {% set trs_policies = trs_policies_str | json2df %}
+    {% query isfilepath=False as tro_policies_str %}
         SELECT DISTINCT ?troPolicyName ?troPolicyDescription
         WHERE {
             ?troPolicy   rdf:type      trov:ObjectPolicy .
             ?troPolicy   rdfs:label    ?troPolicyName .
             ?troPolicy   rdfs:comment  ?troPolicyDescription .
         } ORDER BY ?troPolicyName
-    """) %}
+    {% endquery %}
+    {% set tro_policies = tro_policies_str | json2df %}
 
     List of policies that a TRS could enforce:
     ==========================================
@@ -105,36 +107,31 @@ geist-p report --dataset kb << 'END_TEMPLATE'
         {{ row["troPolicyName"] }} : {{ row["troPolicyDescription"] }}
     {% endfor %}
 
+    {% destroy %}
+
 END_TEMPLATE
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 
-        
+                
     List of policies that a TRS could enforce:
     ==========================================
-    AllInputAvailableAfterRuntime : Research system makes all inputs available after runtime.
-    AllInputAvailableBeforeRuntime : Research system makes all inputs available prior to runtime.
-    EvidenceRuntime : Research system shows evidence of runtime.
-    PreventInternetAccess : Research system prevents internet access during execution.
-    PreventInterventionBeforeRuntime : Research system prevents interaction with author prior to runtime.
-    PreventInterventionDuringRuntime : Research system prevents interaction with author of package during runtime.
-    TrackIntermediateSteps : Research system tracks intermediate steps.
+    "AllInputAvailableAfterRuntime" : "Research system makes all inputs available after runtime."
+    "AllInputAvailableBeforeRuntime" : "Research system makes all inputs available prior to runtime."
+    "EvidenceRuntime" : "Research system shows evidence of runtime."
+    "PreventInternetAccess" : "Research system prevents internet access during execution."
+    "PreventInterventionBeforeRuntime" : "Research system prevents interaction with author prior to runtime."
+    "PreventInterventionDuringRuntime" : "Research system prevents interaction with author of package during runtime."
+    "TrackIntermediateSteps" : "Research system tracks intermediate steps."
     
     List of policies that a TRO could enforce:
     ==========================================
-    DescribeSoftwareEnvironment : Research object describes the full software environment.
-    IncludeAllCode : Research object includes all code.
-    IncludeAllInput : Research object includes all inputs.
-    IncludeAllOutput : Research object includes all outputs.
+    "DescribeSoftwareEnvironment" : "Research object describes the full software environment."
+    "IncludeAllCode" : "Research object includes all code."
+    "IncludeAllInput" : "Research object includes all inputs."
+    "IncludeAllOutput" : "Research object includes all outputs."
     
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-================================================== bash cell | destroy_dataset_kb ==================================================
-
-geist-p destroy --dataset kb
-
------------------------------------------------------------ cell outputs -----------------------------------------------------------
+    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

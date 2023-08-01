@@ -105,19 +105,19 @@ geist-p export --dataset kb --outputformat nt | sort | grep trov
 geist-p query --dataset kb --file data/query
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | s                                                                    | o                                                                           |
-|---:|:---------------------------------------------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
-|  1 | https://w3id.org/trace/2022/10/trov#IncludeAllInput                  | Research object includes all inputs.                                        |
-|  2 | https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime   | Research system makes all inputs available prior to runtime.                |
-|  3 | https://w3id.org/trace/2022/10/trov#IncludeAllCode                   | Research object includes all code.                                          |
-|  4 | https://w3id.org/trace/2022/10/trov#EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  5 | https://w3id.org/trace/2022/10/trov#PreventInternetAccess            | Research system prevents internet access during execution.                  |
-|  6 | https://w3id.org/trace/2022/10/trov#IncludeAllOutput                 | Research object includes all outputs.                                       |
-|  7 | https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime    | Research system makes all inputs available after runtime.                   |
-|  8 | https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps           | Research system tracks intermediate steps.                                  |
-|  9 | https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime | Research system prevents interaction with author prior to runtime.          |
-| 10 | https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment      | Research object describes the full software environment.                    |
+|    | s                                                                      | o                                                                             |
+|---:|:-----------------------------------------------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> | "Research system prevents interaction with author of package during runtime." |
+|  1 | <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment>      | "Research object describes the full software environment."                    |
+|  2 | <https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> | "Research system prevents interaction with author prior to runtime."          |
+|  3 | <https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps>           | "Research system tracks intermediate steps."                                  |
+|  4 | <https://w3id.org/trace/2022/10/trov#IncludeAllCode>                   | "Research object includes all code."                                          |
+|  5 | <https://w3id.org/trace/2022/10/trov#PreventInternetAccess>            | "Research system prevents internet access during execution."                  |
+|  6 | <https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime>    | "Research system makes all inputs available after runtime."                   |
+|  7 | <https://w3id.org/trace/2022/10/trov#IncludeAllOutput>                 | "Research object includes all outputs."                                       |
+|  8 | <https://w3id.org/trace/2022/10/trov#EvidenceRuntime>                  | "Research system shows evidence of runtime."                                  |
+|  9 | <https://w3id.org/trace/2022/10/trov#IncludeAllInput>                  | "Research object includes all inputs."                                        |
+| 10 | <https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime>   | "Research system makes all inputs available prior to runtime."                |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -135,19 +135,19 @@ WHERE {
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | s                                                                    | o                                                                           |
-|---:|:---------------------------------------------------------------------|:----------------------------------------------------------------------------|
-|  0 | https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime | Research system prevents interaction with author of package during runtime. |
-|  1 | https://w3id.org/trace/2022/10/trov#IncludeAllInput                  | Research object includes all inputs.                                        |
-|  2 | https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime   | Research system makes all inputs available prior to runtime.                |
-|  3 | https://w3id.org/trace/2022/10/trov#IncludeAllCode                   | Research object includes all code.                                          |
-|  4 | https://w3id.org/trace/2022/10/trov#EvidenceRuntime                  | Research system shows evidence of runtime.                                  |
-|  5 | https://w3id.org/trace/2022/10/trov#PreventInternetAccess            | Research system prevents internet access during execution.                  |
-|  6 | https://w3id.org/trace/2022/10/trov#IncludeAllOutput                 | Research object includes all outputs.                                       |
-|  7 | https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime    | Research system makes all inputs available after runtime.                   |
-|  8 | https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps           | Research system tracks intermediate steps.                                  |
-|  9 | https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime | Research system prevents interaction with author prior to runtime.          |
-| 10 | https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment      | Research object describes the full software environment.                    |
+|    | s                                                                      | o                                                                             |
+|---:|:-----------------------------------------------------------------------|:------------------------------------------------------------------------------|
+|  0 | <https://w3id.org/trace/2022/10/trov#PreventInterventionDuringRuntime> | "Research system prevents interaction with author of package during runtime." |
+|  1 | <https://w3id.org/trace/2022/10/trov#DescribeSoftwareEnvironment>      | "Research object describes the full software environment."                    |
+|  2 | <https://w3id.org/trace/2022/10/trov#PreventInterventionBeforeRuntime> | "Research system prevents interaction with author prior to runtime."          |
+|  3 | <https://w3id.org/trace/2022/10/trov#TrackIntermediateSteps>           | "Research system tracks intermediate steps."                                  |
+|  4 | <https://w3id.org/trace/2022/10/trov#IncludeAllCode>                   | "Research object includes all code."                                          |
+|  5 | <https://w3id.org/trace/2022/10/trov#PreventInternetAccess>            | "Research system prevents internet access during execution."                  |
+|  6 | <https://w3id.org/trace/2022/10/trov#AllInputAvailableAfterRuntime>    | "Research system makes all inputs available after runtime."                   |
+|  7 | <https://w3id.org/trace/2022/10/trov#IncludeAllOutput>                 | "Research object includes all outputs."                                       |
+|  8 | <https://w3id.org/trace/2022/10/trov#EvidenceRuntime>                  | "Research system shows evidence of runtime."                                  |
+|  9 | <https://w3id.org/trace/2022/10/trov#IncludeAllInput>                  | "Research object includes all inputs."                                        |
+| 10 | <https://w3id.org/trace/2022/10/trov#AllInputAvailableBeforeRuntime>   | "Research system makes all inputs available prior to runtime."                |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

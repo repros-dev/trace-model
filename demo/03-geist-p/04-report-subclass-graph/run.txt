@@ -110,10 +110,10 @@ geist-p query --dataset kb << __END_QUERY__
 __END_QUERY__
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-|    | ChildLabel   | ParentLabel   |
-|---:|:-------------|:--------------|
-|  0 | ObjectPolicy | Policy        |
-|  1 | SystemPolicy | Policy        |
+|    | ChildLabel     | ParentLabel   |
+|---:|:---------------|:--------------|
+|  0 | "ObjectPolicy" | "Policy"      |
+|  1 | "SystemPolicy" | "Policy"      |
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -121,8 +121,8 @@ __END_QUERY__
 
 geist-p report --outputfile products/query_subclass_vocab --outputformat none --outputformat png --outputformat gv << END_TEMPLATE
 
-    {% import "graphviz.jinja" as gv_macros %}
-    {% set query_subclass_vocab = query("""
+    {% geistinclude "graphviz.geistmacros" %}
+    {% query isfilepath=False as query_subclass_vocab_str %}
         SELECT DISTINCT ?ChildLabel ?ParentLabel
         WHERE {
             ?ParentClass    rdf:type        rdfs:Class ;
@@ -135,47 +135,43 @@ geist-p report --outputfile products/query_subclass_vocab --outputformat none --
             FILTER (?ChildLabel != ?ParentLabel)
         }
         ORDER BY ?ChildLabel ?ParentLabel
-    """) %}
+    {% endquery %}
+    {% set query_subclass_vocab = query_subclass_vocab_str | json2df %}
 
-    {{ gv_macros.gv_graph("subclass_vocab_graph", "BT") }}
-    {{ gv_macros.gv_title("Subclass Vacab Graph") }}
-    {{ gv_macros.gv_cluster("subclass") }}
+    {% geistmacro "gv_graph", name="subclass_vocab_graph", direction="BT" %}
+    {% geistmacro "gv_title", title="Subclass Vacab Graph" %}
+    {% geistmacro "gv_cluster", name="subclass" %}
 
     node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
     {% for _, row in query_subclass_vocab.iterrows() %}
-        {{ gv_macros.gv_edge(row["ChildLabel"], row["ParentLabel"]) }}
+        {% geistmacro "gv_edge", tail=row["ChildLabel"], head=row["ParentLabel"] %}
     {% endfor %}
 
-    {{ gv_macros.gv_cluster_end() }}
-    {{ gv_macros.gv_end() }}
+    {% geistmacro "gv_cluster_end" %}
+    {% geistmacro "gv_end" %}
+
+    {% destroy %}
 
 END_TEMPLATE
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 
-        
+            
+    
     digraph subclass_vocab_graph {
-    rankdir=BT
+    rankdir=BT    
     fontname=Courier; fontsize=12; labelloc=t
-    label="Subclass Vacab Graph"
+    label="Subclass Vacab Graph"    
     subgraph cluster_subclass { label=""; color=white; penwidth=0
     subgraph cluster_subclass_inner { label=""; color=white
-
     node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-            ObjectPolicy -> Policy
-            SystemPolicy -> Policy
+            
+    "ObjectPolicy" -> "Policy"            
+    "SystemPolicy" -> "Policy"    
     
-    }}
+    }}    
     }
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-================================================== bash cell | destroy_dataset_kb ==================================================
-
-geist-p destroy --dataset kb
-
------------------------------------------------------------ cell outputs -----------------------------------------------------------
+    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
