@@ -60,13 +60,13 @@ END_CELL
 
 # ------------------------------------------------------------------------------
 
-bash_cell report_trs_and_tro_policies << 'END_CELL'
+bash_cell report_trs_and_tro_policies << END_CELL
 
 # A single report that gives the results of two queries of the vocabulary: 
 # 1) What are all of the policies a TRS could enforce? 
 # 2) What are all of the policies a TRO could enforce?
 
-geist-p report << 'END_TEMPLATE'
+geist-p report << END_TEMPLATE
 
     {% query isfilepath=False as trs_policies_str %}
         SELECT DISTINCT ?trsPolicyName ?trsPolicyDescription
