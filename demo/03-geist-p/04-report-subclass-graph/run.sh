@@ -53,7 +53,7 @@ bash_cell visualize_subclass_vocab_using_graphviz << END_CELL
 
 geist-p report --outputfile products/query_subclass_vocab --outputformat none --outputformat png --outputformat gv << END_TEMPLATE
 
-    {% geistinclude "graphviz.geistmacros" %}
+    {% template "graphviz.geist" %}
     {% query isfilepath=False as query_subclass_vocab_str %}
         SELECT DISTINCT ?ChildLabel ?ParentLabel
         WHERE {
@@ -70,17 +70,17 @@ geist-p report --outputfile products/query_subclass_vocab --outputformat none --
     {% endquery %}
     {% set query_subclass_vocab = query_subclass_vocab_str | json2df %}
 
-    {% geistmacro "gv_graph", name="subclass_vocab_graph", direction="BT" %}
-    {% geistmacro "gv_title", title="Subclass Vacab Graph" %}
-    {% geistmacro "gv_cluster", name="subclass" %}
+    {% gv_graph "subclass_vocab_graph", "BT" %}
+    {% gv_title "Subclass Vocab Graph" %}
+    {% gv_cluster "subclass" %}
 
     node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
     {% for _, row in query_subclass_vocab.iterrows() %}
-        {% geistmacro "gv_edge", tail=row["ChildLabel"], head=row["ParentLabel"] %}
+        {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
     {% endfor %}
 
-    {% geistmacro "gv_cluster_end" %}
-    {% geistmacro "gv_end" %}
+    {% gv_cluster_end %}
+    {% gv_end %}
 
     {% destroy %}
 

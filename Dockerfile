@@ -19,14 +19,14 @@ RUN repro.require gnupg-runtime master ${REPROS_DEV}
 RUN repro.require gnupg-api master ${REPROS_DEV}
 
 # install python package
-RUN pip install pandas
-RUN pip install jsonschema
-RUN pip install rdflib
-RUN pip install owlrl
-RUN pip install pyshacl
+RUN sudo pip install pandas
+RUN sudo pip install jsonschema
+RUN sudo pip install rdflib
+RUN sudo pip install owlrl
+RUN sudo pip install pyshacl
 RUN sudo apt install graphviz-dev -y
-RUN pip install pygraphviz
-RUN pip install rdfvr
+RUN sudo pip install pygraphviz
+RUN sudo pip install rdfvr
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo
