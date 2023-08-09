@@ -4,3 +4,4 @@ SELECT ?s ?o
 WHERE {
     ?s rdfs:comment ?o
 }
+ORDER BY ?s ?o

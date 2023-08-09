@@ -1,0 +1,5 @@
+digraph {% block gv_graph_name %}Graph Name{% endblock %} {
+rankdir="{% block gv_graph_direction%}Direction{% endblock %}"
+
+label="{% block gv_title %}Title{% endblock %}"
+}

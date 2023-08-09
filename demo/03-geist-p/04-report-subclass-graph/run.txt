@@ -117,11 +117,104 @@ __END_QUERY__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-======================================= bash cell | visualize_subclass_vocab_using_graphviz ========================================
+================================================== bash cell | test_jinja_include ==================================================
+
+geist-p report << END_TEMPLATE
+
+    {% include "base.gv" %}
+
+END_TEMPLATE
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+
+    digraph Graph Name {
+rankdir="Direction"
+
+label="Title"
+}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================================== bash cell | test_jinja_extends ==================================================
+
+geist-p report << END_TEMPLATE
+
+    {% extends "base.gv" %}
+    {% block gv_graph_name %}subclass_vocab_graph{% endblock %}
+    {% block gv_title %}Subclass Vacab Graph{% endblock %}
+
+END_TEMPLATE
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+
+    digraph subclass_vocab_graph {
+rankdir="Direction"
+
+label="Subclass Vacab Graph"
+}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+===================================== bash cell | visualize_subclass_vocab_using_jinja_import ======================================
+
+geist-p report << END_TEMPLATE
+
+    {% import "graphviz.jinja" as gv_macros %}
+    {% query isfilepath=False as query_subclass_vocab_str %}
+        SELECT DISTINCT ?ChildLabel ?ParentLabel
+        WHERE {
+            ?ParentClass    rdf:type        rdfs:Class ;
+                            rdfs:label      ?ParentLabel .
+            
+            ?ChildClass     rdfs:subClassOf ?ParentClass ;
+                            rdf:type        rdfs:Class ;
+                            rdfs:label      ?ChildLabel .
+
+            FILTER (?ChildLabel != ?ParentLabel)
+        }
+        ORDER BY ?ChildLabel ?ParentLabel
+    {% endquery %}
+    {% set query_subclass_vocab = query_subclass_vocab_str | json2df %}
+
+    {{ gv_macros.gv_graph("subclass_vocab_graph", "BT") }}
+    {{ gv_macros.gv_title("Subclass Vacab Graph") }}
+    {{ gv_macros.gv_cluster("subclass") }}
+
+    node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+    {% for _, row in query_subclass_vocab.iterrows() %}
+        {{ gv_macros.gv_edge(row["ChildLabel"], row["ParentLabel"]) }}
+    {% endfor %}
+
+    {{ gv_macros.gv_cluster_end() }}
+    {{ gv_macros.gv_end() }}
+
+END_TEMPLATE
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+
+            
+    digraph subclass_vocab_graph {
+    rankdir=BT
+    fontname=Courier; fontsize=12; labelloc=t
+    label="Subclass Vacab Graph"
+    subgraph cluster_subclass { label=""; color=white; penwidth=0
+    subgraph cluster_subclass_inner { label=""; color=white
+
+    node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+            "ObjectPolicy" -> "Policy"
+            "SystemPolicy" -> "Policy"
+    
+    }}
+    }
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+========================================= bash cell | visualize_subclass_vocab_using_geist =========================================
 
 geist-p report --outputfile products/query_subclass_vocab --outputformat none --outputformat png --outputformat gv << END_TEMPLATE
 
-    {% template "graphviz.geist" %}
+    {% use "graphviz.geist" %}
     {% query isfilepath=False as query_subclass_vocab_str %}
         SELECT DISTINCT ?ChildLabel ?ParentLabel
         WHERE {

@@ -217,30 +217,30 @@ class DestroyExtension(StandaloneTag):
         delete_rdf_dataset(dataset=dataset)
         return ""
 
-class TemplateExtension(StandaloneTag):
-    tags = {"template"}
+class UseExtension(StandaloneTag):
+    tags = {"use"}
 
     def render(self, filepath):
         return ""
 
 def include_filepaths(data):
     """
-    This function is to retrive file paths of the included files through matching the pattern {% template filepath %}
+    This function is to retrive file paths of the included files through matching the pattern {% use filepath %}
     :param data: a string, which might contains multiple included files
     :return file_paths: a list of file paths
     """
-    blocks = re.findall(r"{%\s*template.*?\s*%}", data)
+    blocks = re.findall(r"{%\s*use.*?\s*%}", data)
     file_paths = []
     for block in blocks:
-        file_path = re.search(r"{%\s*template\s+([^\s]*?)\s*%}", block).groups()[0].replace('"', "").replace("'", "")
+        file_path = re.search(r"{%\s*use\s+([^\s]*?)\s*%}", block).groups()[0].replace('"', "").replace("'", "")
         file_paths.append(file_path)
     return file_paths
 
 def generate_template_class(file_paths):
     """
-    This function is to generate template class named {Tag}Extension based on the give file paths
+    This function is to generate {Tag}Extension class based on the give file paths
     :param file_paths: a list of file paths
-    :return templates: a string of Python code to define template class and append it to the list of extensions
+    :return templates: a string of Python code to define at least one classes and append them to the list of extensions
     """
     templates = ""
     for file_path in file_paths:
@@ -368,9 +368,9 @@ def graph(dataset, mappings, outputfile, outputformats):
 def report(file, outputfile, outputformats):
     """Expand a report using a dataset"""
 
-    # Define custom tags based on files with the "template" tag
+    # Define custom tags based on files with the "use" tag
     global extensions
-    extensions = [CreateExtension, LoadExtension, QueryExtension, DestroyExtension, TemplateExtension]
+    extensions = [CreateExtension, LoadExtension, QueryExtension, DestroyExtension, UseExtension]
     content = file.read()
     file_paths = include_filepaths(content)
     if file_paths:

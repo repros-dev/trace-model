@@ -43,6 +43,7 @@ SELECT ?s ?o
 WHERE {
     ?s rdfs:comment ?o
 }
+ORDER BY ?s ?o
 
 __END_QUERY__
 
