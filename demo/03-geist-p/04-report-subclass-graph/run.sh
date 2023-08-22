@@ -116,38 +116,84 @@ END_CELL
 
 bash_cell visualize_subclass_vocab_using_geist << END_CELL
 
-geist-p report --outputfile products/query_subclass_vocab --outputformat none --outputformat png --outputformat gv << END_TEMPLATE
+geist-p report << END_TEMPLATE
+    
+{%- use "graphviz.geist" %}
+{%- query isfilepath=False as query_subclass_vocab_str %}
+    SELECT DISTINCT ?ChildLabel ?ParentLabel
+    WHERE {
+        ?ParentClass    rdf:type        rdfs:Class ;
+                        rdfs:label      ?ParentLabel .
+        
+        ?ChildClass     rdfs:subClassOf ?ParentClass ;
+                        rdf:type        rdfs:Class ;
+                        rdfs:label      ?ChildLabel .
 
-    {% use "graphviz.geist" %}
-    {% query isfilepath=False as query_subclass_vocab_str %}
-        SELECT DISTINCT ?ChildLabel ?ParentLabel
-        WHERE {
-            ?ParentClass    rdf:type        rdfs:Class ;
-                            rdfs:label      ?ParentLabel .
-            
-            ?ChildClass     rdfs:subClassOf ?ParentClass ;
-                            rdf:type        rdfs:Class ;
-                            rdfs:label      ?ChildLabel .
+        FILTER (?ChildLabel != ?ParentLabel)
+    }
+    ORDER BY ?ChildLabel ?ParentLabel
+{% endquery %}
+{%- set query_subclass_vocab = query_subclass_vocab_str | json2df %}
 
-            FILTER (?ChildLabel != ?ParentLabel)
-        }
-        ORDER BY ?ChildLabel ?ParentLabel
-    {% endquery %}
-    {% set query_subclass_vocab = query_subclass_vocab_str | json2df %}
+{%- html "report.html" %}
+{%- head "Geist Report" %}
 
-    {% gv_graph "subclass_vocab_graph", "BT" %}
-    {% gv_title "Subclass Vocab Graph" %}
-    {% gv_cluster "subclass" %}
+    <body>
+        <h1>Geist Report</h1>
+        <p>This report shows part of the vocabulary of TRACE.
+        <h3>1. Graph Demo</h3>
+        <h4>(1) PNG</h4>
+        {% img src="products/img.jpg" %}
+            {%- gv_graph "subclass_vocab_graph", "BT" %}
+            {%- gv_title "Subclass Vocab Graph" %}
+            {%- gv_cluster "subclass" %}
 
-    node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-    {% for _, row in query_subclass_vocab.iterrows() %}
-        {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
-    {% endfor %}
+            node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+            {% for _, row in query_subclass_vocab.iterrows() %}
+                {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
+            {% endfor %}
 
-    {% gv_cluster_end %}
-    {% gv_end %}
+            {% gv_cluster_end %}
+            {% gv_end %}
+        {% endimg %}
 
-    {% destroy %}
+        <h4>(2) SVG</h4>
+        {% img src="products/img.svg" %}
+            {%- gv_graph "subclass_vocab_graph", "BT" %}
+            {%- gv_title "Subclass Vocab Graph" %}
+            {%- gv_cluster "subclass" %}
+
+            node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+            {% for _, row in query_subclass_vocab.iterrows() %}
+                {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
+            {% endfor %}
+
+            {% gv_cluster_end %}
+            {% gv_end %}
+        {% endimg %}
+
+        <h4>(3) GV</h4>
+        {% img src="products/img.gv" %}
+            {%- gv_graph "subclass_vocab_graph", "BT" %}
+            {%- gv_title "Subclass Vocab Graph" %}
+            {%- gv_cluster "subclass" %}
+
+            node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+            {% for _, row in query_subclass_vocab.iterrows() %}
+                {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
+            {% endfor %}
+
+            {% gv_cluster_end %}
+            {% gv_end %}
+        {% endimg %}
+        
+         <h3>2. Table Demo</h3>
+        {%- table %}
+            {{ query_subclass_vocab_str }}
+        {% endtable %}
+</body>
+{% endhtml %}
+{%- destroy %}
 
 END_TEMPLATE
 
