@@ -21,6 +21,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 
 for r in g.query(q):
@@ -55,6 +56,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 
 for r in g.query(q):
@@ -89,6 +91,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 
 for r in g.query(q):
@@ -123,6 +126,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 
 for r in g.query(q):

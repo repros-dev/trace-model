@@ -93,7 +93,7 @@ END_CELL
 
 bash_cell 'report string with the validate_tro tool' << END_CELL
 
-python3 validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH}
+validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH}
 
 END_CELL
 
@@ -101,7 +101,7 @@ END_CELL
 
 bash_cell 'report txt file with the validate_tro tool' << END_CELL
 
-python3 validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_TXT_PATH}
+validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_TXT_PATH}
 
 END_CELL
 
@@ -109,7 +109,7 @@ END_CELL
 
 bash_cell 'report png file with the validate_tro tool' << END_CELL
 
-python3 validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_PNG_PATH} -of png
+validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_PNG_PATH} -of png
 
 END_CELL
 

@@ -29,6 +29,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 
 rows = []

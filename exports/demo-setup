@@ -1,3 +1,1 @@
 repro.env SHELL_NOTEBOOK_BANNER_WIDTH 132
-
-sudo pip install click tabulate jinja2 jinja2_simple_tags

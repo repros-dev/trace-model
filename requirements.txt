@@ -1,0 +1,10 @@
+pandas
+jsonschema
+rdflib
+owlrl
+pyshacl
+pygraphviz
+rdfvr
+jinja2
+jinja2_simple_tags
+tabulate

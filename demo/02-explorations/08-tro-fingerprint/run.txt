@@ -1,6 +1,6 @@
 =============================== bash cell | get fingerprint based on tro_fingerprint.py (directory) ================================
 
-python3 tro_fingerprint.py -d data/message
+tro_fingerprint -d data/message
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -9,7 +9,7 @@ python3 tro_fingerprint.py -d data/message
 
 ================================== bash cell | get fingerprint based on tro_fingerprint.py (file) ==================================
 
-python3 tro_fingerprint.py -f data/message/bar.txt,data/message/foo.txt,data/message/baz/baz.txt
+tro_fingerprint -f data/message/bar.txt,data/message/foo.txt,data/message/baz/baz.txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -18,7 +18,7 @@ python3 tro_fingerprint.py -f data/message/bar.txt,data/message/foo.txt,data/mes
 
 =========================== bash cell | get fingerprint based on tro_fingerprint.py (directory and file) ===========================
 
-python3 tro_fingerprint.py -d data/message/baz -f data/message/bar.txt,data/message/foo.txt
+tro_fingerprint -d data/message/baz -f data/message/bar.txt,data/message/foo.txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -27,7 +27,7 @@ python3 tro_fingerprint.py -d data/message/baz -f data/message/bar.txt,data/mess
 
 ============================ bash cell | create tro manifest containing the digest of data (directory) =============================
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="data/message", arg_file=None)
@@ -76,7 +76,7 @@ cat products/tro.jsonld
 
 =============================== bash cell | create tro manifest containing the digest of data (file) ===============================
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir=None, arg_file="data/message/bar.txt,data/message/foo.txt,data/message/baz/baz.txt")
@@ -125,7 +125,7 @@ cat products/tro.jsonld
 
 ======================== bash cell | create tro manifest containing the digest of data (directory and file) ========================
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="data/message/baz", arg_file="data/message/bar.txt,data/message/foo.txt")
@@ -174,7 +174,7 @@ cat products/tro.jsonld
 
 ================== bash cell | test different filenames: get fingerprint based on tro_fingerprint.py (directory) ===================
 
-python3 tro_fingerprint.py -d data/message_with_diff_filenames
+tro_fingerprint -d data/message_with_diff_filenames
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -183,7 +183,7 @@ python3 tro_fingerprint.py -d data/message_with_diff_filenames
 
 ===================== bash cell | test different filenames: get fingerprint based on tro_fingerprint.py (file) =====================
 
-python3 tro_fingerprint.py -f data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt,data/message_with_diff_filenames/test3/test3.txt
+tro_fingerprint -f data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt,data/message_with_diff_filenames/test3/test3.txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -192,7 +192,7 @@ python3 tro_fingerprint.py -f data/message_with_diff_filenames/test1.txt,data/me
 
 ============== bash cell | test different filenames: get fingerprint based on tro_fingerprint.py (directory and file) ==============
 
-python3 tro_fingerprint.py -d data/message_with_diff_filenames/test3 -f data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt
+tro_fingerprint -d data/message_with_diff_filenames/test3 -f data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 414e9a71745d2dcceb72c25d46ed771ed9221676d49186766dc07eae2a00e317
@@ -201,7 +201,7 @@ python3 tro_fingerprint.py -d data/message_with_diff_filenames/test3 -f data/mes
 
 =============== bash cell | test different filenames: create tro manifest containing the digest of data (directory) ================
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="data/message_with_diff_filenames", arg_file=None)
@@ -250,7 +250,7 @@ cat products/tro.jsonld
 
 ================== bash cell | test different filenames: create tro manifest containing the digest of data (file) ==================
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir=None, arg_file="data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt,data/message_with_diff_filenames/test3/test3.txt")
@@ -299,7 +299,7 @@ cat products/tro.jsonld
 
 =========== bash cell | test different filenames: create tro manifest containing the digest of data (directory and file) ===========
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="data/message_with_diff_filenames/test3", arg_file="data/message_with_diff_filenames/test1.txt,data/message_with_diff_filenames/test2.txt")

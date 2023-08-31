@@ -1,6 +1,6 @@
 =========================================== bash cell | convert tro1 from jsonld to csv ============================================
 
-python3 jsonld2csv.py --file data/tro1.jsonld --output products
+jsonld2csv --file data/tro1.jsonld --output products
 
 cat products/tro1*
 
@@ -14,7 +14,7 @@ composition/1/artifact/2,7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc374950
 
 =========================================== bash cell | convert tro1 from jsonld to csv ============================================
 
-python3 jsonld2csv.py --file data/tro2.jsonld --output products
+jsonld2csv --file data/tro2.jsonld --output products
 
 cat products/tro2*
 
@@ -33,7 +33,7 @@ trp/1,Workflow execution,trs,2023-05-05T01:30:00Z,2023-05-05T01:40:00Z,arrangeme
 
 =========================================== bash cell | convert tro1 from jsonld to csv ============================================
 
-python3 jsonld2csv.py --file data/tro3.jsonld --output products
+jsonld2csv --file data/tro3.jsonld --output products
 
 cat products/tro3*
 

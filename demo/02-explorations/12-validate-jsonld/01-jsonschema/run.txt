@@ -1,12 +1,6 @@
 ================================================= bash cell | validate tro1.jsonld =================================================
 
-python3 2>&1 << END_PYTHON
-
-from validate_jsonld import validate_tro
-
-validate_tro("data/tro1_c.jsonld", "tro.schema.json")
-
-END_PYTHON
+validate_jsonld --jsonldpath "data/tro1_c.jsonld" --schemapath "tro.schema.json"
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Is a valid TRO JSON-LD file.
@@ -17,7 +11,7 @@ Is a valid TRO JSON-LD file.
 
 python3 2>&1 << END_PYTHON
 
-from validate_jsonld import validate_tro
+from trace_model.validate_jsonld import validate_tro
 
 validate_tro("data/tro1_w.jsonld", "tro.schema.json")
 
@@ -26,9 +20,9 @@ END_PYTHON
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Traceback (most recent call last):
   File "<stdin>", line 4, in <module>
-  File "/mnt/trace-model/demo/02-explorations/12-validate-jsonld/01-jsonschema/validate_jsonld.py", line 14, in validate_tro
+  File "/mnt/trace-model/src/trace_model/validate_jsonld.py", line 14, in validate_tro
     validator.validate(instance=tro_jsonld)
-  File "/home/repro/.local/lib/python3.10/site-packages/jsonschema/validators.py", line 314, in validate
+  File "/mnt/trace-model/.python-dev/.local/lib/python3.10/site-packages/jsonschema/validators.py", line 435, in validate
     raise error
 jsonschema.exceptions.ValidationError: 'trov:wasTimestampedBy' is a required property
 

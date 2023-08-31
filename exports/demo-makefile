@@ -1,5 +1,4 @@
 run:
-	blazegraph-service.wait 		&&	\
 	make -C ${REPRO_MNT}/demo run
 
 clean:

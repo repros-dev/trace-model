@@ -81,7 +81,7 @@ END_PYTHON
 
 ======================================= bash cell | report string with the validate_tro tool =======================================
 
-python3 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl
+validate_tro -f data/tro.jsonld -s data/tro.schema.ttl
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Node: arrangement/1/locus/2 
@@ -94,7 +94,7 @@ Suggested Node(s) to be Updated: composition/1/artifact/100
 
 ====================================== bash cell | report txt file with the validate_tro tool ======================================
 
-python3 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.txt
+validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +102,7 @@ python3 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_
 
 ====================================== bash cell | report png file with the validate_tro tool ======================================
 
-python3 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.png -of png
+validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.png -of png
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

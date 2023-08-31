@@ -19,7 +19,7 @@ END_CELL
 
 bash_cell 'tar the data dir content' << END_CELL
 
-tar -czvf ${ZIPPED_MESSAGE_FILE} ${MESSAGE_FOLDER} --mtime='1970-01-01'
+find | sort | tar -czvf ${ZIPPED_MESSAGE_FILE} ${MESSAGE_FOLDER} --mtime='1970-01-01 00:00:00'
 
 END_CELL
 
@@ -54,9 +54,7 @@ END_CELL
 bash_cell 'import jsonld' << END_CELL
 
 # Import TRO as JSON-LD and export as N-TRIPLES
-geist destroy --dataset kb --quiet
-geist create --dataset kb --infer owl --quiet
-geist import --format jsonld --file ${TRO_JSONLD_FILE}
+geist create --dataset kb --inputformat json-ld --inputfile ${TRO_JSONLD_FILE} --infer owl
 
 END_CELL
 
@@ -66,21 +64,21 @@ bash_cell 'create a tmp file to verify the digest' << 'END_CELL'
 
 # Note: there must be exactly two spaces between the hash and the file path
 DIGEST_FILE=products/digest.txt
-geist report > ${DIGEST_FILE} << 'END_TEMPLATE'
-    {{ prefix "trov" "https://w3id.org/trace/2022/10/trov#" }}             \\
-                                                                           \\
-    {{ range $Digest := select '''
-        SELECT DISTINCT ?hash ?filePath
-        WHERE {
-            ?tro   trov:digest  ?hash .
-            ?tro   trov:troFilePath ?filePath .
-        }                                                                   \\
-        ''' | rows }}                                                       \\
-                                                                             \\
-        {{ index $Digest 0 }}  {{ index $Digest 1 }}                          \\
-    {{ end }}                                                                
+geist report > ${DIGEST_FILE} << END_TEMPLATE
+{% query isfilepath=False as digest_str %}
+    SELECT DISTINCT ?hash ?filePath
+    WHERE {
+        ?tro   trov:digest  ?hash .
+        ?tro   trov:troFilePath ?filePath .
+    }
+{% endquery %}
+{% set digest = digest_str | json2df %}
+{% for _, row in digest.iterrows() %}
+{{ row["hash"][1:-1] }}  {{ row["filePath"][1:-1] }}
+{%- endfor %}
 END_TEMPLATE
 cat ${DIGEST_FILE}
+geist destroy --dataset kb
 END_CELL
 
 # ------------------------------------------------------------------------------

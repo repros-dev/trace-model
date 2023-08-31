@@ -293,7 +293,14 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fp1>
 	Result Path: trov:hasFingerprint
-	Message: Value does not conform to Shape schema1:FingerprintShape
+	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
+	Details:
+		Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fp1>
+			Result Path: trov:sha256
+			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
 Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArtifactShape ; sh:path trov:hasArtifact ]
@@ -484,7 +491,15 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
 	Result Path: trov:hasLocus
-	Message: Value does not conform to Shape schema1:LocusShape
+	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
+	Details:
+		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+			Result Path: trov:hasArtifact
+			Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
@@ -494,33 +509,42 @@ Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#Cla
 	Message: Value does not have class trov:ResearchArtifact
 
 *********************************************
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasLocus
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#sourceShape n2383296ee5694c24b397dd485c045371b14
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
-n2383296ee5694c24b397dd485c045371b14 http://www.w3.org/ns/shacl#node http://schema.org/LocusShape
-N88059149138e41929a3003ff9428febc http://www.w3.org/ns/shacl#result Nf84923a64eaa4d8480cd63296624dc49
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
-n2383296ee5694c24b397dd485c045371b15 http://www.w3.org/ns/shacl#minCount 1
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#resultMessage Value does not conform to Shape schema1:LocusShape
-n2383296ee5694c24b397dd485c045371b14 http://www.w3.org/ns/shacl#minCount 1
-n2383296ee5694c24b397dd485c045371b15 http://www.w3.org/ns/shacl#maxCount 1
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#sourceShape n2383296ee5694c24b397dd485c045371b15
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
-n2383296ee5694c24b397dd485c045371b15 http://www.w3.org/ns/shacl#class https://w3id.org/trace/2023/05/trov#ResearchArtifact
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
-N88059149138e41929a3003ff9428febc http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationReport
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#NodeConstraintComponent
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
-n2383296ee5694c24b397dd485c045371b15 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasArtifact
-N88059149138e41929a3003ff9428febc http://www.w3.org/ns/shacl#conforms false
-N88059149138e41929a3003ff9428febc http://www.w3.org/ns/shacl#result N7e737c9b910a4869a78dbd5fd134996f
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
-Nf84923a64eaa4d8480cd63296624dc49 http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
-n2383296ee5694c24b397dd485c045371b14 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasLocus
-N7e737c9b910a4869a78dbd5fd134996f http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+n821dec6ce4554ea48fb81a5c55d62bccb14 http://www.w3.org/ns/shacl#minCount 1
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1
+Nf501cbee3cbf467c945626f49d8ccae2 http://www.w3.org/ns/shacl#result N6ba4226c44ed49339170acf937441f6d
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+Nf501cbee3cbf467c945626f49d8ccae2 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationReport
+n821dec6ce4554ea48fb81a5c55d62bccb15 http://www.w3.org/ns/shacl#minCount 1
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasLocus
+n821dec6ce4554ea48fb81a5c55d62bccb15 http://www.w3.org/ns/shacl#maxCount 1
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#NodeConstraintComponent
+n821dec6ce4554ea48fb81a5c55d62bccb14 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasLocus
+Nf501cbee3cbf467c945626f49d8ccae2 http://www.w3.org/ns/shacl#conforms false
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+n821dec6ce4554ea48fb81a5c55d62bccb15 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasArtifact
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#resultMessage Value does not conform to Shape schema1:LocusShape. See details for more information.
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#detail Nc62d71f440094fb983de47900107d3ed
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+n821dec6ce4554ea48fb81a5c55d62bccb14 http://www.w3.org/ns/shacl#node http://schema.org/LocusShape
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+Nf501cbee3cbf467c945626f49d8ccae2 http://www.w3.org/ns/shacl#result Nb1662ae4158e4a4f91c616bf5b8dee9a
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#sourceShape n821dec6ce4554ea48fb81a5c55d62bccb15
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#sourceShape n821dec6ce4554ea48fb81a5c55d62bccb15
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/ns/shacl#sourceShape n821dec6ce4554ea48fb81a5c55d62bccb14
+Nb1662ae4158e4a4f91c616bf5b8dee9a http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
+N6ba4226c44ed49339170acf937441f6d http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
+Nc62d71f440094fb983de47900107d3ed http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
+n821dec6ce4554ea48fb81a5c55d62bccb15 http://www.w3.org/ns/shacl#class https://w3id.org/trace/2023/05/trov#ResearchArtifact
 *********************************************
 Validate error message: PASS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -612,6 +636,7 @@ q = """
         FILTER (?value != ?another_focus)
         FILTER (?another_node != ?curr_node)
     }
+    ORDER BY ?focus ?value ?msg
 """
 
 for x in results_graph.query(q):
@@ -636,37 +661,57 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
 	Result Path: trov:hasLocus
-	Message: Value does not conform to Shape schema1:LocusShape
+	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
+	Details:
+		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+			Result Path: trov:hasArtifact
+			Message: Value does not have class trov:ResearchArtifact
 
 *********************************************
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#resultMessage Value does not conform to Shape schema1:LocusShape
-N7ee75a1f1e794f1c98cbaca848a2009a http://www.w3.org/ns/shacl#result Nfc4cc973ff7c438ebe65b6668ed70f8c
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
-ne43017ebce184d8aaa643c9957a96a50b14 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasLocus
-ne43017ebce184d8aaa643c9957a96a50b15 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasArtifact
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#sourceShape ne43017ebce184d8aaa643c9957a96a50b14
-ne43017ebce184d8aaa643c9957a96a50b14 http://www.w3.org/ns/shacl#node http://schema.org/LocusShape
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasLocus
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#NodeConstraintComponent
-ne43017ebce184d8aaa643c9957a96a50b14 http://www.w3.org/ns/shacl#minCount 1
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
-ne43017ebce184d8aaa643c9957a96a50b15 http://www.w3.org/ns/shacl#minCount 1
-N7ee75a1f1e794f1c98cbaca848a2009a http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationReport
-N7ee75a1f1e794f1c98cbaca848a2009a http://www.w3.org/ns/shacl#result Nc9554aaf3e5c4deaaa2dfac59fe9e111
-N7ee75a1f1e794f1c98cbaca848a2009a http://www.w3.org/ns/shacl#conforms false
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#sourceShape ne43017ebce184d8aaa643c9957a96a50b15
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
-ne43017ebce184d8aaa643c9957a96a50b15 http://www.w3.org/ns/shacl#class https://w3id.org/trace/2023/05/trov#ResearchArtifact
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
-Nfc4cc973ff7c438ebe65b6668ed70f8c http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1
-Nc9554aaf3e5c4deaaa2dfac59fe9e111 http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
-ne43017ebce184d8aaa643c9957a96a50b15 http://www.w3.org/ns/shacl#maxCount 1
+N734e11e373334c8ca3528ae367f95081 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationReport
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#detail N0f858520750b42c99dca0311aad734ce
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
+nabdb1eb16d364780bc6a519b03f402efb14 http://www.w3.org/ns/shacl#node http://schema.org/LocusShape
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#sourceShape nabdb1eb16d364780bc6a519b03f402efb15
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+nabdb1eb16d364780bc6a519b03f402efb15 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasArtifact
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
+N734e11e373334c8ca3528ae367f95081 http://www.w3.org/ns/shacl#result Ncd0d489248764f1b9ed66fbbb8d15095
+nabdb1eb16d364780bc6a519b03f402efb14 http://www.w3.org/ns/shacl#minCount 1
+nabdb1eb16d364780bc6a519b03f402efb15 http://www.w3.org/ns/shacl#minCount 1
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+nabdb1eb16d364780bc6a519b03f402efb15 http://www.w3.org/ns/shacl#class https://w3id.org/trace/2023/05/trov#ResearchArtifact
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasLocus
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#resultMessage Value does not conform to Shape schema1:LocusShape. See details for more information.
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+nabdb1eb16d364780bc6a519b03f402efb15 http://www.w3.org/ns/shacl#maxCount 1
+N734e11e373334c8ca3528ae367f95081 http://www.w3.org/ns/shacl#result N9a960a42b75f42a685060353a876917d
+nabdb1eb16d364780bc6a519b03f402efb14 http://www.w3.org/ns/shacl#path https://w3id.org/trace/2023/05/trov#hasLocus
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#ClassConstraintComponent
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#sourceConstraintComponent http://www.w3.org/ns/shacl#NodeConstraintComponent
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#sourceShape nabdb1eb16d364780bc6a519b03f402efb14
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#resultPath https://w3id.org/trace/2023/05/trov#hasArtifact
+N0f858520750b42c99dca0311aad734ce http://www.w3.org/ns/shacl#resultSeverity http://www.w3.org/ns/shacl#Violation
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#sourceShape nabdb1eb16d364780bc6a519b03f402efb15
+N9a960a42b75f42a685060353a876917d http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://www.w3.org/ns/shacl#ValidationResult
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#focusNode https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+N9a960a42b75f42a685060353a876917d http://www.w3.org/ns/shacl#value https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2
+Ncd0d489248764f1b9ed66fbbb8d15095 http://www.w3.org/ns/shacl#resultMessage Value does not have class trov:ResearchArtifact
+N734e11e373334c8ca3528ae367f95081 http://www.w3.org/ns/shacl#conforms false
 *********************************************
+(rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2'), rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100'), rdflib.term.Literal('Value does not have class trov:ResearchArtifact'))
+(rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2'), rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100'), rdflib.term.Literal('Value does not have class trov:ResearchArtifact'))
+(rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2'), rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100'), rdflib.term.Literal('Value does not have class trov:ResearchArtifact'))
 (rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2'), rdflib.term.URIRef('https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100'), rdflib.term.Literal('Value does not have class trov:ResearchArtifact'))
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -16,7 +16,7 @@ TRO_JSONLD_FILE=products/tro.jsonld
 
 bash_cell 'get fingerprint based on tro_fingerprint.py (directory)' << END_CELL
 
-python3 tro_fingerprint.py -d ${MESSAGE_DIR}
+tro_fingerprint -d ${MESSAGE_DIR}
 
 END_CELL
 
@@ -24,7 +24,7 @@ END_CELL
 
 bash_cell 'get fingerprint based on tro_fingerprint.py (file)' << END_CELL
 
-python3 tro_fingerprint.py -f ${MESSAGE_FILE}
+tro_fingerprint -f ${MESSAGE_FILE}
 
 END_CELL
 
@@ -32,7 +32,7 @@ END_CELL
 
 bash_cell 'get fingerprint based on tro_fingerprint.py (directory and file)' << END_CELL
 
-python3 tro_fingerprint.py -d ${MESSAGE_SUBDIR} -f ${MESSAGE_FILE_WITHOUT_SUBDIR}
+tro_fingerprint -d ${MESSAGE_SUBDIR} -f ${MESSAGE_FILE_WITHOUT_SUBDIR}
 
 END_CELL
 
@@ -40,7 +40,7 @@ END_CELL
 
 bash_cell 'create tro manifest containing the digest of data (directory)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="${MESSAGE_DIR}", arg_file=None)
@@ -72,7 +72,7 @@ END_CELL
 
 bash_cell 'create tro manifest containing the digest of data (file)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir=None, arg_file="${MESSAGE_FILE}")
@@ -104,7 +104,7 @@ END_CELL
 
 bash_cell 'create tro manifest containing the digest of data (directory and file)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="${MESSAGE_SUBDIR}", arg_file="${MESSAGE_FILE_WITHOUT_SUBDIR}")
@@ -136,7 +136,7 @@ END_CELL
 
 bash_cell 'test different filenames: get fingerprint based on tro_fingerprint.py (directory)' << END_CELL
 
-python3 tro_fingerprint.py -d ${MESSAGE_WITH_DIFF_FILENAMES_DIR}
+tro_fingerprint -d ${MESSAGE_WITH_DIFF_FILENAMES_DIR}
 
 END_CELL
 
@@ -144,7 +144,7 @@ END_CELL
 
 bash_cell 'test different filenames: get fingerprint based on tro_fingerprint.py (file)' << END_CELL
 
-python3 tro_fingerprint.py -f ${MESSAGE_WITH_DIFF_FILENAMES_FILE}
+tro_fingerprint -f ${MESSAGE_WITH_DIFF_FILENAMES_FILE}
 
 END_CELL
 
@@ -152,7 +152,7 @@ END_CELL
 
 bash_cell 'test different filenames: get fingerprint based on tro_fingerprint.py (directory and file)' << END_CELL
 
-python3 tro_fingerprint.py -d ${MESSAGE_WITH_DIFF_FILENAMES_SUBDIR} -f ${MESSAGE_WITH_DIFF_FILENAMES_FILE_WITHOUT_SUBDIR}
+tro_fingerprint -d ${MESSAGE_WITH_DIFF_FILENAMES_SUBDIR} -f ${MESSAGE_WITH_DIFF_FILENAMES_FILE_WITHOUT_SUBDIR}
 
 END_CELL
 
@@ -160,7 +160,7 @@ END_CELL
 
 bash_cell 'test different filenames: create tro manifest containing the digest of data (directory)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="${MESSAGE_WITH_DIFF_FILENAMES_DIR}", arg_file=None)
@@ -192,7 +192,7 @@ END_CELL
 
 bash_cell 'test different filenames: create tro manifest containing the digest of data (file)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir=None, arg_file="${MESSAGE_WITH_DIFF_FILENAMES_FILE}")
@@ -224,7 +224,7 @@ END_CELL
 
 bash_cell 'test different filenames: create tro manifest containing the digest of data (directory and file)' << END_CELL
 python3 << END_PYTHON
-from tro_fingerprint import compute_fingerprint
+from trace_model.tro_fingerprint import compute_fingerprint
 import json
 
 fingerprint = compute_fingerprint(arg_dir="${MESSAGE_WITH_DIFF_FILENAMES_SUBDIR}", arg_file="${MESSAGE_WITH_DIFF_FILENAMES_FILE_WITHOUT_SUBDIR}")

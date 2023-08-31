@@ -13,23 +13,12 @@ USER repro
 
 # install required external repro modules
 RUN repro.require python-dev master ${REPROS_DEV} --default --code
-RUN repro.require blazegraph-service master ${CIRSS}
-RUN repro.require blaze 0.2.7 ${CIRSS_RELEASE}
-RUN repro.require geist 0.2.7 ${CIRSS_RELEASE}
 RUN repro.require shell-notebook master ${REPROS_DEV}
 RUN repro.require graphviz-runtime master ${REPROS_DEV} --util
 RUN repro.require gnupg-runtime master ${REPROS_DEV}
 RUN repro.require gnupg-api master ${REPROS_DEV}
 
-# install python package
-RUN sudo pip install pandas
-RUN sudo pip install jsonschema
-RUN sudo pip install rdflib
-RUN sudo pip install owlrl
-RUN sudo pip install pyshacl
 RUN sudo apt install graphviz-dev -y
-RUN sudo pip install pygraphviz
-RUN sudo pip install rdfvr
 
 # install contents of the exports directory as a repro module
 RUN repro.require trace-model exports --demo

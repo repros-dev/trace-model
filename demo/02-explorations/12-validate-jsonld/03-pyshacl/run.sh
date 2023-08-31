@@ -477,6 +477,7 @@ q = """
         FILTER (?value != ?another_focus)
         FILTER (?another_node != ?curr_node)
     }
+    ORDER BY ?focus ?value ?msg
 """
 
 for x in results_graph.query(q):

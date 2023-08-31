@@ -1,0 +1,9 @@
+[console_scripts]
+format_string = trace_model.format_string:cli
+geist = geist.__main__:cli
+jsonld2csv = trace_model.jsonld2csv:cli
+merge_states = trace_model.merge_states:cli
+tro_fingerprint = trace_model.tro_fingerprint:cli
+tro_fingerprint_state = trace_model.tro_fingerprint_state:cli
+validate_jsonld = trace_model.validate_jsonld:cli
+validate_tro = trace_model.validate_tro:cli
