@@ -1,2 +1,0 @@
-geist
-trace_model
