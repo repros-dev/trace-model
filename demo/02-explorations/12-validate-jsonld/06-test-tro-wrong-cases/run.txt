@@ -6,6 +6,13 @@ validate_tro -f data/tro1.jsonld -s data/tro.schema.ttl -o products/tro1 -of png
 Validation Report
 Conforms: False
 Results (2):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+	Result Path: trov:hasArtifact
+	Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
@@ -21,13 +28,6 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
 			Result Path: trov:hasArtifact
 			Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-	Result Path: trov:hasArtifact
-	Message: Value does not have class trov:ResearchArtifact
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -131,6 +131,28 @@ validate_tro -f data/tro2.jsonld -s data/tro.schema.ttl -o products/tro2 -of gv 
 Validation Report
 Conforms: False
 Results (3):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+	Result Path: trov:hasArtifact
+	Message: Value does not have class trov:ResearchArtifact
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+	Result Path: trov:hasLocus
+	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
+	Details:
+		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+			Result Path: trov:hasArtifact
+			Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArrShape ; sh:path trov:hasArrangement ]
@@ -154,28 +176,6 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 					Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
 					Result Path: trov:hasArtifact
 					Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
-	Result Path: trov:hasLocus
-	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
-	Details:
-		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
-			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-			Result Path: trov:hasArtifact
-			Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/2>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-	Result Path: trov:hasArtifact
-	Message: Value does not have class trov:ResearchArtifact
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -188,13 +188,6 @@ validate_tro -f data/tro3.jsonld -s data/tro.schema.ttl -o products/tro3 -of png
 Validation Report
 Conforms: False
 Results (13):
-Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-	Result Path: trov:hasArtifact
-	Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
@@ -207,6 +200,53 @@ Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>
 	Result Path: trov:publicKey
 	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>->trov:publicKey
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+	Result Path: trov:hasFingerprint
+	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
+	Details:
+		Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+			Result Path: trov:sha256
+			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+	Result Path: trov:hasFingerprint
+	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
+	Details:
+		Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+			Result Path: trov:sha256
+			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArtifactShape ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
+	Result Path: trov:hasArtifact
+	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
+Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:publicKey ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>
+	Result Path: trov:publicKey
+	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>->trov:publicKey
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+	Result Path: trov:hasArtifact
+	Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:TrsShape ; sh:path trov:wasAssembledBy ]
@@ -239,28 +279,6 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
-	Result Path: trov:hasComposition
-	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
-	Details:
-		Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
-			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-			Result Path: trov:hasFingerprint
-			Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
-			Details:
-				Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
-					Severity: sh:Violation
-					Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
-					Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-					Result Path: trov:sha256
-					Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
 	Result Path: trov:hasComposition
 	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
@@ -287,6 +305,28 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 			Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+	Result Path: trov:hasComposition
+	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
+	Details:
+		Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+			Result Path: trov:hasFingerprint
+			Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
+			Details:
+				Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+					Severity: sh:Violation
+					Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+					Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+					Result Path: trov:sha256
+					Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArrShape ; sh:path trov:hasArrangement ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
@@ -308,46 +348,6 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 					Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
 					Result Path: trov:hasArtifact
 					Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:publicKey ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>
-	Result Path: trov:publicKey
-	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>->trov:publicKey
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-	Result Path: trov:hasFingerprint
-	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
-	Details:
-		Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-			Result Path: trov:sha256
-			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-	Result Path: trov:hasFingerprint
-	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
-	Details:
-		Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-			Result Path: trov:sha256
-			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArtifactShape ; sh:path trov:hasArtifact ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
-	Result Path: trov:hasArtifact
-	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
@@ -377,28 +377,6 @@ Conforms: False
 Results (13):
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
-	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
-	Result Path: trov:hasLocus
-	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
-	Details:
-		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
-			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-			Result Path: trov:hasArtifact
-			Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
-	Result Path: trov:hasArtifact
-	Message: Value does not have class trov:ResearchArtifact
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
 	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:TrsShape ; sh:path trov:wasAssembledBy ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>
@@ -429,6 +407,28 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+	Result Path: trov:hasComposition
+	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
+	Details:
+		Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+			Result Path: trov:hasFingerprint
+			Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
+			Details:
+				Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
+					Severity: sh:Violation
+					Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+					Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
+					Result Path: trov:sha256
+					Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
 	Result Path: trov:hasComposition
 	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
@@ -455,28 +455,6 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 			Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
-	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:CompShape ; sh:path trov:hasComposition ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
-	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
-	Result Path: trov:hasComposition
-	Message: Value does not conform to Shape schema1:CompShape. See details for more information.
-	Details:
-		Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-			Severity: sh:Violation
-			Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
-			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-			Result Path: trov:hasFingerprint
-			Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
-			Details:
-				Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
-					Severity: sh:Violation
-					Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
-					Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
-					Result Path: trov:sha256
-					Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
-	Severity: sh:Violation
 	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:ArrShape ; sh:path trov:hasArrangement ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tro>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
@@ -501,13 +479,13 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:publicKey ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>
 	Result Path: trov:publicKey
-	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>->trov:publicKey
+	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>->trov:publicKey
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
 	Result Path: trov:hasFingerprint
 	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
@@ -521,7 +499,7 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1>
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
 	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
 	Result Path: trov:hasFingerprint
 	Message: Value does not conform to Shape schema1:FingerprintShape. See details for more information.
@@ -538,18 +516,40 @@ Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>
 	Result Path: trov:hasArtifact
 	Message: Less than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/2>->trov:hasArtifact
+Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:LocusShape ; sh:path trov:hasLocus ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
+	Result Path: trov:hasLocus
+	Message: Value does not conform to Shape schema1:LocusShape. See details for more information.
+	Details:
+		Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+			Severity: sh:Violation
+			Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
+			Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+			Result Path: trov:hasArtifact
+			Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
 	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fingerprint>
 	Result Path: trov:sha256
 	Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class trov:ResearchArtifact ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:hasArtifact ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/4>
+	Value Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/composition/1/artifact/100>
+	Result Path: trov:hasArtifact
+	Message: Value does not have class trov:ResearchArtifact
 Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:publicKey ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>
 	Result Path: trov:publicKey
-	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/trs>->trov:publicKey
+	Message: More than 1 values on <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/tsa>->trov:publicKey
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -562,12 +562,6 @@ validate_tro -f data/tro4.jsonld -s data/tro.schema.ttl -o products/tro4 -of png
 Validation Report
 Conforms: False
 Results (2):
-Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
-	Severity: sh:Violation
-	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
-	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fp1>
-	Result Path: trov:sha256
-	Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
 Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
 	Severity: sh:Violation
 	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node schema1:FingerprintShape ; sh:path trov:hasFingerprint ]
@@ -582,6 +576,12 @@ Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#Node
 			Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fp1>
 			Result Path: trov:sha256
 			Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:datatype xsd:string ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("*** Each fingerprint should have EXACTLY ONE sha256 with String format ***") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path trov:sha256 ]
+	Focus Node: <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/fp1>
+	Result Path: trov:sha256
+	Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

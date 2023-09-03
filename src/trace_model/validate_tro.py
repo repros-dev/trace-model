@@ -104,6 +104,7 @@ def process_graph(tro_graph, mappings, errors):
             WHERE {
                 ?s ?p ?o
             }
+            GROUP BY ?s ?p ?o
         """
     rows = []
     for r in tro_graph.query(q):

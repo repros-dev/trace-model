@@ -1,30 +1,62 @@
-================================== bash cell | tro validation 1: refer to a nonexistent artifact ===================================
+================================ bash cell | tro validation 1 png: refer to a nonexistent artifact =================================
 
-rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro1.png -of png
-
------------------------------------------------------------ cell outputs -----------------------------------------------------------
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-================================== bash cell | tro validation 2: refer to a nonexistent artifact ===================================
-
-rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro2.png -of png
+rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro1 -of png
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-================================== bash cell | tro validation 3: refer to a nonexistent artifact ===================================
+================================= bash cell | tro validation 1 gv: refer to a nonexistent artifact =================================
 
-rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro3.png -of png
+rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro1 -of gv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-=========================================== bash cell | tro validation 4: lack of sha256 ===========================================
+================================ bash cell | tro validation 2 png: refer to a nonexistent artifact =================================
 
-rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro4.png -of png
+rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro2 -of png
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================= bash cell | tro validation 2 gv: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro2 -of gv
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 3 png: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro3 -of png
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================= bash cell | tro validation 3 gv: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro3 -of gv
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+========================================= bash cell | tro validation 4 png: lack of sha256 =========================================
+
+rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro4 -of png
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+========================================= bash cell | tro validation 4 gv: lack of sha256 ==========================================
+
+rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro4 -of gv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -32,7 +64,15 @@ rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 
 =================================== bash cell | tro validation 5 export as png: multiple sha256 ====================================
 
-rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5.png -of png
+rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5 -of png
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+==================================== bash cell | tro validation 5 export as gv: multiple sha256 ====================================
+
+rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5 -of gv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,7 +80,7 @@ rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 
 =================================== bash cell | tro validation 5 export as txt: multiple sha256 ====================================
 
-rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5.txt -of txt
+rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5 -of txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -53,7 +93,7 @@ rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Node: fp1 
 Error Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Suggested Node(s) to be Updated: sha256.fp2, sha256.fp1
+Suggested Node(s) to be Updated: sha256.fp1, sha256.fp2
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
