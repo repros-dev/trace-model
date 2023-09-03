@@ -70,8 +70,8 @@ for _, row in wrong.iterrows():
     G.add_node(row["node"], color="#f77580")
     # G.add_edge(row["node"], row["msg"], label="ErrorMsg", color="#f77580")
 
-G.write("products/scratch_report.dot")
-subprocess.run(["dot", "-Tpng", "products/scratch_report.dot", "-o", "products/scratch_report.png"])
+G.write("products/scratch_report.gv")
+subprocess.run(["dot", "-Tpng", "products/scratch_report.gv", "-o", "products/scratch_report.png"])
 
 END_PYTHON
 
@@ -84,17 +84,12 @@ END_PYTHON
 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
-Node: arrangement/1/locus/2 
-Error Message: Value does not have class trov:ResearchArtifact
-Suggested Node(s) to be Updated: composition/1/artifact/100
-
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ====================================== bash cell | report txt file with the validate_tro tool ======================================
 
-validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.txt
+validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report -of txt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +97,7 @@ validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.t
 
 ====================================== bash cell | report png file with the validate_tro tool ======================================
 
-validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report.png -of png
+validate_tro -f data/tro.jsonld -s data/tro.schema.ttl -o products/tool_report -of png
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

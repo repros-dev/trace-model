@@ -3,10 +3,8 @@
 # paths to data files
 TRO_DECLARATION_JSONLD_PATH="data/tro.jsonld"
 TRO_DECLARATION_SCHEMA_PATH="data/tro.schema.ttl"
-SCRATCH_REPORT_DOT_PATH="products/scratch_report.dot"
-SCRATCH_REPORT_PNG_PATH="products/scratch_report.png"
-TOOL_REPORT_TXT_PATH="products/tool_report.txt"
-TOOL_REPORT_PNG_PATH="products/tool_report.png"
+SCRATCH_REPORT_PATH="products/scratch_report"
+TOOL_REPORT_PATH="products/tool_report"
 
 # ------------------------------------------------------------------------------
 
@@ -82,8 +80,8 @@ for _, row in wrong.iterrows():
     G.add_node(row["node"], color="#f77580")
     # G.add_edge(row["node"], row["msg"], label="ErrorMsg", color="#f77580")
 
-G.write("${SCRATCH_REPORT_DOT_PATH}")
-subprocess.run(["dot", "-Tpng", "${SCRATCH_REPORT_DOT_PATH}", "-o", "${SCRATCH_REPORT_PNG_PATH}"])
+G.write("${SCRATCH_REPORT_PATH}.gv")
+subprocess.run(["dot", "-Tpng", "${SCRATCH_REPORT_PATH}.gv", "-o", "${SCRATCH_REPORT_PATH}.png"])
 
 END_PYTHON
 
@@ -101,7 +99,7 @@ END_CELL
 
 bash_cell 'report txt file with the validate_tro tool' << END_CELL
 
-validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_TXT_PATH}
+validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_PATH} -of txt
 
 END_CELL
 
@@ -109,7 +107,7 @@ END_CELL
 
 bash_cell 'report png file with the validate_tro tool' << END_CELL
 
-validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_PNG_PATH} -of png
+validate_tro -f ${TRO_DECLARATION_JSONLD_PATH} -s ${TRO_DECLARATION_SCHEMA_PATH} -o ${TOOL_REPORT_PATH} -of png
 
 END_CELL
 

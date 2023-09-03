@@ -4,7 +4,8 @@ from pyshacl import validate
 from rdflib import Graph
 import pygraphviz as pgv
 import pandas as pd
-import argparse, subprocess
+import argparse
+import os
 
 mappings={
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#": "rdf#",
@@ -12,6 +13,12 @@ mappings={
     "https://w3id.org/trace/2023/05/trov#": "trov#",
     "https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/": ""
     }
+
+def ensure_dir_exists(file_path):
+    dir_path = os.path.split(file_path)[0]
+    if (dir_path != '') and (not os.path.isdir(dir_path)):
+        os.makedirs(dir_path)
+    return
 
 def load_tro_file(file_path, graph_format="json-ld"):
     """
@@ -107,20 +114,20 @@ def process_graph(tro_graph, mappings, errors):
 
 def visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes):
     # Create a directed graph
-    g_dot = pgv.AGraph(directed=True)
+    G = pgv.AGraph(directed=True)
     # Add nodes and edges
     for _, row in tro_graph_processed.iterrows():
-        g_dot.add_node(row["source"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
-        g_dot.add_node(row["target"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
-        g_dot.add_edge(row["source"], row["target"], label=row["label"])
+        G.add_node(row["source"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
+        G.add_node(row["target"], shape="box", style="filled, rounded", fillcolor="#b3e2cd")
+        G.add_edge(row["source"], row["target"], label=row["label"])
     for _, row in errors_with_suggested_nodes[["node", "msg"]].drop_duplicates().iterrows():
-        g_dot.add_node(row["node"], shape="box", style="filled, rounded", fillcolor="#fdccac")
-        g_dot.add_node(row["msg"], shape="box", style="filled, rounded, dashed", fillcolor="#fdccac")
-        g_dot.add_edge(row["node"], row["msg"], label="ErrorMsg", style="dashed")
+        G.add_node(row["node"], shape="box", style="filled, rounded", fillcolor="#fdccac")
+        G.add_node(row["msg"], shape="box", style="filled, rounded, dashed", fillcolor="#fdccac")
+        G.add_edge(row["node"], row["msg"], label="ErrorMsg", style="dashed")
     # Suggested nodes to be updated
     for suggested_node in errors_with_suggested_nodes["target"].dropna().unique():
-        g_dot.add_node(suggested_node, shape="box", style="filled, rounded", fillcolor="#cbd5e8")
-    return g_dot
+        G.add_node(suggested_node, shape="box", style="filled, rounded", fillcolor="#cbd5e8")
+    return G
 
 def report_graph_as_txt(errors_with_suggested_nodes):
     report_text = ""
@@ -136,8 +143,8 @@ def cli():
     parser.add_argument("--schema", "-s", help="Schema of the TRO Declaration (str): path of the file.")
     parser.add_argument("--fileformat", "-ff", help="File format(s) of the TRO Declarations to be validated (list[str] | str ). Orders should be consistent with the input of --file. Default format is json-ld. If all input files have the same format, only need to write once.")
     parser.add_argument("--schemaformat", "-sf", default="ttl", choices=["xml", "n3", "turtle", "nt", "pretty-xml", "trix", "trig", "nquads", "json-ld", "hext"], help="File format of the schema (str). Default format is ttl.")
-    parser.add_argument("--output", "-o", help="File(s) of the output, validation report (list[str] | str ). If no value, then output will be a string. Please use comma (no space) to split multiple file paths (e.g. file1,file2,file3).")
-    parser.add_argument("--outputformat", "-of", help="File format(s) of the output, validation report (list[str] | str ).  Orders should be consistent with the input of --output. Default format is txt. Each item can only be one of {txt,png}. Please use comma (no space) to split multiple formats (e.g. format1,format2,format3). If all output files have the same format, only need to write once.")
+    parser.add_argument("--output", "-o", help="File(s) of the validation report without extension (list[str] | str ). If no value, then output will be a string. Please use comma (no space) to split multiple file paths (e.g. file1,file2,file3).")
+    parser.add_argument("--outputformat", "-of", help="File format(s) of the output, validation report (list[str] | str ).  Orders should be consistent with the input of --output. Default format is txt. Each item can only be one of {txt,png,gv}. Please use comma (no space) to split multiple formats (e.g. format1,format2,format3). If all output files have the same format, only need to write once.")
     arg_showerrors, arg_file, arg_schema, arg_fileformat, arg_schemaformat, arg_outputformat, arg_output = parser.parse_args().showerrors, parser.parse_args().file, parser.parse_args().schema, parser.parse_args().fileformat, parser.parse_args().schemaformat, parser.parse_args().outputformat, parser.parse_args().output
 
     if not arg_file:
@@ -167,14 +174,18 @@ def cli():
         # Find the suggested error nodes
         (tro_graph_processed, errors_with_suggested_nodes) = process_graph(tro_graph, mappings, errors)
         # Output
-        if output_format not in ["txt", "png"]:
-            raise ValueError("The output file format can only be one of {txt, png}, but " + str(output_format) + " was given. Please check --outputformat.")
+        if output_format not in ["txt", "png", "gv"]:
+            raise ValueError("The output file format can only be one of {txt, png, gv}, but " + str(output_format) + " was given. Please check --outputformat.")
         
-        if output_format == "png":
-            g_dot = visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes)
-            dot_path = output_path + ".dot"
-            g_dot.write(dot_path)
-            subprocess.run(["dot", "-Tpng", dot_path, "-o", output_path])
+        output_path = output_path + "." + output_format if output_path else None
+        ensure_dir_exists(output_path)
+        if output_format == "png" or output_format == "gv":
+            G = visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes)
+            if output_format == "png":
+                G.layout(prog="dot")
+                G.draw(output_path)
+            else: # gv
+                G.write(output_path)
         else:
             report_text = report_graph_as_txt(errors_with_suggested_nodes)
             if not output_path:

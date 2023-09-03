@@ -186,6 +186,9 @@ geist load --dataset kb --inputformat json-ld --inputfile tro/tro.jsonld
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist export --dataset kb --outputformat nt | sort | grep trov-example
 
+# Destroy the dataset
+geist destroy --dataset kb
+
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/trace/2023/05/trov#ArtifactLocus> .
 <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/1> <http://www.w3.org/2002/07/owl#sameAs> <https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/arrangement/1/locus/1> .

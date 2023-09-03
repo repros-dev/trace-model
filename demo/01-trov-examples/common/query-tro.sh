@@ -26,6 +26,9 @@ geist load --dataset kb --inputformat json-ld --inputfile ${TRO_DECLARATION}
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
 geist export --dataset kb --outputformat nt | sort | grep trov-example
 
+# Destroy the dataset
+geist destroy --dataset kb
+
 END_CELL
 
 # ------------------------------------------------------------------------------
