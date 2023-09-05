@@ -8,6 +8,9 @@ TRS_CERTIFICATE=trs/trs.jsonld
 
 bash_cell 'import trov vocabulary' << END_CELL
 
+# Destroy the dataset
+geist destroy --dataset kb --quiet
+
 # Import TRACE vocabulary and TRO Manifest and export as N-TRIPLES
 geist create --dataset kb --inputformat json-ld --inputfile ${TRACE_VOCAB} --infer owl
 

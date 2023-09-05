@@ -54,6 +54,7 @@ END_CELL
 bash_cell 'import jsonld' << END_CELL
 
 # Import TRO as JSON-LD and export as N-TRIPLES
+geist destroy --dataset kb --quiet
 geist create --dataset kb --inputformat json-ld --inputfile ${TRO_JSONLD_FILE} --infer owl
 
 END_CELL

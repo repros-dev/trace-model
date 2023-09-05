@@ -8,6 +8,7 @@ COMMON=../common
 bash_cell 'import jsonld' << END_CELL
 
 # Import TRO and TRS as JSON-LD and export as N-TRIPLES
+geist destroy --dataset kb --quiet
 geist create --dataset kb --inputformat json-ld --inputfile ${COMMON}/trace-vocab.jsonld --infer owl
 geist load --dataset kb --inputformat json-ld --inputfile ${COMMON}/trs-01-minimal.jsonld
 geist load --dataset kb --inputformat json-ld --inputfile ${COMMON}/tro-01-from-minimal-trs.jsonld
