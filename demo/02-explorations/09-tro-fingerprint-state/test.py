@@ -10,12 +10,12 @@ import pandas as pd
 import os
 
 # Add 1 to file1.csv
-df1 = pd.read_csv("data/file1.csv")
+df1 = pd.read_csv("run/file1.csv")
 df1 = df1 + 1
-df1.to_csv("data/file1.csv", index=False)
+df1.to_csv("run/file1.csv", index=False)
 
 # Delete file2.csv
-os.remove("data/file2.csv")
+os.remove("run/file2.csv")
 
 # Add file3.csv
-pd.DataFrame({"v":["add"]}).to_csv("data/file3.csv", index=False)
+pd.DataFrame({"v":["add"]}).to_csv("run/file3.csv", index=False)

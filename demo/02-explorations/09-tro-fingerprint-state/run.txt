@@ -1,21 +1,28 @@
+================================ bash cell | Copy all files under the data folder to the run folder ================================
+
+cp -rf data run
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ====================================== bash cell | fingerprint state before running the code =======================================
 
-tro_fingerprint_state -d data -c before -o products/before.csv
+tro_fingerprint_state -d run -f test.py -c before -o products/before.csv
 
 cat products/before.csv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 file_path,before
-data/file1.csv,15241d2aa95ceaa8e101d81caa606234664cd090f8098512f2e8b5b1483610d9
-data/file2.csv,fbb7d452f423166ab63555ff2ba1e69e0ab5000f7d4396f8fb2454640442de78
-data/file3.csv,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
-data/test.py,afb8dddf7a9dbc78f90eb551369916039b29c44989a40c9220c626e765d779a1
+run/file1.csv,9160de2999ca40cf54319c0efbb26ef1a1b0eb8c256c47765f8dd851b08f4f25
+run/file2.csv,e00f1b67f32cabf077334f9893be12a7b161c3eaba0d02f795ddf0f7a46c4008
+test.py,5abc89b0dfed2d14473c966a5533165347eb9e8896a1b9e9e7b5318dab6721d0
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ================================================ bash cell | execute python script =================================================
 
-python3 data/test.py
+python3 test.py
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,15 +30,15 @@ python3 data/test.py
 
 ======================================= bash cell | fingerprint state after running the code =======================================
 
-tro_fingerprint_state -d data -c after -o products/after.csv
+tro_fingerprint_state -d run -f test.py -c after -o products/after.csv
 
 cat products/after.csv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 file_path,after
-data/file1.csv,bda1807c0d5ee535e80e99568b72a6846c2ce03953d683853ae10aaf252335cf
-data/file3.csv,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
-data/test.py,afb8dddf7a9dbc78f90eb551369916039b29c44989a40c9220c626e765d779a1
+run/file1.csv,b06d27a24a72ce2f96be14a8b62084b05928dd5462f3ee59ba91ab12b5c0cd1b
+run/file3.csv,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
+test.py,5abc89b0dfed2d14473c966a5533165347eb9e8896a1b9e9e7b5318dab6721d0
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -43,10 +50,10 @@ cat products/fingerprint_state.csv
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 file_path,before,after
-data/file1.csv,15241d2aa95ceaa8e101d81caa606234664cd090f8098512f2e8b5b1483610d9,bda1807c0d5ee535e80e99568b72a6846c2ce03953d683853ae10aaf252335cf
-data/file2.csv,fbb7d452f423166ab63555ff2ba1e69e0ab5000f7d4396f8fb2454640442de78,
-data/file3.csv,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
-data/test.py,afb8dddf7a9dbc78f90eb551369916039b29c44989a40c9220c626e765d779a1,afb8dddf7a9dbc78f90eb551369916039b29c44989a40c9220c626e765d779a1
+run/file1.csv,9160de2999ca40cf54319c0efbb26ef1a1b0eb8c256c47765f8dd851b08f4f25,b06d27a24a72ce2f96be14a8b62084b05928dd5462f3ee59ba91ab12b5c0cd1b
+run/file2.csv,e00f1b67f32cabf077334f9893be12a7b161c3eaba0d02f795ddf0f7a46c4008,
+test.py,5abc89b0dfed2d14473c966a5533165347eb9e8896a1b9e9e7b5318dab6721d0,5abc89b0dfed2d14473c966a5533165347eb9e8896a1b9e9e7b5318dab6721d0
+run/file3.csv,,19a97db96a7cf6f31e1fc512ed28c0c0cae30b3075cfd3966e586d3eaa4d6806
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
