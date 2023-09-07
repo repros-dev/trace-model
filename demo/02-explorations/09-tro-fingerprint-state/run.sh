@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TRO_DATA_DIR=data
-TRO_DATA_RUN_DIR=run
+TRO_DATA_RUN_DIR=runtime
 TRO_EXE_SCRIPT=test.py
 FINGERPRINT_STATE_BEFORE_FILE=products/before.csv
 FINGERPRINT_STATE_AFTER_FILE=products/after.csv
@@ -9,9 +9,21 @@ FINGERPRINT_STATE_FILE=products/fingerprint_state.csv
 
 # ------------------------------------------------------------------------------
 
+bash_cell 'Remove the run folder' << END_CELL
+
+if [[ -d "${TRO_DATA_RUN_DIR}" ]] ; then
+    rm -vf "${TRO_DATA_RUN_DIR}"/*
+    rmdir -v "${TRO_DATA_RUN_DIR}"
+fi
+
+END_CELL
+
+# ------------------------------------------------------------------------------
+
 bash_cell 'Copy all files under the data folder to the run folder' << END_CELL
 
-cp -rf ${TRO_DATA_DIR} ${TRO_DATA_RUN_DIR}
+mkdir -p ${TRO_DATA_RUN_DIR}
+cp -rf ${TRO_DATA_DIR}/* ${TRO_DATA_RUN_DIR}
 
 END_CELL
 
