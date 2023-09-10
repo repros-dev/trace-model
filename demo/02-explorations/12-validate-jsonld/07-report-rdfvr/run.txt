@@ -78,24 +78,3 @@ rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-=================================== bash cell | tro validation 5 export as txt: multiple sha256 ====================================
-
-rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5 -of txt
-
------------------------------------------------------------ cell outputs -----------------------------------------------------------
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-================================= bash cell | tro validation 5 print report text: multiple sha256 ==================================
-
-rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json
-
------------------------------------------------------------ cell outputs -----------------------------------------------------------
-Node: fp1 
-Error Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
-Suggested Node(s) to be Updated: sha256.fp1, sha256.fp2
-
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-

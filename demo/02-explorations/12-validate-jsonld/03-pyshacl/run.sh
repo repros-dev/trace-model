@@ -98,8 +98,8 @@ tro_jsonld = """
         "@base": "https://github.com/transparency-certified/trace-model/tree/master/demo/01-trov-examples/01-two-artifacts-no-trp/"
     }],
     
-    "@graph": [{
-        "@id": "tsa", "@type": "trov:TimeStampingAuthority" },
+    "@graph": [
+        { "@id": "tsa", "@type": "trov:TimeStampingAuthority" },
         { "@id": "tsa", "trov:publicKey": "tsa.pk.1" },
         { "@id": "tsa", "trov:publicKey": "tsa.pk.2" }
     ]
@@ -318,7 +318,7 @@ tro_jsonld = """
     }],
     
     "@graph": [{
-        "trov:hasComposition": [
+                "trov:hasComposition": [
         {
             "@id": "composition/1",
             "@type": "trov:ArtifactComposition",
@@ -367,14 +367,6 @@ r = validate(data_graph=tro_jsonld,
       inference='rdfs',
       debug=True)
 conforms, results_graph, results_text = r
-
-print(results_text)
-
-print("***"*15)
-# Show triples
-for s,p,o in results_graph:
-    print(s, p, o)
-print("***"*15)
 
 q = """
     ASK {   
@@ -407,7 +399,7 @@ tro_jsonld = """
     }],
     
     "@graph": [{
-        "trov:hasComposition": [
+                "trov:hasComposition": [
         {
             "@id": "composition/1",
             "@type": "trov:ArtifactComposition",
@@ -456,14 +448,6 @@ r = validate(data_graph=tro_jsonld,
       inference='rdfs',
       debug=True)
 conforms, results_graph, results_text = r
-
-print(results_text)
-
-print("***"*15)
-# Show triples
-for s,p,o in results_graph:
-    print(s, p, o)
-print("***"*15)
 
 q = """
     PREFIX : <http://www.w3.org/ns/shacl#>

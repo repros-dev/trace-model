@@ -4,8 +4,7 @@ from pyshacl import validate
 from rdflib import Graph
 import pygraphviz as pgv
 import pandas as pd
-import argparse
-import os
+import argparse, os
 
 mappings={
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#": "rdf#",
@@ -79,6 +78,7 @@ def extract_errors(results_graph):
             OPTIONAL { ?curr_node :detail ?child_node. }
             FILTER (!bound(?child_node))
         }
+        ORDER BY ?focus ?msg ?path
     """
     rows = []
     for r in results_graph.query(q):
@@ -104,13 +104,13 @@ def process_graph(tro_graph, mappings, errors):
             WHERE {
                 ?s ?p ?o
             }
-            GROUP BY ?s ?p ?o
+            ORDER BY ?s ?p ?o
         """
     rows = []
     for r in tro_graph.query(q):
         rows.append(r)
     tro_graph_processed = pd.DataFrame(rows, columns=["source", "label", "target"]).replace(mappings, regex=True)
-    errors_with_suggested_nodes = errors.merge(tro_graph_processed, how="left", left_on=["node", "path"], right_on=["source", "label"])[["node", "msg", "target"]]
+    errors_with_suggested_nodes = errors.merge(tro_graph_processed, how="inner", left_on=["node", "path"], right_on=["source", "label"])[["node", "msg", "target"]]
     return tro_graph_processed, errors_with_suggested_nodes
 
 def visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes):
@@ -179,12 +179,12 @@ def cli():
             raise ValueError("The output file format can only be one of {txt, png, gv}, but " + str(output_format) + " was given. Please check --outputformat.")
         
         output_path = output_path + "." + output_format if output_path else None
-        ensure_dir_exists(output_path)
+        if output_path:
+            ensure_dir_exists(output_path)
         if output_format == "png" or output_format == "gv":
             G = visualize_graph_as_dot(tro_graph_processed, errors_with_suggested_nodes)
             if output_format == "png":
-                G.layout(prog="dot")
-                G.draw(output_path)
+                G.draw(output_path, prog="dot")
             else: # gv
                 G.write(output_path)
         else:

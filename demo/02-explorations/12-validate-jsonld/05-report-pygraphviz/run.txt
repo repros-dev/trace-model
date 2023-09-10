@@ -28,6 +28,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 rows = []
 for r in g.query(q):
@@ -84,6 +85,11 @@ END_PYTHON
 validate_tro -f data/tro.jsonld -s data/tro.schema.ttl
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Node: arrangement/1/locus/2 
+Error Message: Value does not have class trov:ResearchArtifact
+Suggested Node(s) to be Updated: composition/1/artifact/100
+
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

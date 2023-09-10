@@ -85,20 +85,3 @@ rdfvr -f data/tro5.jsonld -s ${TRO_DECLARATION_SCHEMA_PATH} -m ${MAPPINGS_PATH} 
 END_CELL
 
 # ------------------------------------------------------------------------------
-
-
-bash_cell 'tro validation 5 export as txt: multiple sha256' << END_CELL
-
-rdfvr -f data/tro5.jsonld -s ${TRO_DECLARATION_SCHEMA_PATH} -m ${MAPPINGS_PATH} -o products/tro5 -of txt
-
-END_CELL
-
-# ------------------------------------------------------------------------------
-
-bash_cell 'tro validation 5 print report text: multiple sha256' << END_CELL
-
-rdfvr -f data/tro5.jsonld -s ${TRO_DECLARATION_SCHEMA_PATH} -m ${MAPPINGS_PATH}
-
-END_CELL
-
-# ------------------------------------------------------------------------------

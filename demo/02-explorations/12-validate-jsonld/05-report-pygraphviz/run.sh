@@ -38,6 +38,7 @@ q = """
         WHERE {
             ?s ?p ?o
         }
+        ORDER BY ?s ?p ?o
     """
 rows = []
 for r in g.query(q):
