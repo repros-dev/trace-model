@@ -8,3 +8,4 @@ rdfvr
 jinja2
 jinja2_simple_tags
 tabulate
+geist-p@git+https://github.com/CIRSS/geist-p
