@@ -6,7 +6,7 @@ source ../common/query-tro.sh
 
 bash_cell tro_report_inline << END_CELL
 
-geist report << END_TEMPLATE
+geist report --outputdir products << END_TEMPLATE
 
 {%- use "templates.geist" %}
 {%- create %} tro/tro.jsonld {% endcreate %}
@@ -18,7 +18,7 @@ geist report << END_TEMPLATE
 
     <body>
         <h1>Overall TRO Graph</h1>
-        <img src="products/tro.svg">
+        <img src="tro.svg">
     </body>
 
 {% endhtml %} 
@@ -40,7 +40,7 @@ geist report << END_TEMPLATE
         {% endtable %}
 
         <h3>3. What TRPs does the TRO have? What arrangements are accessed and contributed to per TRP accordingly?</h3>
-        {% img src="products/trp.svg" %}
+        {% img src="trp.svg" %}
             {%- gv_graph "trp", "LR" %}
             nodesep=0.6
             node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
@@ -53,7 +53,7 @@ geist report << END_TEMPLATE
         {% endimg %}
 
         <h3>4. What artifacts are included in each arrangement?</h3>
-        {% img src="products/arrangement.svg" %}
+        {% img src="arrangement.svg" %}
             {%- gv_graph "arrangement", "LR" %}
             nodesep=0.6
             node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
@@ -72,7 +72,7 @@ geist report << END_TEMPLATE
 
         <h3>6. Overall graph</h3>
         <a href="overall_tro_graph.html">Zoom in the graph</a>
-        <img src="products/tro.svg" width="100%">
+        <img src="tro.svg" width="100%">
 
 </body>
 {% endhtml %}
@@ -87,7 +87,7 @@ END_CELL
 
 bash_cell tro_report_file << END_CELL
 
-geist report --file tro_report
+geist report --file tro_report --outputdir products
 
 END_CELL
 
