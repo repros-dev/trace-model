@@ -1,13 +1,3 @@
-#!/usr/bin/env bash
-
-source ../common/query-tro.sh
-
-# ------------------------------------------------------------------------------
-
-bash_cell tro_report_inline << END_CELL
-
-geist report << END_TEMPLATE
-
 {%- use "templates.geist" %}
 {%- create %} tro/tro.jsonld {% endcreate %}
 
@@ -78,17 +68,3 @@ geist report << END_TEMPLATE
 {% endhtml %}
 
 {%- destroy %}
-
-END_TEMPLATE
-
-END_CELL
-
-# ------------------------------------------------------------------------------
-
-bash_cell tro_report_file << END_CELL
-
-geist report --file tro_report
-
-END_CELL
-
-# ------------------------------------------------------------------------------

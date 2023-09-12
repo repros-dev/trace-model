@@ -11,7 +11,7 @@ from rdflib.plugins.sparql.results.jsonresults import JSONResultSerializer
 
 DATA_DIR = ".geistdata/"
 PASTEL_COLORS = ["#b3e2cd", "#fdccac", "#cbd5e8", "#f4cae4", "#e6f5c9", "#fff2ae", "#f1e2cc", "#cccccc"]
-TAGS = ["template", "create", "load", "query", "destroy", "html", "img", "table", "include", "import", "macro", "block", "extends", "call", "filter", "set", "for", "if", "elif", "else"]
+TAGS = ["use", "template", "create", "load", "query", "destroy", "graph", "map", "html", "img", "table", "include", "import", "macro", "block", "extends", "call", "filter", "set", "for", "if", "elif", "else"]
 
 @click.group()
 def cli():
@@ -50,6 +50,19 @@ def df2htmltable(df):
         </table>
     '''.format(header=header, content=content)
     return html_table
+
+def map_df(df, mappings=None):
+    """
+    This function is to replace the original text in a Pandas data frame with the shorter ones based on the given mappings
+    :param df: a Pandas data frame
+    :param mappings: file of the mappings to shorten text (str): path of a JSON file, where the key is the original text and the value is the shorter text.
+    :return df: a Pandas data frame
+    """
+    if mappings:
+        with open(mappings, mode='r', encoding='utf-8') as fin:
+            mappings = json.loads(fin.read())
+        df = df.replace(mappings, regex=True)
+    return df
 
 def format_cell(cell):
     """
@@ -202,6 +215,30 @@ def _load(dataset, inputfile, inputformat, colnames):
         pickle.dump(geist_graph_object, f)
     return
 
+def _graph(rdf_graph, mappings, outputfile, outputformats):
+    query = """
+            SELECT ?s ?p ?o
+            WHERE {
+                ?s ?p ?o
+            }
+            ORDER BY ?s ?p ?o
+        """
+    res = query2df(rdf_graph, query)
+    res = map_df(res, mappings)
+    G = visualize_query_results(query_res=res, edges=[['s', 'o', 'p']], same_color=True)
+
+    # Save the graph
+    ensure_dir_exists(outputfile)
+    for outputformat in set(outputformats):
+        if outputformat == 'none':
+            print(G.string())
+        else:
+            output_path = outputfile + '.' + outputformat
+            if outputformat == 'gv' or outputformat == 'dot':
+                G.write(output_path)
+            else: # svg, png
+                G.draw(output_path, prog='dot')
+
 def get_content(data, isfilepath):
     """
     This function is to retrieve the content of the given file path or the input string itself.
@@ -244,6 +281,22 @@ class DestroyExtension(StandaloneTag):
     def render(self, dataset="kb", quiet=False):
         delete_rdf_dataset(dataset=dataset, quiet=quiet)
         return ""
+
+class GraphExtension(StandaloneTag):
+    tags = {"graph"}
+
+    def render(self, dataset="kb", mappings=None, outputfile='res', outputformats=['none']):
+        (rdf_graph, infer) = load_rdf_dataset(dataset)
+        _graph(rdf_graph, mappings, outputfile, outputformats)
+        return ""
+
+class MapExtension(ContainerTag):
+    tags = {"map"}
+
+    def render(self, isfilepath=True, mappings=None, caller=None):
+        df = json2df(get_content(environment.from_string(str(caller())).render(), isfilepath))
+        df = map_df(df, mappings)
+        return df.to_json()
 
 class UseExtension(StandaloneTag):
     tags = {"use"}
@@ -291,9 +344,10 @@ class ImgExtension(ContainerTag):
 class TableExtension(ContainerTag):
     tags = {"table"}
 
-    def render(self, caller=None):
+    def render(self, mappings=None, caller=None):
         json_str = environment.from_string(str(caller())).render()
         df = json2df(json_str)
+        df = map_df(df, mappings)
         code = df2htmltable(df)
         return code
 
@@ -409,38 +463,13 @@ def query(dataset, file, outputfile):
 @click.option('--dataset', '-d', default='kb', type=str, help='Name of RDF dataset to be visualized (default "kb")')
 @click.option('--mappings', '-m', default=None, help='File of the mappings to shorten text (str): path of a JSON file, where the key is the original text and the value is the shorter text.')
 @click.option('--outputfile', '-ofile', default='res', type=str, help='Path of the file without extension to store the graph (default: res)')
-@click.option('outputformats', '--outputformat', '-oformat', default=['none'], type=click.Choice(['none', 'png', 'gv']), multiple=True, help='Format of the graph (default: none): none or png or gv')
+@click.option('outputformats', '--outputformat', '-oformat', default=['none'], type=click.Choice(['none', 'svg', 'png', 'gv']), multiple=True, help='Format of the graph (default: none): none or svg or png or gv')
 def graph(dataset, mappings, outputfile, outputformats):
     """Visualize a dataset"""
-    if mappings:
-        with open(mappings, mode='r', encoding='utf-8') as fin:
-            mappings = json.loads(fin.read())
-    (rdf_graph, infer) = load_rdf_dataset(dataset)
-    query = """
-            SELECT ?s ?p ?o
-            WHERE {
-                ?s ?p ?o
-            }
-            ORDER BY ?s ?p ?o
-        """
-    res = query2df(rdf_graph, query).replace(mappings, regex=True)
-    G = visualize_query_results(query_res=res, edges=[['s', 'o', 'p']], same_color=True)
-
-    # Save the graph
-    ensure_dir_exists(outputfile)
-    for outputformat in set(outputformats):
-        if outputformat == 'none':
-            print(G.string())
-        else:
-            output_path = outputfile + '.' + outputformat
-            if outputformat == 'png':
-                G.layout(prog='dot')
-                G.draw(output_path)
-            else: # gv
-                G.write(output_path)
+    _graph(dataset, mappings, outputfile, outputformats)
 
 @cli.command()
-@click.option('--file', required=True, type=click.File('r'), default=sys.stdin, help='Path of the file containing the report template to expand')
+@click.option('--file', '-f', required=True, type=click.File('r'), default=sys.stdin, help='Path of the file containing the report template to expand')
 @click.option('--suppressoutput', '-so', default=False, help='Suppress output or not (default: False)')
 def report(file, suppressoutput):
     """Expand a report using a dataset"""
@@ -450,7 +479,7 @@ def report(file, suppressoutput):
     environment = jinja2.Environment(
         loader=jinja2.FileSystemLoader("./"), 
         trim_blocks=True, 
-        extensions=[CreateExtension, LoadExtension, QueryExtension, DestroyExtension, UseExtension, HtmlExtension, ImgExtension, TableExtension]
+        extensions=[CreateExtension, LoadExtension, QueryExtension, DestroyExtension, GraphExtension, MapExtension, UseExtension, HtmlExtension, ImgExtension, TableExtension]
     )
     environment.filters['json2df'] = json2df
     environment.filters['df2htmltable'] = df2htmltable
