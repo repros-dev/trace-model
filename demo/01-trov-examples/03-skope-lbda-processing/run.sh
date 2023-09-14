@@ -6,19 +6,18 @@ source ../common/query-tro.sh
 
 bash_cell tro_report_inline << END_CELL
 
-geist report --outputdir products << END_TEMPLATE
+geist report --outputroot report_inline << END_TEMPLATE
 
 {%- use "templates.geist" %}
 {%- create %} tro/tro.jsonld {% endcreate %}
-
-{%- graph dataset="kb", mappings="mappings.json", outputfile="products/tro", outputformats=["svg"] %}
 
 {%- html "overall_tro_graph.html" %}
 {%- head "Overall TRO Graph" %}
 
     <body>
         <h1>Overall TRO Graph</h1>
-        <img src="tro.svg">
+        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
+        {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
     </body>
 
 {% endhtml %} 
@@ -87,7 +86,7 @@ END_CELL
 
 bash_cell tro_report_file << END_CELL
 
-geist report --file tro_report --outputdir products
+geist report --file tro_report --outputroot report_file
 
 END_CELL
 

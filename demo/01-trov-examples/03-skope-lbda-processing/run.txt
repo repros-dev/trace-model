@@ -377,19 +377,18 @@ geist destroy --dataset kb
 
 ================================================== bash cell | tro_report_inline ===================================================
 
-geist report --outputdir products << END_TEMPLATE
+geist report --outputroot report_inline << END_TEMPLATE
 
 {%- use "templates.geist" %}
 {%- create %} tro/tro.jsonld {% endcreate %}
-
-{%- graph dataset="kb", mappings="mappings.json", outputfile="products/tro", outputformats=["svg"] %}
 
 {%- html "overall_tro_graph.html" %}
 {%- head "Overall TRO Graph" %}
 
     <body>
         <h1>Overall TRO Graph</h1>
-        <img src="tro.svg">
+        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
+        {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
     </body>
 
 {% endhtml %} 
@@ -470,9 +469,7 @@ END_TEMPLATE
         <title>Overall TRO Graph</title>
     </head>
     <body>
-        <h1>Overall TRO Graph</h1>
-        <img src="tro.svg">
-    </body>
+        <h1>Overall TRO Graph</h1>        <img src="tro.svg" >    </body>
 
 </html>
 
@@ -537,7 +534,7 @@ END_TEMPLATE
 
 =================================================== bash cell | tro_report_file ====================================================
 
-geist report --file tro_report --outputdir products
+geist report --file tro_report --outputroot report_file
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 
@@ -557,9 +554,7 @@ geist report --file tro_report --outputdir products
         <title>Overall TRO Graph</title>
     </head>
     <body>
-        <h1>Overall TRO Graph</h1>
-        <img src="tro.svg">
-    </body>
+        <h1>Overall TRO Graph</h1>        <img src="tro.svg" >    </body>
 
 </html>
 

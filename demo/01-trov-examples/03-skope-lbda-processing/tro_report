@@ -1,14 +1,13 @@
 {%- use "templates.geist" %}
 {%- create %} tro/tro.jsonld {% endcreate %}
 
-{%- graph dataset="kb", mappings="mappings.json", outputfile="products/tro", outputformats=["svg"] %}
-
 {%- html "overall_tro_graph.html" %}
 {%- head "Overall TRO Graph" %}
 
     <body>
         <h1>Overall TRO Graph</h1>
-        <img src="tro.svg">
+        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
+        {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
     </body>
 
 {% endhtml %} 
