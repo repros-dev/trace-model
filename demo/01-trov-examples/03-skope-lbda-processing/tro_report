@@ -4,11 +4,11 @@
 {%- html "overall_tro_graph.html" %}
 {%- head "Overall TRO Graph" %}
 
-    <body>
-        <h1>Overall TRO Graph</h1>
-        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
-        {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
-    </body>
+<body>
+    <h1>Overall TRO Graph</h1>
+    {%- graph dataset="kb", rankdir="LR", mappings="mappings.json" as tro_graph %}
+    {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
+</body>
 
 {% endhtml %} 
 

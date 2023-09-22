@@ -16,7 +16,7 @@ geist report --outputroot report_inline << END_TEMPLATE
 
     <body>
         <h1>Overall TRO Graph</h1>
-        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
+        {%- graph dataset="kb", rankdir="LR", mappings="mappings.json" as tro_graph %}
         {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
     </body>
 
@@ -87,6 +87,30 @@ END_CELL
 bash_cell tro_report_file << END_CELL
 
 geist report --file tro_report --outputroot report_file
+
+END_CELL
+
+# ------------------------------------------------------------------------------
+
+bash_cell tro_report_inline_graph2 << END_CELL
+
+geist report --outputroot report_inline_graph2 << END_TEMPLATE
+
+{%- use "templates.geist" %}
+{%- create %} tro/tro.jsonld {% endcreate %}
+
+{%- html "overall_tro_graph.html" %}
+{%- head "Overall TRO Graph" %}
+
+    <body>
+        <h1>Overall TRO Graph</h1>
+        {%- graph2 dataset="kb", rankdir="LR", mappings="mappings.json" as tro_graph %}
+        {% img src="tro.svg", width="100%" %} {{ tro_graph }} {% endimg %}
+    </body>
+
+{% endhtml %} 
+
+END_TEMPLATE
 
 END_CELL
 

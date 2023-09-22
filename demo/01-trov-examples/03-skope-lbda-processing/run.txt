@@ -387,7 +387,7 @@ geist report --outputroot report_inline << END_TEMPLATE
 
     <body>
         <h1>Overall TRO Graph</h1>
-        {%- graph dataset="kb", mappings="mappings.json" as tro_graph %}
+        {%- graph dataset="kb", rankdir="LR", mappings="mappings.json" as tro_graph %}
         {% img src="tro.svg" %} {{ tro_graph }} {% endimg %}
     </body>
 
@@ -553,8 +553,8 @@ geist report --file tro_report --outputroot report_file
         </style>
         <title>Overall TRO Graph</title>
     </head>
-    <body>
-        <h1>Overall TRO Graph</h1>        <img src="tro.svg" >    </body>
+<body>
+    <h1>Overall TRO Graph</h1>    <img src="tro.svg" ></body>
 
 </html>
 
@@ -613,6 +613,52 @@ geist report --file tro_report --outputroot report_file
 
 </body>
 </html>
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+=============================================== bash cell | tro_report_inline_graph2 ===============================================
+
+geist report --outputroot report_inline_graph2 << END_TEMPLATE
+
+{%- use "templates.geist" %}
+{%- create %} tro/tro.jsonld {% endcreate %}
+
+{%- html "overall_tro_graph.html" %}
+{%- head "Overall TRO Graph" %}
+
+    <body>
+        <h1>Overall TRO Graph</h1>
+        {%- graph2 dataset="kb", rankdir="LR", mappings="mappings.json" as tro_graph %}
+        {% img src="tro.svg", width="100%" %} {{ tro_graph }} {% endimg %}
+    </body>
+
+{% endhtml %} 
+
+END_TEMPLATE
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { margin: 3%; }
+            table, th, tr, td {
+                border:1px solid #69899F;
+                border-collapse: collapse;
+            }
+        </style>
+        <title>Overall TRO Graph</title>
+    </head>
+    <body>
+        <h1>Overall TRO Graph</h1>        <img src="tro.svg" width=100%>    </body>
+
+</html>
+ 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
