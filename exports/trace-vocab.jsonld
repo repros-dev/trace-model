@@ -9,57 +9,50 @@
 
         {
             "@id": "trov:TrustedResearchElement",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:label": "TrustedResearchElement",
             "rdfs:comment": "Common base class for TRSs, TRPs, and TROs."
         },
         {
             "@id": "trov:TrustedResearchSystem",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
             "rdfs:label": "TrustedResearchSystem",
             "rdfs:comment": "A system certified to perform TRPs and assemble TROs."
         },
         {
             "@id": "trov:TrustedResearchPerformance",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
             "rdfs:label": "TrustedResearchPerformance",
             "rdfs:comment": "A set of research operations performed by a TRS."
         },
         {
             "@id": "trov:TransparentResearchObject",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
             "rdfs:label": "TransparentResearchObject",
             "rdfs:comment": "A set of research artifacts produced by a TRP and signed by the performing TRS."
         },
         {
             "@id": "trov:TimeStampingAuthority",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:subClassOf": { "@id": "trov:TrustedResearchElement" },
             "rdfs:label": "TimeStampingAuthority",
             "rdfs:comment": "A timestamping authority trusted by a TRS."
         },
         {
             "@id": "trov:TREAttribute",
-            "@type": "rdf:Class",
+            "@type": "rdfs:Class",
             "rdfs:label": "TREAttribute",
             "rdfs:comment": "An attribute of a TRS, TRP, or TRO."
-        },
-        {
-            "@id": "trov:TRSAttribute",
-            "@type": "rdf:Class",
-            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
-            "rdfs:label": "TRSAttribute",
-            "rdfs:comment": "An attribute of a TRS."
         },
         {
             "@id": "trov:TRSCapability",
             "@type": "rdfs:Class",
             "rdfs:label": "TRSCapability",
             "rdfs:subClassOf": { "@id": "trov:TRSAttribute" },
-            "rdfs:comment": "A policy always enforced by a particular TRS."
+            "rdfs:comment": "A capability of a TRS."
         },
         {
             "@id": "trov:CanProvideInternetIsolation",
@@ -80,7 +73,7 @@
             "@type": "rdfs:Class",
             "rdfs:label": "EnforcesInternetIsolation",
             "rdfs:subClassOf": { "@id": "trov:TRSPolicy" },
-            "rdfs:comment": "The policy of always preeventing Internet access during a TRP."
+            "rdfs:comment": "The policy of always preventing Internet access during a TRP."
         },
         {
             "@id": "trov:TROAttribute",
@@ -94,7 +87,7 @@
             "@type": "rdfs:Class",
             "rdfs:label": "TRSAttribute",
             "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
-            "rdfs:comment": "A property of a particular TRS."
+            "rdfs:comment": "An attribute of a TRS."
         },
         {
             "@id": "trov:IncludesAllInputData",
