@@ -18,17 +18,8 @@
     rankdir={{ direction }}
 {% endtemplate %}
 
-{% template gv_title title %}
-    fontname=Courier; fontsize=12; labelloc=t
-    label="{{ title }}"
-{% endtemplate %}
-
 {% template gv_end %}
     }
-{% endtemplate %}
-
-{% template gv_labeled_node nodeID nodeLabel %}
-     "{{ nodeID }}" [label="{{ nodeLabel }}"]
 {% endtemplate %}
 
 {% template gv_edge tail head %}
