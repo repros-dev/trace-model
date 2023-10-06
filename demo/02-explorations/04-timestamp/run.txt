@@ -1,6 +1,6 @@
 ================================ bash cell | Compute a digest for tro declaration and trs signature ================================
 
-cat > data/digest.yaml << EOF
+cat > products/digest.yaml << EOF
 tro-declaration: 71fd13607e8cea0a883ebad45037044d4909fb21959ec30c6687dcf86d077cf8
 trs-signature": 9fb5dd0a2b9afdf4071b43558848a70101c91d3b1eab61f6a369740c36c2ea8d
 EOF
@@ -11,7 +11,7 @@ EOF
 
 ================================================== bash cell | Create a tsq file ===================================================
 
-openssl ts -query -data data/digest.yaml -no_nonce -sha512 -cert -out data/file.tsq
+openssl ts -query -data products/digest.yaml -no_nonce -sha512 -cert -out products/file.tsq
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -19,7 +19,7 @@ openssl ts -query -data data/digest.yaml -no_nonce -sha512 -cert -out data/file.
 
 ================================================== bash cell | Create a tsr file ===================================================
 
-curl -H "Content-Type: application/timestamp-query" --data-binary '@data/file.tsq' https://freetsa.org/tsr > data/file.tsr
+curl -H "Content-Type: application/timestamp-query" --data-binary '@products/file.tsq' https://freetsa.org/tsr > tmp/file.tsr
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -27,7 +27,7 @@ curl -H "Content-Type: application/timestamp-query" --data-binary '@data/file.ts
 
 ==================================================== bash cell | Verify the tsr ====================================================
 
-openssl ts -verify -in data/file.tsr -queryfile data/file.tsq -CAfile ../common/certificate/cacert.pem -untrusted ../common/certificate/tsa.crt
+openssl ts -verify -in tmp/file.tsr -queryfile products/file.tsq -CAfile ../common/certificate/cacert.pem -untrusted ../common/certificate/tsa.crt
 
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Verification: OK

@@ -3,9 +3,9 @@
 CERTIFICATE_DIR=../common/certificate
 TRO_DECLARATION_FILE=../common/tro/tro.jsonld
 TRS_SIGNATURE_FILE=data/signature.asc
-DIGEST_FILE=data/digest.yaml
-TSQ_FILE=data/file.tsq
-TSR_FILE=data/file.tsr
+DIGEST_FILE=products/digest.yaml
+TSQ_FILE=products/file.tsq
+TSR_FILE=tmp/file.tsr
 
 
 
