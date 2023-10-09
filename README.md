@@ -20,120 +20,25 @@ The demonstration and its products are stored in the `demo` directory tree:
 ```
 trace-model$ tree demo
 demo
-├── 01-trov-examples
+├── 01-trov-vocab
+│   ├── Makefile
+│   ├── products
+│   │   ├── img.gv
+│   │   ├── img.svg
+│   │   └── report_subclass.html
+│   ├── run.sh
+│   ├── run.txt
+│   └── templates.geist
+├── 02-tro-examples
 │   ├── 01-two-artifacts-no-trp
 │   │   ├── Makefile
-│   │   ├── products
-│   │   │   ├── img.gv
-│   │   │   ├── img.svg
-│   │   │   └── report_subclass.html
 │   │   ├── run.sh
 │   │   ├── run.txt
 │   │   ├── tro
 │   │   │   ├── file1
-│   │   │   ├── file2
-│   │   │   └── tro.jsonld
-│   │   └── trs
-│   │       ├── private.asc
-│   │       ├── public.gpg
-│   │       └── trs.jsonld
-│   ├── 02-three-artifacts-one-trp
-│   │   ├── Makefile
-│   │   ├── products
-│   │   │   ├── img.gv
-│   │   │   ├── img.svg
-│   │   │   └── report_subclass.html
-│   │   ├── run.sh
-│   │   ├── run.txt
-│   │   ├── tro
-│   │   │   ├── file1
-│   │   │   ├── file2
-│   │   │   ├── file3
-│   │   │   └── tro.jsonld
-│   │   └── trs
-│   │       ├── private.asc
-│   │       ├── public.gpg
-│   │       └── trs.jsonld
-│   ├── 03-skope-lbda-processing
-│   │   ├── Makefile
-│   │   ├── mappings.json
-│   │   ├── products
-│   │   │   ├── img.gv
-│   │   │   ├── img.svg
-│   │   │   └── report_subclass.html
-│   │   ├── report_file
-│   │   │   ├── arrangement.svg
-│   │   │   ├── overall_tro_graph.html
-│   │   │   ├── report.html
-│   │   │   ├── tro.svg
-│   │   │   └── trp.svg
-│   │   ├── report_inline
-│   │   │   ├── arrangement.svg
-│   │   │   ├── overall_tro_graph.html
-│   │   │   ├── report.html
-│   │   │   ├── tro.svg
-│   │   │   └── trp.svg
-│   │   ├── run.sh
-│   │   ├── run.txt
-│   │   ├── templates.geist
-│   │   ├── tro
-│   │   │   └── tro.jsonld
-│   │   └── tro_report
-│   ├── Makefile
-│   └── common
-│       ├── query-tro.sh
-│       └── templates.geist
-├── 02-explorations
-│   ├── 01-gpg-runtime
-│   │   ├── 01-generate-key
-│   │   │   ├── Makefile
-│   │   │   ├── run.sh
-│   │   │   └── run.txt
-│   │   ├── 02-simple-tro
-│   │   │   ├── Makefile
-│   │   │   ├── data
-│   │   │   │   ├── private.asc
-│   │   │   │   └── public.gpg
-│   │   │   ├── run.sh
-│   │   │   └── run.txt
-│   │   └── Makefile
-│   ├── 02-gpg-api
-│   │   ├── 01-generate-key
-│   │   │   ├── Makefile
-│   │   │   ├── run.sh
-│   │   │   └── run.txt
-│   │   ├── 02-simple-tro
-│   │   │   ├── Makefile
-│   │   │   ├── data
-│   │   │   │   ├── private.asc
-│   │   │   │   └── public.gpg
-│   │   │   ├── run.sh
-│   │   │   └── run.txt
-│   │   └── Makefile
-│   ├── 03-tro-fingerprint-state
-│   │   ├── Makefile
-│   │   ├── data
-│   │   │   ├── file1.csv
-│   │   │   └── file2.csv
-│   │   ├── products
-│   │   │   ├── after.csv
-│   │   │   ├── before.csv
-│   │   │   └── fingerprint_state.csv
-│   │   ├── run.sh
-│   │   ├── run.txt
-│   │   ├── runtime
-│   │   │   ├── file1.csv
-│   │   │   └── file3.csv
-│   │   └── test.py
-│   ├── 04-timestamp
-│   │   ├── Makefile
-│   │   ├── data
-│   │   │   └── signature.asc
-│   │   ├── products
-│   │   │   ├── digest.yaml
-│   │   │   └── file.tsq
-│   │   ├── run.sh
-│   │   └── run.txt
+.
+. (additional output removed for brevity)
+.
 │   ├── 05-validate-tro-declaration
 │   │   ├── Makefile
 │   │   ├── data
@@ -172,60 +77,20 @@ demo
 To establish that the demonstrations can be reproduced, first use the `make clean-demo` command to delete the files produced by the demo:
 ```
 trace-model$ make clean-demo
-------- Cleaning example 01-trov-examples/ ----------------
+------- Cleaning example 01-trov-vocab/ ----------------
+removed './run.txt'
+removed './products/img.gv'
+removed './products/img.svg'
+removed './products/report_subclass.html'
+rmdir: removing directory, './products'
+
+------- Cleaning example 02-tro-examples/ ----------------
 
 ------- Cleaning example 01-two-artifacts-no-trp/ ----------------
 removed './run.txt'
-removed './products/img.gv'
-removed './products/img.svg'
-removed './products/report_subclass.html'
-rmdir: removing directory, './products'
-
-------- Cleaning example 02-three-artifacts-one-trp/ ----------------
-removed './run.txt'
-removed './products/img.gv'
-removed './products/img.svg'
-removed './products/report_subclass.html'
-rmdir: removing directory, './products'
-
-------- Cleaning example 03-skope-lbda-processing/ ----------------
-removed './run.txt'
-removed './products/img.gv'
-removed './products/img.svg'
-removed './products/report_subclass.html'
-rmdir: removing directory, './products'
-
-------- Cleaning example 02-explorations/ ----------------
-
-------- Cleaning example 01-gpg-runtime/ ----------------
-
-------- Cleaning example 01-generate-key/ ----------------
-removed './run.txt'
-
-------- Cleaning example 02-simple-tro/ ----------------
-removed './run.txt'
-
-------- Cleaning example 02-gpg-api/ ----------------
-
-------- Cleaning example 01-generate-key/ ----------------
-removed './run.txt'
-
-------- Cleaning example 02-simple-tro/ ----------------
-removed './run.txt'
-
-------- Cleaning example 03-tro-fingerprint-state/ ----------------
-removed './run.txt'
-removed './products/after.csv'
-removed './products/before.csv'
-removed './products/fingerprint_state.csv'
-rmdir: removing directory, './products'
-
-------- Cleaning example 04-timestamp/ ----------------
-removed './run.txt'
-removed './products/digest.yaml'
-removed './products/file.tsq'
-rmdir: removing directory, './products'
-
+.
+. (additional output removed for brevity)
+.
 ------- Cleaning example 05-validate-tro-declaration/ ----------------
 removed './run.txt'
 removed './products/tro1.gv'
@@ -250,40 +115,16 @@ Your branch is up to date with 'origin/idcc24'.
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        deleted:    demo/01-trov-examples/01-two-artifacts-no-trp/products/img.gv
-        deleted:    demo/01-trov-examples/01-two-artifacts-no-trp/products/img.svg
-        deleted:    demo/01-trov-examples/01-two-artifacts-no-trp/products/report_subclass.html
-        deleted:    demo/01-trov-examples/01-two-artifacts-no-trp/run.txt
-        deleted:    demo/01-trov-examples/02-three-artifacts-one-trp/products/img.gv
-        deleted:    demo/01-trov-examples/02-three-artifacts-one-trp/products/img.svg
-        deleted:    demo/01-trov-examples/02-three-artifacts-one-trp/products/report_subclass.html
-        deleted:    demo/01-trov-examples/02-three-artifacts-one-trp/run.txt
-        deleted:    demo/01-trov-examples/03-skope-lbda-processing/products/img.gv
-        deleted:    demo/01-trov-examples/03-skope-lbda-processing/products/img.svg
-        deleted:    demo/01-trov-examples/03-skope-lbda-processing/products/report_subclass.html
-        deleted:    demo/01-trov-examples/03-skope-lbda-processing/run.txt
-        deleted:    demo/02-explorations/01-gpg-runtime/01-generate-key/run.txt
-        deleted:    demo/02-explorations/01-gpg-runtime/02-simple-tro/run.txt
-        deleted:    demo/02-explorations/02-gpg-api/01-generate-key/run.txt
-        deleted:    demo/02-explorations/02-gpg-api/02-simple-tro/run.txt
-        deleted:    demo/02-explorations/03-tro-fingerprint-state/products/after.csv
-        deleted:    demo/02-explorations/03-tro-fingerprint-state/products/before.csv
-        deleted:    demo/02-explorations/03-tro-fingerprint-state/products/fingerprint_state.csv
-        deleted:    demo/02-explorations/03-tro-fingerprint-state/run.txt
-        deleted:    demo/02-explorations/04-timestamp/products/digest.yaml
-        deleted:    demo/02-explorations/04-timestamp/products/file.tsq
-        deleted:    demo/02-explorations/04-timestamp/run.txt
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro1.gv
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro1.png
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro2.gv
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro2.png
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro3.gv
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro3.png
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro4.gv
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro4.png
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro5.gv
-        deleted:    demo/02-explorations/05-validate-tro-declaration/products/tro5.png
-        deleted:    demo/02-explorations/05-validate-tro-declaration/run.txt
+        deleted:    demo/01-trov-vocab/products/img.gv
+        deleted:    demo/01-trov-vocab/products/img.svg
+        deleted:    demo/01-trov-vocab/products/report_subclass.html
+        deleted:    demo/01-trov-vocab/run.txt
+        deleted:    demo/02-tro-examples/01-two-artifacts-no-trp/run.txt
+        .
+        . (additional output removed for brevity)
+        .
+        deleted:    demo/03-trace-explorations/05-validate-tro-declaration/products/tro5.png
+        deleted:    demo/03-trace-explorations/05-validate-tro-declaration/run.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -291,47 +132,14 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Now run the demonstration with the `make run-demo` command:
 ```
 trace-model$ make run-demo
----------- Running example 01-trov-examples/ -------------
+---------- Running example 01-trov-vocab/ -------------
+
+---------- Running example 02-tro-examples/ -------------
 
 ---------- Running example 01-two-artifacts-no-trp/ -------------
-
----------- Running example 02-three-artifacts-one-trp/ -------------
-
----------- Running example 03-skope-lbda-processing/ -------------
-
----------- Running example 02-explorations/ -------------
-
----------- Running example 01-gpg-runtime/ -------------
-
----------- Running example 01-generate-key/ -------------
-gpg: key 461685ED23B78A04 marked as ultimately trusted
-gpg: directory '/mnt/trace-model/.gnupg-runtime/.gnupg/openpgp-revocs.d' created
-gpg: revocation certificate stored as '/mnt/trace-model/.gnupg-runtime/.gnupg/openpgp-revocs.d/3BB586DE799A3BC83447D4B0461685ED23B78A04.rev'
-gpg: checking the trustdb
-gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
-
----------- Running example 02-simple-tro/ -------------
-
----------- Running example 02-gpg-api/ -------------
-
----------- Running example 01-generate-key/ -------------
-gpg: checking the trustdb
-gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
-
----------- Running example 02-simple-tro/ -------------
-
----------- Running example 03-tro-fingerprint-state/ -------------
-
----------- Running example 04-timestamp/ -------------
-Using configuration from /usr/lib/ssl/openssl.cnf
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  5585    0  5494  100    91  12697    210 --:--:-- --:--:-- --:--:-- 12928
-Using configuration from /usr/lib/ssl/openssl.cnf
-Warning: certificate from '../common/certificate/tsa.crt' with subject '/O=Free TSA/OU=TSA/description=This certificate digitally signs documents and time stamp requests made using the freetsa.org online services/CN=www.freetsa.org/emailAddress=busilezas@gmail.com/L=Wuerzburg/C=DE/ST=Bayern' is not a CA cert
-
+.
+. (additional output removed for brevity)
+.
 ---------- Running example 05-validate-tro-declaration/ -------------
 ```
 
@@ -357,23 +165,23 @@ repro@a6c7a4e443a8:/mnt/trace-model$
 
 Set the working directory to a particular example directory:
 ```
-repro@a6c7a4e443a8:/mnt/trace-model$ cd demo/01-trov-examples/01-two-artifacts-no-trp/
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$
+repro@a6c7a4e443a8:/mnt/trace-model$ cd demo/01-trov-vocab/
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$
 
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ pwd
-/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ pwd
+/mnt/trace-model/demo/01-trov-vocab
 ```
 
 Type `make` to run the example:
 ```
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ make
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ make
 bash run.sh > run.txt
 ```
 
 Use the `tree` command to list the files associated with the example, including the temporary files in the `tmp` subdirectory:
 
 ```
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ tree
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ tree
 .
 |-- Makefile
 |-- products
@@ -382,34 +190,19 @@ repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-tr
 |   `-- report_subclass.html
 |-- run.sh
 |-- run.txt
-|-- tmp
-|   |-- import tro declaration.sh
-|   |-- import tro declaration.txt
-|   |-- import trov vocabulary.sh
-|   |-- import trov vocabulary.txt
-|   |-- query subclass vocab.sh
-|   |-- query subclass vocab.txt
-|   |-- query tro attributes.sh
-|   |-- query tro attributes.txt
-|   |-- query trs attributes.sh
-|   |-- query trs attributes.txt
-|   |-- reload trov vocabulary without inferences.sh
-|   `-- reload trov vocabulary without inferences.txt
-|-- tro
-|   |-- file1
-|   |-- file2
-|   `-- tro.jsonld
-`-- trs
-    |-- private.asc
-    |-- public.gpg
-    `-- trs.jsonld
+|-- templates.geist
+`-- tmp
+    |-- query subclass vocab.sh
+    |-- query subclass vocab.txt
+    |-- reload trov vocabulary without inferences.sh
+    `-- reload trov vocabulary without inferences.txt
 
-4 directories, 24 files
+2 directories, 11 files
 ```
 
-The `make clean` command deletes the temporary files and the example output file, `run.txt`:
+The `make clean` command deletes the temporary files, the example output file, `run.txt`, and the products folder:
 ```
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ make clean
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ make clean
 if [[ -f ./"run.txt" ]] ; then                       \
     rm -v ./"run.txt" ;                              \
 fi
@@ -418,16 +211,8 @@ if [[ -d ./"tmp" ]] ; then                              \
     rm -vf ./"tmp"/* ;                            \
     rmdir -v ./"tmp" ;                            \
 fi
-removed './tmp/import tro declaration.sh'
-removed './tmp/import tro declaration.txt'
-removed './tmp/import trov vocabulary.sh'
-removed './tmp/import trov vocabulary.txt'
 removed './tmp/query subclass vocab.sh'
 removed './tmp/query subclass vocab.txt'
-removed './tmp/query tro attributes.sh'
-removed './tmp/query tro attributes.txt'
-removed './tmp/query trs attributes.sh'
-removed './tmp/query trs attributes.txt'
 removed './tmp/reload trov vocabulary without inferences.sh'
 removed './tmp/reload trov vocabulary without inferences.txt'
 rmdir: removing directory, './tmp'
@@ -440,25 +225,18 @@ removed './products/img.svg'
 removed './products/report_subclass.html'
 rmdir: removing directory, './products'
 
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ tree
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ tree
 .
 |-- Makefile
 |-- run.sh
-|-- tro
-|   |-- file1
-|   |-- file2
-|   `-- tro.jsonld
-`-- trs
-    |-- private.asc
-    |-- public.gpg
-    `-- trs.jsonld
+`-- templates.geist
 
-2 directories, 8 files
+0 directories, 3 files
 ```
 
 Confirm that the `run.txt` file and the `products` folder are the version-controlled files associated with this example that has been deleted:
 ```
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ git status .
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ git status .
 On branch idcc24
 Your branch is up to date with 'origin/idcc24'.
 
@@ -475,10 +253,10 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Re-run the and confirm the `run.txt` file was restored:
 ```
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ make
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ make
 bash run.sh > run.txt
 
-repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-examples/01-two-artifacts-no-trp$ git status .
+repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ git status .
 On branch idcc24
 Your branch is up to date with 'origin/idcc24'.
 
