@@ -12,7 +12,7 @@ FINGERPRINT_STATE_FILE=products/fingerprint_state.csv
 bash_cell 'Remove the run folder' << END_CELL
 
 if [[ -d "${TRO_DATA_RUN_DIR}" ]] ; then
-    rm -vf "${TRO_DATA_RUN_DIR}"/*
+    rm -f "${TRO_DATA_RUN_DIR}"/*
     rmdir -v "${TRO_DATA_RUN_DIR}"
 fi
 
