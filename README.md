@@ -78,10 +78,10 @@ Below gives a brief description of these demonstrations:
 - __01-trov-vocab__: query the _Transparent Research Object Vocabulary_ (__TROV__) and visualize the subclass relationship.
 - __02-tro-examples__: query three _Transparent Research Objects_ (__TROs__), _01-two-artifacts-no-trp_, _02-three-artifacts-one-trp_, and _03-skope-lbda-processing_.
 - __03-trace-explorations__:
-    - _01-gpg-runtime_ and _02-gpg-api_ demonstrate how to generate a key pair and use it to sign and verify a TRO declaration.
-    - _03-tro-fingerprint-state_ demonstrates how to compute fingerprint of a given state.
-    - _04-timestamp_ demonstrates how to add a trusted timestamp.
-    - _05-validate-tro-declaration_ demonstrates how to validate a TRO declaration using 5 examples.
+    - _01-gpg-runtime_ and _02-gpg-api_ demonstrate how a key pair can be generated and used to sign and verify a TRO declaration.
+    - _03-tro-fingerprint-state_ demonstrates how a fingerprint of a given state can be computed.
+    - _04-timestamp_ demonstrates how a trusted timestamp can be created and applied to a TRO.
+    - _05-validate-tro-declaration_ demonstrates how a TRO declaration can be validated through 5 examples.
 
 To establish that the demonstrations can be reproduced, first use the `make clean-demo` command to delete the files produced by the demo:
 ```
