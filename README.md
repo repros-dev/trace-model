@@ -203,8 +203,8 @@ repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ tree
 `-- tmp
     |-- query subclass vocab.sh
     |-- query subclass vocab.txt
-    |-- reload trov vocabulary without inferences.sh
-    `-- reload trov vocabulary without inferences.txt
+    |-- load trov vocabulary without inferences.sh
+    `-- load trov vocabulary without inferences.txt
 
 2 directories, 11 files
 ```
@@ -222,8 +222,8 @@ if [[ -d ./"tmp" ]] ; then                              \
 fi
 removed './tmp/query subclass vocab.sh'
 removed './tmp/query subclass vocab.txt'
-removed './tmp/reload trov vocabulary without inferences.sh'
-removed './tmp/reload trov vocabulary without inferences.txt'
+removed './tmp/load trov vocabulary without inferences.sh'
+removed './tmp/load trov vocabulary without inferences.txt'
 rmdir: removing directory, './tmp'
 if [[ -d ./"products" ]] ; then                       \
     rm -vf ./"products"/* ;                           \
@@ -260,7 +260,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Re-run the and confirm the `run.txt` file was restored:
+Re-run this example and confirm the `run.txt` file and the `products` folder were restored:
 ```
 repro@a6c7a4e443a8:/mnt/trace-model/demo/01-trov-vocab$ make
 bash run.sh > run.txt
