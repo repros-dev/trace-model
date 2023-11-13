@@ -285,6 +285,19 @@ geist report --outputroot products << END_TEMPLATE
         {% endfor %}
         {%- table mappings="mappings.json" %}{% query_trs_capability_str %}{% endtable %}
 
+        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
+        {% img src="trp.svg" %}
+            {%- gv_graph "trp", "LR" %}
+            nodesep=0.6
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+            {%- map isfilepath=False, mappings="mappings.json" as query_trp_shorten %} {% query_trp_str %} {% endmap %}
+            {%- set query_trp = query_trp_shorten | json2df %}
+            {% for _, row in query_trp.iterrows() %}
+                {% gv_labeled_edge row["in"], row["out"], row["trp"] %}
+            {% endfor %}
+            {% gv_end %}
+        {% endimg %}
+
         <h3>Artifacts by Arrangement:</h3>
         {%- query isfilepath=False as query_arrangement_str %}
             SELECT DISTINCT ?arrangement (STR(?arrangement) AS ?id) ?name ?descr
@@ -310,19 +323,6 @@ geist report --outputroot products << END_TEMPLATE
 
         <h3>Artifacts:</h3>
         {%- table mappings="mappings.json" %}{% query_artifact_str %}{% endtable %}
-        
-        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
-        {% img src="trp.svg" %}
-            {%- gv_graph "trp", "LR" %}
-            nodesep=0.6
-            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
-            {%- map isfilepath=False, mappings="mappings.json" as query_trp_shorten %} {% query_trp_str %} {% endmap %}
-            {%- set query_trp = query_trp_shorten | json2df %}
-            {% for _, row in query_trp.iterrows() %}
-                {% gv_labeled_edge row["in"], row["out"], row["trp"] %}
-            {% endfor %}
-            {% gv_end %}
-        {% endimg %}
 
 </body>
 {% endhtml %}
@@ -373,6 +373,8 @@ END_TEMPLATE
 			<tr><td>"trs/capability/2"</td><td>"Capability of Providing Internet Isolation"</td><td>"TRS can provide Internet isolation"</td>
         </table>
     
+        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
+        <img src="trp.svg" >
         <h3>Artifacts by Arrangement:</h3>                <u>Web Resource Artifact Arrangement Instance</u>
         <ul>
             <li>Arrangement ID: arrangement/1</li>
@@ -441,9 +443,7 @@ END_TEMPLATE
 			<tr><td>"Graphical Histogram Rendering"</td><td>"composition/1/artifact/5"</td><td>"image/png"</td><td>"Graphical rendering of the histogram of dataset values"</td>
 			<tr><td>"LBDA GeoTIFF file"</td><td>"composition/1/artifact/6"</td><td>"image/tiff"</td><td>"GeoTIFF file containing LBDA data cube ready for staging to SKOPE server"</td>
         </table>
-            
-        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
-        <img src="trp.svg" >
+    
 </body>
 </html>
 

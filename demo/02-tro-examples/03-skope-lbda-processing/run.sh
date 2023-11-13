@@ -43,6 +43,19 @@ geist report --outputroot products << END_TEMPLATE
         {% endfor %}
         {%- table mappings="mappings.json" %}{% query_trs_capability_str %}{% endtable %}
 
+        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
+        {% img src="trp.svg" %}
+            {%- gv_graph "trp", "LR" %}
+            nodesep=0.6
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+            {%- map isfilepath=False, mappings="mappings.json" as query_trp_shorten %} {% query_trp_str %} {% endmap %}
+            {%- set query_trp = query_trp_shorten | json2df %}
+            {% for _, row in query_trp.iterrows() %}
+                {% gv_labeled_edge row["in"], row["out"], row["trp"] %}
+            {% endfor %}
+            {% gv_end %}
+        {% endimg %}
+
         <h3>Artifacts by Arrangement:</h3>
         {%- query isfilepath=False as query_arrangement_str %}
             SELECT DISTINCT ?arrangement (STR(?arrangement) AS ?id) ?name ?descr
@@ -68,19 +81,6 @@ geist report --outputroot products << END_TEMPLATE
 
         <h3>Artifacts:</h3>
         {%- table mappings="mappings.json" %}{% query_artifact_str %}{% endtable %}
-        
-        <h3>Trusted Research Performances (TRPs) and Arrangements:</h3>
-        {% img src="trp.svg" %}
-            {%- gv_graph "trp", "LR" %}
-            nodesep=0.6
-            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
-            {%- map isfilepath=False, mappings="mappings.json" as query_trp_shorten %} {% query_trp_str %} {% endmap %}
-            {%- set query_trp = query_trp_shorten | json2df %}
-            {% for _, row in query_trp.iterrows() %}
-                {% gv_labeled_edge row["in"], row["out"], row["trp"] %}
-            {% endfor %}
-            {% gv_end %}
-        {% endimg %}
 
 </body>
 {% endhtml %}
