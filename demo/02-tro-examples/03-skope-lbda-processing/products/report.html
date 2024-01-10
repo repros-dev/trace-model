@@ -12,10 +12,13 @@
 
         <button id="ID_Button">Show/Hide IDs</button>
 
-        <h3>This Transparent Research Object:</h3>         
+        <h3>This Transparent Research Object:</h3>      
+        DOI: https://doi.org/...<br><br>
         <u>Transparent Research Object Instance</u>
         <br><br><i class="id_col">TRO ID: tro</i>
         <ul>
+            <li>Author: TRO_AUTHOR_NAME</li>
+            <li>Created datetime: 2024-01-11 10:00:00</li>
             <li>TRO Description: Download LBDA dataset from NOAA website and prepare for use by researchers employing the SKOPE application</li>
             <li>Digital artifacts: 6</li>
             <li>Artifact artifact arrangements: 4</li>
@@ -26,9 +29,11 @@
         <button id="TRS-Button" class="button" data-target="TRS-Content">Trusted Research System</button>
 
         <div id="TRS-Content" class="content">
-        <u>Trusted Research System Instance</u>
+        <u>Trusted Research System Instance (this is the instance name)</u>
         <br><br><i class="id_col">TRS ID: trs</i>
         <ul>
+            <li>Name: TRS_NAME</li>
+            <li>Owner: TRS_OWNER_NAME</li>
             <li>TRS Description: TRS that can monitor netowrk accesses or provide Internet isolation</li>
             <li>Capabilities: 2 (see below)</li>
         </ul>
@@ -168,7 +173,7 @@
     }
 
     h1 {
-        font-size: 5vw;
+        font-size: 4vw;
         font-weight: bold;
         color: white;
         background-color: #13294B;
