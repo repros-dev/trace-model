@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-CONTEXT_FILE_PATH=data/context.csv
+CONTEXT1_FILE_PATH=data/context1.csv
+CONTEXT2_FILE_PATH=data/context2.csv
+CONTEXT3_FILE_PATH=data/context3.csv
 JSON_FILE_PATH=data/tro.json
 JSONLD_FILE_PATH=products/tro.jsonld
 
@@ -16,14 +18,16 @@ import numpy as np
 import json
 
 def process_id(value):
-    return str(int(value))
+    return str(value).strip()
 
 def update_dict(data, keys, cm):
+
+    # Unpack context mappings
+    cm1, cm2, cm3 = cm
+
     # TYPE 1
     # e.g., {"trp": 1, "trpAttribute": 1} => {"@id": "trp/1/attribute/1" }
-    type1 = [{"k1": "trp", "k2": "trpAttribute", "id": "trp/{id1}/attribute/{id2}"},
-             {"k1": "composition", "k2": "compArtifact", "id": "composition/{id1}/artifact/{id2}"}]
-    for item in type1:
+    for item in cm1:
         k1, k2 = item["k1"], item["k2"]
         if (k1 in keys) and (k2 in keys):
             data["@id"] = item["id"].format(id1=process_id(data[k1]), id2=process_id(data[k2]))
@@ -33,10 +37,7 @@ def update_dict(data, keys, cm):
     # TYPE 2
     # e.g., {"composition": 1, "hasArtifact": {"artifact": 1}} OR {"composition": 1, "hasArtifact": [{"artifact": 1}]} 
     # => {"composition": 1, "hasArtifact": {"@id": "composition/1/artifact/1"}} OR {"composition": 1, "hasArtifact": [{"@id": "composition/1/artifact/1"}]}
-    type2 = [{"k1": "composition", "k2": "hasArtifact", "k3": "artifact", "id": "composition/{id1}/artifact/{id2}"},
-             {"k1": "arrangement", "k2": "hasLocus", "k3": "locus", "id": "arrangement/{id1}/locus/{id2}"},
-             {"k1": "trp", "k2": "hadPerformanceAttribute", "k3": "trpAttribute", "id": "trp/{id1}/attribute/{id2}"}]
-    for item in type2:
+    for item in cm2:
         k1, k2, k3 = item["k1"], item["k2"], item["k3"]
         if (k1 in keys) and (k2 in keys):
             if isinstance(data[k2], dict):
@@ -48,13 +49,13 @@ def update_dict(data, keys, cm):
                     data[k2][idx].pop(k3)
     
     # TYPE 3
-    # one-to-one mappings based on context.csv
-    for key in cm.keys():
+    # one-to-one mappings based on context3.csv
+    for key in cm3.keys():
         if key in keys:
-            if isinstance(cm[key]["idPrefix"], str):
-                data[cm[key]["rdfTerm"]] = cm[key]["idPrefix"] + process_id(data.pop(key))
+            if isinstance(cm3[key]["idPrefix"], str):
+                data[cm3[key]["rdfTerm"]] = cm3[key]["idPrefix"] + process_id(data.pop(key))
             else:
-                data[cm[key]["rdfTerm"]] = data.pop(key)
+                data[cm3[key]["rdfTerm"]] = data.pop(key)
     
     return data
 
@@ -76,7 +77,10 @@ with open('${JSON_FILE_PATH}', 'r', encoding='utf-8') as fin:
 json_content = json.loads(content)
 
 # Load the context mappings
-cm = pd.read_csv('${CONTEXT_FILE_PATH}', index_col='key').T.to_dict(orient='dict')
+cm1 = pd.read_csv('${CONTEXT1_FILE_PATH}').to_dict(orient='records')
+cm2 = pd.read_csv('${CONTEXT2_FILE_PATH}').to_dict(orient='records')
+cm3 = pd.read_csv('${CONTEXT3_FILE_PATH}', index_col='key').T.to_dict(orient='dict')
+cm = [cm1, cm2, cm3]
 
 # Traverse and update it recursively
 content = traverse_json(json_content, cm)
